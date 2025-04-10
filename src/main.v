@@ -1,12 +1,15 @@
 module main
 
+// src main.v
+
 import mpgsrc
 import vlibrary
+import time
 
+//entry point
 fn main() {
-	
+	println('MPG  started  at ${time.now()} \n')	
+	println('MPG is running on ${vlibrary.find_os()} \n')
 	mpgsrc.runmpg()
-	osstr := vlibrary.find_os()
-    println('MPG is running on ${osstr} \n')
-
+    println('MPG finished  at ${time.now()} \n')
 }

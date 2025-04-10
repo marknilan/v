@@ -1,14 +1,16 @@
 module mpgsrc
 
-import time
-import startup
+// mpgsrc mpg.v
 
+import startup
+import injest
+
+//runs the mpg program
 pub fn runmpg() {
-	println('MPG  started  at ${time.now()} \n')
 	cfgfile, runmode := startup.read_parms()
-	poem := startup.config(cfgfile)
-	println('MPG was called in mode: ${runmode} with TOML file: ${cfgfile} \n')
-	println('poem metadata is as follows: \n${poem}')
-	println('MPG finished  at ${time.now()} \n')
+	poem := startup.config(cfgfile,runmode)
+	println(poem)
+    mpgwords := injest.get_words('/home/mark/projects/v/mpg/words/mpgwords.csv')
+    println(mpgwords)
 }
 
