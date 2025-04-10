@@ -1,0 +1,50 @@
+POETIC FEET
+A single poetic foot contains a certain number of stressed and unstressed syllables. Common forms of
+poetic feet include:
+
+MPG note: this is the string represented by N-N-N-.. etc
+Examples 
+  0-1-0 which is unstressed-stressed-unstressed syllables
+  ACCRUAL = 3 syllables feet string would be "0-1-0"
+and
+  1-0-2-0 which (slightly unstressed)-unstressed-stressed-unstressed
+  COMPROMISING 4 syllables feet string would be "1-0-2-0" 
+
+FEET TYPES
+
+Iambic: unstressed/STRESSED, pronounced duh-DUH
+  MPG note: feet = 0-1 
+  Belong → be-LONG
+  Destroy → de-STROY
+  Portray → por-TRAY
+
+Trochaic: STRESSED/unstressed, pronounced DUH-duh
+  MPG note: feet = 1-0
+  Garden → GAR-den
+  Market → MAR-ket
+  Toothbrush → TOOTH-brush
+
+Anapestic: unstressed/unstressed/STRESSED, pronounced duh-duh-DUH
+  MPG note: feet = 0-0-1
+  Disregard → dis-re-GARD
+  Overcome → ov-er-COME
+  Understand → un-der-STAND
+
+Dactylic: STRESSED/unstressed/unstressed, pronounced DUH-duh-duh
+  MPG note: feet = 1-0-0
+  Buttermilk → BUT-ter-milk
+  Elephant → EL-le-phant
+  Handkerchief → HAND-ker-chief
+  
+Otherdactyl: other forms starting with stressed
+  MPG note: feet = highest number first (must be largest)
+            eg. POSSIBILITIES syllables=5 feet=2-0-1-0-0   
+
+Otheranapestic: other forms starting with unstressed
+  MPG note: feet = smallest number first (any smaller than the largest)
+            eg. LIBERALISING syllables=5 feet=1-2-0-2-0   
+
+Othertrochaic: other forms starting with stressed
+  MPG note: feet = largest number first then smaller then same large number
+            eg. LIBERALISING syllables=5 feet=1-2-0-2-0   
+  

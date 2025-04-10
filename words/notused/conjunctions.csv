@@ -1,0 +1,70 @@
+1,and,cconj
+2,or,cconj
+3,but,cconj
+4,nor,cconj
+5,so,cconj
+6,for,cconj
+7,yet,cconj
+8,a,inda
+9,it,inda
+10,an,inda
+11,after,sconj
+12,although,sconj
+13,as,sconj
+14,as if,sconj
+15,as long as,sconj
+16,because,sconj
+17,before,sconj
+18,even if,sconj
+19,even though,sconj
+20,if,sconj
+21,once,sconj
+22,provided,sconj
+23,since,sconj
+24,so that,sconj
+25,that,sconj
+26,though,sconj
+27,till,sconj
+28,unless,sconj
+29,until,sconj
+30,what,sconj
+31,when,sconj
+32,whenever,sconj
+33,wherever,sconj
+34,whether,sconj
+35,while,sconj
+36,accordingly,conja
+37,also,conja
+38,anyway,conja
+39,besides,conja
+40,consequently,conja
+41,finally,conja
+42,for example,conja
+43,for instance,conja
+44,further,conja
+45,furthermore,conja
+46,hence,conja
+47,however,conja
+48,incidentally,conja
+49,indeed,conja
+50,in fact,conja
+51,instead,conja
+52,likewise,conja
+53,meanwhile,conja
+54,moreover,conja
+55,namely,conja
+56,now,conja
+57,of course,conja
+58,on the contrary,conja
+59,on the other hand,conja
+60,otherwise,conja
+61,nevertheless,conja
+62,next,conja
+63,nonetheless,conja
+64,similarly,conja
+65,so far,conja
+66,until now,conja
+67,still,conja
+68,then,conja
+69,therefore,conja
+70,thus,conja

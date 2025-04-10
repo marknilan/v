@@ -1,0 +1,31 @@
+Types of Rhymes
+There are different types of rhymes based on the level of similarity between the sounds of the words:
+
+Perfect Rhymes: These are words that have the same sounds in their final stressed syllables and any subsequent syllables. They are the most common type of rhyme.
+Example: cat/hat, time/rhyme
+
+Slant Rhymes (or Near Rhymes): These are words that have similar but not identical sounds in their final stressed syllables. Slant rhymes often involve consonant sounds or vowel sounds that are similar, but not quite the same.
+Example: bend / hand, love / prove
+
+Eye Rhymes: These are words that look like they should rhyme due to their spelling, but they do not have corresponding sounds. In other words, the words look similar, but they are pronounced differently.
+Example: love/move, laughter/daughter
+
+Identical Rhymes (or Rich Rhymes): These are words that are spelled the same and have the same sounds in their final stressed syllables and subsequent syllables.
+Example: fair/fair, tear/tear
+
+Internal Rhymes: These are rhymes that occur within a single line of verse or within nearby lines. Internal rhymes can add emphasis and musicality to a piece of writing.
+Example: “Once upon a midnight dreary, while I pondered, weak and weary…”
+
+End Rhymes: These are rhymes that occur at the end of lines in a poem or song lyrics. They are the most common type of rhyme and are often used to establish a pattern or rhythm.
+Example (from “The Road Not Taken” by Robert Frost): “Two roads diverged in a wood, and I— I took the one less traveled by, And that has made all the difference.”
+
+Feminine Rhymes: These are rhymes in which the stressed syllable is followed by an unstressed syllable, such as a multisyllabic word rhyming with another multisyllabic word.
+Example: butter/clutter, elegant / elephant
+
+Masculine Rhymes: These are rhymes in which only the final stressed syllable of the word is rhymed.
+Example: cat/hat, sing/ring
+
+Wrenched Rhymes: These are rhymes where the regular pronunciation of a word is deliberately changed to create a rhyme.
+Example: come / home, through / threw
+
+It’s important to note that rhyming can vary depending on dialects, accents, and regional pronunciations, which can affect the way words sound when spoken. Additionally, while rhyming is often associated with poetry and music, it can also be found in other forms of writing to create a playful or rhythmic effect.

@@ -1,0 +1,46 @@
+RAND notes
+
+at least use this?
+fn intn #
+fn intn(max int) !int
+intn returns a uniformly distributed pseudorandom 32-bit
+signed positive int in range [0, max).
+
+WTF is this? Pseudo Random Number Generator
+interface PRNG {
+mut:
+	seed(seed_data []u32)
+	u8() u8
+	u16() u16
+	u32() u32
+	u64() u64
+	block_size() int
+	free()
+}
+
+THEN - Use this is loops?
+fn new_default #
+fn new_default(config_ config.PRNGConfigStruct) &PRNG
+new_default returns a new instance of the default RNG. If the seed 
+is not provided, the current time will be used to seed the instance.
+
+
+random element from array
+fn element[T](array []T) !T
+
+
+choose? 
+choose samples k elements from the array without replacement. 
+This means the indices cannot repeat and it restricts the 
+sample size to be less than or equal to the size of the given 
+array. Note that if the array has repeating elements, then
+the sample may have repeats as well.
+
+AND THIS ONE?
+
+fn sample #
+fn sample[T](array []T, k int) []T
+sample samples k elements from the array with replacement. 
+This means the elements can repeat and the size of the sample 
+may exceed the size of the array.
+

@@ -1,0 +1,9 @@
+[Poem] 
+   poemtype = 'rondeau'
+   nop = 3
+   bpl = 5
+   tmpl = "mud"
+   meter = "iambpent"
+   lpp = 15
+   stnz = 3
+   rhyme = 4

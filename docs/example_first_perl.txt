@@ -1,0 +1,25 @@
+prog.pl
+
+code:
+#!/usr/bin/perl -w
+
+use newsub;
+
+&newsub;
+
+exit;
+
+# to call its perl prog.pl
+
+newsub.pm
+Code:
+#!/usr/bin/perl
+
+sub newsub {
+
+print "hello\n";
+
+}
+
+return 1;
+exit;

@@ -1,0 +1,33 @@
+ALGORITHMIC RULES
+
+On building lines:
+
+USE CASE
+
+  "I sang of leaves, of leaves of gold, and leaves of gold there grew"
+  I SANG | of LEAVES | of LEAVES | of GOLD |and LEAVES | of GOLD | there GREW
+  MPG note: feet array = {"1","1","0-1","0-1","0-1","0-1","0-1"}
+  "Of wind I sang, a wind there came, and in the branches blew."
+  Of WIND | I SANG | a WIND | there CAME | and IN | the BRANCH-| es BLEW
+  MPG note: feet array = {"0-1","0-1","0-1","0-1","0-1","0-1","0-1" 
+
+if chosen word has feet="1" only 
+AND
+if type is iamb
+  add conjunction before word
+example above "a WIND"  
+
+USE CASE
+
+  “Once upon a midnight dreary, while I pondered, weak and weary,”
+  ONCE up-| ON a | MID-night | DREA-ry | WHILE I | PON-dered | WEAK and | WEA-ry  
+  MPG note: feet array = {"1-0","1-0","1-0","1-0","1-0","1-0","1-0","1-0"}
+
+if chosen word has feet="1" only
+AND
+if type is trochaic
+  add conjunction after word
+example above "WEAK and"
+
+   
+      

@@ -1,0 +1,61 @@
+POETIC METER
+Meter refers to the number of times that a poetic foot appears in a line of poetry. Common forms of
+meter include:
+
+Monometer 
+  Contains one poetic foot. Due to its short length, you will rarely encounter this kind of meter.
+  MPG note:this would be one word with feet string="1"
+  
+Dimeter 
+  contains two poetic feet. Here is an example of iambic dimeter from the first line of
+  “We Are Seven” by William Wordsworth:
+    "A simple child"
+     a SIM-| ple CHILD
+  MPG note: feet array = {"1-0","1"}   
+     
+Trimeter contains three poetic feet. 
+  Here is an example of trochaic trimeter from Shelley’s “To a Skylark”:
+  "Higher still and higher"
+  HIGH-er | STILL and | HIGH-er
+    "From the earth thou springest"
+  FROM the | EARTH thou | SPRING-est
+  MPG note: feet array = {"1-0","1","1-0"}
+  
+Tetrameter contains four poetic feet. Here is an example of anapestic tetrameter from Lord
+  Byron’s “The Destruction of Sennacherib”:
+  "The Assyrian came down like a wolf on the fold"
+  the as-SYR-| ian came DOWN | like a WOLF | on the FOLD
+  "And his cohorts were gleaming in purple and gold"
+  and his CO-| horts were GLEAM-| ing in PUR-| ple and GOLD
+  MPG note: feet array = {"0-1","0-1","0-1","0-1"}
+
+Pentameter contains five poetic feet. Here is an example of iambic pentameter from “The
+  Waking” by Theodore Roethke:
+  "I wake to sleep, and take my waking slow."
+  I WAKE | to SLEEP | and TAKE | my WAK-| ing SLOW
+  "I feel my fate in what I cannot fear."
+  I FEEL | my FATE | in WHAT | I CAN-| not FEAR
+  "I learn by going where I have to go."
+  I LEARN | by GO-| ing WHERE | I HAVE | to GO
+  MPG note: feet array = {"0-1","0-1","0-1","0-1","0-1"}  
+  
+Hexameter contains six poetic feet. Here is an example of dactylic hexameter  from the first line
+  of “Evangeline” by Henry Wadsworth Longfellow:
+  "This is the forest primeval. The murmuring pines and the hemlocks"
+  THIS is the | FOR-est pri-| ME-val the | MUR-mur-ing | PINES and the | HEM-locks
+  MPG note: feet array = {"1-0-0","1-0-0","1-0-0","1-0-0","1-0-0","1-0-0"}
+
+Heptameter contains seven poetic feet. Here is an example of iambic heptameter from
+  Galadriel’s Song of Eldamar from J.R.R. Tolkien’s Fellowship of the Ring:
+  "I sang of leaves, of leaves of gold, and leaves of gold there grew"
+  I SANG | of LEAVES | of LEAVES | of GOLD |and LEAVES | of GOLD | there GREW
+  MPG note: feet array = {"1","1","0-1","0-1","0-1","0-1","0-1"}
+  "Of wind I sang, a wind there came, and in the branches blew."
+  Of WIND | I SANG | a WIND | there CAME | and IN | the BRANCH-| es BLEW
+  MPG note: feet array = {"0-1","0-1","0-1","0-1","0-1","0-1","0-1"}
+   
+Octameter contains eight poetic feet. Here is an example of trochaic octameter from the first
+  line of Edgar Allan Poe’s “The Raven”:
+  “Once upon a midnight dreary, while I pondered, weak and weary,”
+  ONCE up-| ON a | MID-night | DREA-ry | WHILE I | PON-dered | WEAK and | WEA-ry  
+  MPG note: feet array = {"1-0","1-0","1-0","1-0","1-0","1-0","1-0","1-0"}

@@ -1,0 +1,42 @@
+Subject-Adverb-Object = SUBJECT[r(NOUN,PRONOUN,NCL)]+[r(ABSPH)]
+A group of words that forming a sentence all of which after the noun are not essential.
+example "the sun rising in the east"
+NOTE: Most useful as a first line starter of a poem
+
+To-Verb-Object = ["TO"]+VERB[r(VERB,VPH)]+[r(NOUN,PRONOUN,NCL)]
+["TO"]+[r(VERB)]+[r(NOUN,NCL,PRONOUN)] 
+A sentence beginning with "to" and followed by an infinitive form of a verb and a noun
+example "to run a marathon"
+
+Subject–Verb = SUBJECT[r(NOUN,PRONOUN,NCL)]+VERB[r(VERB,VPH,ADVCL)]
+This type of sentence begins with a core sentence such as “Jane walks.” 
+Here, “Jane” is the subject and “walks” is the verb.
+You can add an adverb to make the sentence “Jane walks quickly,” or you can add 
+an expression of time to tell when she walks, e.g., “Jane walks all morning.”
+Subject is a singular NOUN,PRONOUN or a PHRASE
+
+Subject–Verb–Object = SUBJECT[r(NOUN,PRONOUN,NCL)]+VERB[r(VERB,VPH)]+OBJECT[r(ADJ,ADJCL,NULL)+r(NOUN,PRONOUN,NCL)+r(ADV,ADVCL,NULL]
+These sentences begin with a core sentence such as “She is playing a piano.” 
+In this sentence, “She” is the subject, “is playing” is the verb, and “a piano” is the object.
+You can add elements to expand the sentence, such as an adjective (e.g., “She is playing a small piano”) 
+or an adverb (e.g., “She is playing the piano beautifully”).
+
+Subject–Verb–Adjective = SUBJECT[r(NOUN,PRONOUN,NCL)]+VERB[r(VERB)]+ADVERB[R(ADVERB,ADVCL,NULL)]+ADJECTIVE[R(ADJECTIVE,ADJCL)]
+This type of sentence begins with a core sentence like “He is handsome.” 
+Here, “he” is the subject, “is” is the verb, and “handsome” is the adjective.
+Like the other types of sentences, you can expand on the sentence by adding other parts of speech, 
+such as “He is very handsome,” where “very” serves as an adverb.
+
+Subject–Verb–Adverb = SUBJECT[r(NOUN,PRONOUN,NCL)]+ADJECTIVE[R(ADJECTIVE,ADJCL,NULL)]+VERB[r(VERB)]+ADVERB[R(ADVERB,ADVCL)]
+These sentences begin with a core sentence such as “The girl walked away.” 
+In this sentence, “the girl” is the subject, “walked” is the verb, and “away” is the adverb.
+You can add elements to this type of sentence, such as “The girl slowly walked away,” where 
+“slowly” is an adjective describing how the girl walked.
+
+Subject–Verb–Noun = SUBJECT[r(NOUN,PRONOUN,NCL)]+ADJECTIVE[R(ADJECTIVE,ADJCL,NULL)]+VERB[r(VERB)]+ADVERB[R(ADVERB,ADVCL,NULL)]+
+VERB[r(VERB)]+SUBJECT[r(NOUN,PRONOUN,NCL)]
+Sentences of this type begin with a core sentence such as 
+“The professor is a woman.” Here, “the professor” is the subject, “is” is the verb, and “a woman” is the noun. 
+As with the other sentence types, you can add words or phrases to expand on the sentence. 
+For example, you can add the adjective “intelligent” and the adverbial phrase “at the university” to say 
+“The professor at the university is an intelligent woman” to describe the professor more and tell where where she works.

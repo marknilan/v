@@ -1,0 +1,70 @@
+sudo mysql
+use mpg
+
+create table rawlist(
+    word varchar(50) not null,
+    cnt int,
+    meteracc varchar(150),
+    metername varchar(40)
+);
+
+LOAD DATA INFILE "/tmp/h.csv"
+INTO TABLE rawlist
+COLUMNS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+UPDATE rawlist SET word = TRIM(word)
+WHERE 1 = 1;
+
+=======================================================
+
+create table realist(
+    id int,    
+    word varchar(50) not null
+);
+
+LOAD DATA INFILE "/tmp/realist.csv"
+INTO TABLE realist
+COLUMNS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+
+create table mywords  
+select a.id, a.word, b.cnt, b.meteracc, b.metername
+from realist a
+left join rawlist b
+on a.word = b.word;
+       
+create index wordidx on realist (word);
+create index wordidx1 on rawlist (word);
+
+create table mywords
+select a.id, a.word, b.cnt, b.meteracc, b.metername
+from realist as a
+join rawlist as b
+on a.word = b.word;
+
+create table mywords
+SELECT a.id, a.word, b.cnt, b.meteracc, b.metername
+FROM realist a
+LEFT JOIN rawlist b
+ON a.word = b.word;
+
+WITH cte AS ( 
+    SELECT  
+        word,  
+        ROW_NUMBER() OVER (PARTITION BY cnt, meteracc, metername ORDER BY word) AS row_num 
+    FROM  
+        rawlist 
+) 
+DELETE FROM cte WHERE row_num > 1;
+
+WITH cte AS ( 
+    SELECT  
+        id,  
+        ROW_NUMBER() OVER (PARTITION BY column1, column2 ORDER BY id) AS row_num 
+    FROM  
+        your_table 
+) 
+DELETE FROM cte WHERE row_num > 1;

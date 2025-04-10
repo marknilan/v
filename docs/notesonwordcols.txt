@@ -1,0 +1,8 @@
+WORDIDX  = numeric index of the word table (ie 234)
+THEWORD  = the actual word name (ie APPLE)
+SYLCNT   = count of sylables (ie 3 for the word ABANDON)
+FOOT     = the emphasis pattern of the word (ie 0-1-0 for the word ABANDON)
+WORDTYPE = English word type (ie NOUN for the word ABANDON)
+FEET     = the poetic foot of the word (ie anapestic for the word ABANDON)
+BEATCNT  = the number of meter beats as different from the sylable count (ie 1 for the word ABANDON)
+

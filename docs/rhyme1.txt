@@ -1,0 +1,502 @@
+Seed Word: “Air”
+Basic Rhymes: Bear, Care, Fair, Hair, Share
+Advanced Rhymes: Affair, Despair, Glare, Rare, Unaware
+Seed Word: “Arm”
+
+Basic Rhymes: Charm, Farm, Harm, Warm
+Advanced Rhymes: Disarm, Alarm, Reform, Embalm
+Seed Word: “Age”
+
+Basic Rhymes: Cage, Page, Sage, Rage
+Advanced Rhymes: Engage, Rampage, Stage, Wage
+Seed Word: “Aim”
+
+Basic Rhymes: Blame, Fame, Game, Name
+Advanced Rhymes: Proclaim, Exclaim, Reclaim, Flame
+B
+Seed Word: “Bright”
+
+Basic Rhymes: Light, Night, Sight, White
+Advanced Rhymes: Delight, Contrite, Height, Reignite
+Seed Word: “Burn”
+
+Basic Rhymes: Turn, Learn, Earn
+Advanced Rhymes: Discern, Intern, Yearn, Concern
+Seed Word: “Ball”
+
+Basic Rhymes: Call, Fall, Hall, Tall
+Advanced Rhymes: Install, Overall, Recall, Small
+Seed Word: “Bend”
+
+Basic Rhymes: Blend, Send, Friend, Lend
+Advanced Rhymes: Append, Defend, Suspend, Extend
+C
+Seed Word: “Cry”
+
+Basic Rhymes: Fly, High, Tie, Sky
+Advanced Rhymes: Comply, Dignify, Intensify, Butterfly
+Seed Word: “Cold”
+
+Basic Rhymes: Bold, Hold, Fold, Gold
+Advanced Rhymes: Enfold, Behold, Untold, Uncontrolled
+Seed Word: “Climb”
+
+Basic Rhymes: Rhyme, Time, Chime, Lime
+Advanced Rhymes: Sublime, Reprime, Prime, Crime
+Seed Word: “Clear”
+
+Basic Rhymes: Dear, Fear, Hear, Near
+Advanced Rhymes: Appear, Revere, Engineer, Steer
+D
+Seed Word: “Day”
+
+Basic Rhymes: Bay, Clay, May, Play
+Advanced Rhymes: Array, Display, Convey, Decay
+Seed Word: “Deep”
+
+Basic Rhymes: Keep, Leap, Peep, Sleep
+Advanced Rhymes: Steep, Creep, Sweep, Heap
+Seed Word: “Dream”
+
+Basic Rhymes: Beam, Cream, Scream, Team
+Advanced Rhymes: Redeem, Esteem, Regime, Gleam
+Seed Word: “Draw”
+
+Basic Rhymes: Claw, Flaw, Jaw, Paw
+Advanced Rhymes: Withdraw, Outlaw, Overawe, Foresaw
+E
+Seed Word: “End”
+
+Basic Rhymes: Bend, Friend, Send, Lend
+Advanced Rhymes: Append, Defend, Suspend, Extend
+Seed Word: “Ease”
+
+Basic Rhymes: Breeze, Cheese, Please, Tease
+Advanced Rhymes: Squeeze, Appease, Freeze, Seize
+Seed Word: “Edge”
+
+Basic Rhymes: Pledge, Hedge, Wedge, Sledge
+Advanced Rhymes: Acknowledge, Privilege, College, Knowledge
+Seed Word: “Earn”
+
+Basic Rhymes: Burn, Turn, Learn, Yearn
+Advanced Rhymes: Discern, Intern, Concern, Adjourn
+F
+Seed Word: “Fire”
+
+Basic Rhymes: Hire, Tire, Wire, Mire
+Advanced Rhymes: Desire, Entire, Inspire, Conspire
+Seed Word: “Face”
+
+Basic Rhymes: Base, Case, Chase, Grace
+Advanced Rhymes: Embrace, Replace, Disgrace, Retrace
+Seed Word: “Feel”
+
+Basic Rhymes: Heel, Meal, Real, Seal
+Advanced Rhymes: Appeal, Conceal, Reveal, Ideal
+Seed Word: “Fine”
+
+Basic Rhymes: Line, Mine, Shine, Dine
+Advanced Rhymes: Define, Refine, Recline, Incline
+G
+Seed Word: “Game”
+
+Basic Rhymes: Name, Same, Tame, Frame
+Advanced Rhymes: Proclaim, Exclaim, Reclaim, Blame
+Seed Word: “Gold”
+
+Basic Rhymes: Bold, Hold, Fold, Sold
+Advanced Rhymes: Unfold, Behold, Untold, Controlled
+Seed Word: “Glow”
+
+Basic Rhymes: Flow, Know, Show, Slow
+Advanced Rhymes: Bestow, Overthrow, Plateau, Shadow
+Seed Word: “Grace”
+
+Basic Rhymes: Base, Case, Face, Place
+Advanced Rhymes: Embrace, Replace, Disgrace, Retrace
+H
+Seed Word: “Heart”
+
+Basic Rhymes: Cart, Part, Start, Smart
+Advanced Rhymes: Apart, Chart, Impart, Dart
+Seed Word: “Hill”
+
+Basic Rhymes: Bill, Chill, Fill, Still
+Advanced Rhymes: Instill, Fulfill, Spill, Trill
+Seed Word: “Hope”
+
+Basic Rhymes: Cope, Rope, Scope, Slope
+Advanced Rhymes: Elope, Envelope, Grope, Antelope
+Seed Word: “Harm”
+
+Basic Rhymes: Arm, Charm, Farm, Alarm
+Advanced Rhymes: Disarm, Reform, Embalm, Calm
+I
+Seed Word: “Ice”
+
+Basic Rhymes: Dice, Mice, Nice, Price
+Advanced Rhymes: Entice, Precise, Splice, Slice
+Seed Word: “Inch”
+
+Basic Rhymes: Pinch, Cinch, Flinch, Finch
+Advanced Rhymes: Unclinch, Reflinch, Lynch, Crinch
+Seed Word: “Idea”
+
+Basic Rhymes: Fear, Near, Cheer, Clear
+Advanced Rhymes: Appear, Revere, Engineer, Steer
+Seed Word: “Idle”
+
+Basic Rhymes: Bridle, Riddle, Tidal, Vital
+Advanced Rhymes: Entitle, Recital, Unbridle, Subtle
+J
+Seed Word: “Joy”
+
+Basic Rhymes: Boy, Coy, Toy, Employ
+Advanced Rhymes: Alloy, Annoy, Decoy, Destroy
+Seed Word: “Jump”
+
+Basic Rhymes: Bump, Hump, Lump, Stump
+Advanced Rhymes: Thump, Clump, Trump, Slump
+Seed Word: “Joke”
+
+Basic Rhymes: Poke, Smoke, Broke, Cloak
+Advanced Rhymes: Evoke, Provoke, Revoke, Awoke
+Seed Word: “Jolt”
+
+Basic Rhymes: Bolt, Colt, Revolt, Volt
+Advanced Rhymes: Default, Consult, Catapult, Occult
+K
+Seed Word: “King”
+
+Basic Rhymes: Bring, Sing, Wing, String
+Advanced Rhymes: Upswing, Fling, Swing, Bling
+Seed Word: “Knee”
+
+Basic Rhymes: Bee, Fee, See, Tree
+Advanced Rhymes: Agree, Degree, Flee, Spree
+Seed Word: “Kind”
+
+Basic Rhymes: Find, Mind, Blind, Wind
+Advanced Rhymes: Unwind, Remind, Refined, Aligned
+Seed Word: “Keep”
+
+Basic Rhymes: Deep, Leap, Peep, Sleep
+Advanced Rhymes: Steep, Sweep, Heap, Reap
+L
+Seed Word: “Light”
+
+Basic Rhymes: Bright, Fight, Night, Sight
+Advanced Rhymes: Delight, Contrite, Insight, Flight
+Seed Word: “Long”
+
+Basic Rhymes: Song, Strong, Wrong, Along
+Advanced Rhymes: Prolong, Belong, Lifelong, Throng
+Seed Word: “Love”
+
+Basic Rhymes: Above, Dove, Glove, Shove
+Advanced Rhymes: Unlove, Beloved, Disapprove, Reprove
+Seed Word: “Luck”
+
+Basic Rhymes: Buck, Duck, Truck, Stuck
+Advanced Rhymes: Pluck, Unstuck, Muck, Struck
+M
+Seed Word: “Might”
+
+Basic Rhymes: Bright, Light, Night, Fight
+Advanced Rhymes: Incite, Excite, Ignite, Polite
+Seed Word: “Mind”
+
+Basic Rhymes: Find, Kind, Blind, Wind
+Advanced Rhymes: Remind, Unwind, Aligned, Refined
+Seed Word: “Moon”
+
+Basic Rhymes: Soon, Noon, Tune, Spoon
+Advanced Rhymes: Balloon, Cocoon, Maroon, Lagoon
+Seed Word: “Move”
+
+Basic Rhymes: Groove, Prove, Improve, Remove
+Advanced Rhymes: Disapprove, Reprove, Smooth, Behoove
+N
+Seed Word: “Name”
+
+Basic Rhymes: Same, Fame, Tame, Game
+Advanced Rhymes: Proclaim, Exclaim, Reclaim, Blame
+Seed Word: “Near”
+
+Basic Rhymes: Clear, Dear, Fear, Year
+Advanced Rhymes: Appear, Revere, Frontier, Engineer
+Seed Word: “New”
+
+Basic Rhymes: Blue, Clue, True, Few
+Advanced Rhymes: Renew, Pursue, Preview, Imbue
+Seed Word: “Night”
+
+Basic Rhymes: Light, Bright, Fight, Sight
+Advanced Rhymes: Delight, Insight, Flight, Contrite
+O
+Seed Word: “Old”
+
+Basic Rhymes: Bold, Cold, Hold, Gold
+Advanced Rhymes: Enfold, Behold, Untold, Controlled
+Seed Word: “Open”
+
+Basic Rhymes: Token, Broken, Spoken, Woken
+Advanced Rhymes: Awoken, Unbroken, Outspoken, Oaken
+Seed Word: “Out”
+
+Basic Rhymes: Bout, Clout, Shout, Scout
+Advanced Rhymes: Devout, Throughout, About, Stout
+Seed Word: “Over”
+
+Basic Rhymes: Clover, Rover, Hover, Cover
+Advanced Rhymes: Discover, Recover, Lover, Moreover
+P
+Seed Word: “Play”
+
+Basic Rhymes: Bay, Day, Say, Stay
+Advanced Rhymes: Array, Display, Convey, Decay
+Seed Word: “Part”
+
+Basic Rhymes: Cart, Start, Heart, Smart
+Advanced Rhymes: Depart, Impart, Chart, Apart
+Seed Word: “Peace”
+
+Basic Rhymes: Cease, Lease, Release, Decrease
+Advanced Rhymes: Increase, Appease, Police, Grease
+Seed Word: “Pure”
+
+Basic Rhymes: Cure, Lure, Sure, Mature
+Advanced Rhymes: Endure, Secure, Obscure, Allure
+Q
+Seed Word: “Quick”
+
+Basic Rhymes: Stick, Pick, Brick, Slick
+Advanced Rhymes: Relic, Specific, Magic, Civic
+Seed Word: “Queen”
+
+Basic Rhymes: Green, Seen, Mean, Lean
+Advanced Rhymes: Unseen, Serene, Marine, Routine
+Seed Word: “Quest”
+
+Basic Rhymes: Best, Chest, Rest, Test
+Advanced Rhymes: Invest, Request, Digest, Protest
+Seed Word: “Quiet”
+
+Basic Rhymes: Diet, Riot, Pilot, Violet
+Advanced Rhymes: Compliant, Defiant, Giant, Reliant
+R
+Seed Word: “Rain”
+
+Basic Rhymes: Gain, Pain, Train, Main
+Advanced Rhymes: Sustain, Refrain, Obtain, Domain
+Seed Word: “Right”
+
+Basic Rhymes: Bright, Light, Night, Sight
+Advanced Rhymes: Contrite, Insight, Delight, Plight
+Seed Word: “Road”
+
+Basic Rhymes: Code, Load, Mode, Toad
+Advanced Rhymes: Abode, Encode, Episode, Reload
+Seed Word: “Rock”
+
+Basic Rhymes: Block, Clock, Dock, Shock
+Advanced Rhymes: Unlock, Restock, Gridlock, Adhoc
+S
+Seed Word: “Sky”
+
+Basic Rhymes: Fly, High, Tie, Why
+Advanced Rhymes: Comply, Butterfly, Sly, Multiply
+Seed Word: “Star”
+
+Basic Rhymes: Car, Far, Jar, Bar
+Advanced Rhymes: Bazaar, Guitar, Avatar, Radar
+Seed Word: “Stone”
+
+Basic Rhymes: Bone, Cone, Loan, Phone
+Advanced Rhymes: Overthrown, Alone, Groan, Drone
+Seed Word: “Sweet”
+
+Basic Rhymes: Beat, Feet, Heat, Meet
+Advanced Rhymes: Compete, Complete, Discreet, Elite
+T
+Seed Word: “Tall”
+
+Basic Rhymes: All, Ball, Call, Fall
+Advanced Rhymes: Install, Overall, Recall, Small
+Seed Word: “Tide”
+
+Basic Rhymes: Hide, Ride, Side, Wide
+Advanced Rhymes: Divide, Provide, Decide, Glide
+Seed Word: “Time”
+
+Basic Rhymes: Climb, Lime, Rhyme, Chime
+Advanced Rhymes: Sublime, Prime, Reprime, Crime
+Seed Word: “Tone”
+
+Basic Rhymes: Bone, Loan, Phone, Zone
+Advanced Rhymes: Overthrown, Alone, Drone, Groan
+U
+Seed Word: “Use”
+
+Basic Rhymes: Fuse, Muse, Choose, Lose
+Advanced Rhymes: Excuse, Abuse, Diffuse, Refuse
+Seed Word: “Up”
+
+Basic Rhymes: Cup, Pup, Sup, Yup
+Advanced Rhymes: Setup, Startup, Gallop, Develop
+Seed Word: “Urge”
+
+Basic Rhymes: Merge, Surge, Purge, Verge
+Advanced Rhymes: Resurge, Converge, Diverge, Submerge
+Seed Word: “Under”
+
+Basic Rhymes: Thunder, Plunder, Wonder, Sunder
+Advanced Rhymes: Asunder, Blunder, Surrender, Render
+V
+Seed Word: “View”
+
+Basic Rhymes: Blue, Clue, New, Few
+Advanced Rhymes: Review, Preview, Renew, Imbue
+Seed Word: “Vast”
+
+Basic Rhymes: Cast, Fast, Last, Past
+Advanced Rhymes: Contrast, Outcast, Forecast, Broadcast
+Seed Word: “Voice”
+
+Basic Rhymes: Choice, Rejoice, Noise, Poise
+Advanced Rhymes: Invoice, Annoyance, Deploy, Disappoint
+Seed Word: “Vine”
+
+Basic Rhymes: Line, Mine, Shine, Dine
+Advanced Rhymes: Refine, Define, Recline, Combine
+W
+Seed Word: “Walk”
+
+Basic Rhymes: Talk, Chalk, Stalk, Balk
+Advanced Rhymes: Sleepwalk, Boardwalk, Moonwalk, Overtalk
+Seed Word: “Wild”
+
+Basic Rhymes: Child, Mild, Styled, Piled
+Advanced Rhymes: Beguiled, Compiled, Reviled, Reconciled
+Seed Word: “Wish”
+
+Basic Rhymes: Dish, Fish, Swish, Finish
+Advanced Rhymes: Relish, Selfish, Lavish, Outlandish
+Seed Word: “Wind”
+
+Basic Rhymes: Bind, Find, Kind, Mind
+Advanced Rhymes: Unwind, Refined, Aligned, Designed
+X
+Seed Word: “Box”
+
+Basic Rhymes: Fox, Locks, Rocks, Socks
+Advanced Rhymes: Paradox, Orthodox, Equinox, Unbox
+Seed Word: “Flex”
+
+Basic Rhymes: Hex, Next, Text, Vex
+Advanced Rhymes: Complex, Reflex, Annex, Convex
+Seed Word: “Fix”
+
+Basic Rhymes: Mix, Six, Tricks, Sticks
+Advanced Rhymes: Transfix, Affix, Prefix, Betwixt
+Seed Word: “Wax”
+
+Basic Rhymes: Axe, Max, Tracks, Packs
+Advanced Rhymes: Relax, Parallax, Syntax, Climax
+Y
+Seed Word: “Year”
+
+Basic Rhymes: Cheer, Dear, Fear, Near
+Advanced Rhymes: Revere, Engineer, Sincere, Premier
+Seed Word: “Yell”
+
+Basic Rhymes: Bell, Fell, Sell, Tell
+Advanced Rhymes: Compel, Dispel, Foretell, Repel
+Seed Word: “Young”
+
+Basic Rhymes: Sung, Flung, Hung, Lung
+Advanced Rhymes: Among, Outrung, Overhung, Unsung
+Seed Word: “Yield”
+
+Basic Rhymes: Field, Shield, Sealed, Wheeled
+Advanced Rhymes: Concealed, Revealed, Unsealed, Healed
+Z
+Seed Word: “Zone”
+
+Basic Rhymes: Bone, Cone, Loan, Phone
+Advanced Rhymes: Overthrown, Alone, Drone, Groan
+Seed Word: “Zoom”
+
+Basic Rhymes: Bloom, Boom, Room, Groom
+Advanced Rhymes: Mushroom, Costume, Ballroom, Perfume
+Seed Word: “Zest”
+
+Basic Rhymes: Best, Chest, Rest, Test
+Advanced Rhymes: Invest, Digest, Arrest, Manifest
+Seed Word: “Zero”
+
+Basic Rhymes: Hero, Nero, Subzero, Mero
+Advanced Rhymes: Nonzero, Groundzero, Sombrero, Bolero
+Genre-Based Rhyming Word Categories
+If you’re looking for specific rhyming words for songwriting, poetry, or children, this section is for you.
+
+Songwriting Rhymes
+Rhymes with a musical flow that fit well into lyrics:
+
+Seed Word: “Love”
+Rhymes: Above, Shove, Dove, Glove
+Seed Word: “Dream”
+Rhymes: Beam, Scream, Seam, Redeem
+Seed Word: “Fight”
+Rhymes: Light, Night, Bite, Excite
+Poetry Rhymes
+Rhymes chosen for their poetic cadence and emotional resonance:
+
+Seed Word: “Heart”
+Rhymes: Start, Apart, Chart, Smart, Dart, Depart, Restart, Heartfelt
+Example: “My heart was torn apart, / As you left, we had to depart.”
+Seed Word: “Whisper”
+Rhymes: Sister, Twister, Mister, Resister, Blister, Lister, Transistor
+Example: “A whisper soft as a breeze, / Between the trees, it brings me ease.”
+Seed Word: “Soul”
+Rhymes: Goal, Whole, Patrol, Control, Console, Stole, Dole, Enroll
+Example: “She touched my soul, made me whole, / Her love became my lifelong goal.”
+Seed Word: “Dream”
+Rhymes: Beam, Scream, Team, Gleam, Stream, Supreme, Esteem, Scheme
+Example: “I chased a dream that made me gleam, / Together we formed an endless team.”
+Seed Word: “Fire”
+Rhymes: Desire, Entire, Inspire, Higher, Choir, Retire, Dire, Acquire
+Example: “A fire burns with pure desire, / To reach the stars, to climb higher.”
+Seed Word: “Light”
+Rhymes: Bright, Night, Sight, Flight, Delight, Invite, Insight, Ignite
+Example: “The light that shone throughout the night, / Gave hope to those who took their flight.”
+Seed Word: “Grace”
+Rhymes: Embrace, Replace, Face, Base, Lace, Space, Disgrace, Trace
+Example: “She moved with grace, without a trace, / Her smile lit up the darkest place.”
+Seed Word: “Peace”
+Rhymes: Cease, Release, Increase, Decrease, Fleece, Grease, Police, Piece
+Example: “Let peace be found when troubles cease, / A gentle calm, a sweet release.”
+Seed Word: “Rain”
+Rhymes: Gain, Pain, Train, Main, Sustain, Refrain, Obtain, Domain
+Example: “The rain that falls, it soothes my pain, / Washing away what I can’t sustain.”
+Children’s Rhymes
+Playful, simple rhymes perfect for children’s stories or songs:
+
+Seed Word: “Cat”
+Rhymes: Hat, Bat, Rat, Mat
+Seed Word: “Tree”
+Rhymes: Bee, Free, Sea, Glee
+Seed Word: “Ball”
+Rhymes: Fall, Call, Tall, Small
+Humorous Rhymes
+Rhymes that add a light-hearted or playful tone to the writing:
+
+Seed Word: “Moose”
+Rhymes: Loose, Goose, Spruce, Caboose
+Seed Word: “Belly”
+Rhymes: Jelly, Smelly, Telly, Shelly
+Seed Word: “Funky”
+Rhymes: Chunky, Monkey, Spunky, Junky
+How to Choose the Perfect Rhyme
+Choosing the perfect rhyme involves more than just finding words that sound similar.

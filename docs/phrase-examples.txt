@@ -1,0 +1,59 @@
+1. PREPPH 
+Prepositional phrase = [PREPOSITION]+[r(ANY)]
+A phrase that begins with a preposition
+example "in the morning"
+
+2. ADVPH 
+Adverbial phrase = [r(VERB,ADJECTIVE,ADVERB)]+[r(ANY)] 
+A phrase that modifies a verb, adjective or other adverb.
+example "happily ever after"
+
+3. ABSPH 
+Absolute phrase: [PREPOSITION]+[r(ANY)]+[r(n) of r(ANY)] 
+A group of words that modifies the whole sentence but is not essential.
+example "the sun rising in the east"
+NOTE useful as a first line starter of a poem
+
+4. INFPH 
+Infinitive phrase = ["TO"]+[r(VERB)]+[r(NOUN,NPH,PRONOUN)] 
+A phrase beginning with "to" and followed by an infinitive form of a verb.
+example "to run a marathon"
+
+5. NCL 
+Noun clause = [r(n) of r(NOUN)]
+A group of words that acts as a noun. 
+example "what she said"
+
+6. ADJCL 
+Adjective clause = [r(NOUN,PRONOUN)]+[r(ADJECTIVE)] 
+A clause that modifies a noun or pronoun.
+example "who was running late"
+
+7. ADVCL 
+Adverb clause = [r(VERB,ADJECTIVE,ADVERB)]+[r(ANY)]
+A clause that modifies a verb, adjective or other adverb.
+example "because I overslept"
+
+8. VPH 
+Verb phrase  = [r(VERB)]+[r(n) of r(VERB)]
+A group of words with a main verb and auxiliary verbs.
+example "was running"
+
+9. PRTPH 
+Participial phrase = [r(ADVERB)]+[r(NOUN)] 
+A phrase formed with a participle and other words.
+example "smiling happily"
+
+10. GERPH 
+Gerund phrase = [r(ADVERB)]+[r(NOUN)] 
+A phrase with a noun formed from a verb with -ing.
+example "cooking dinner"
+
+NOTE:
+Present participles and gerunds look identical, but they have different 
+grammatical functions: Present participles are used in various verb tenses 
+(e.g., “I have been eating”) and as adjectives 
+(e.g., “a laughing child”). 
+Whereas Gerunds function as nouns (e.g., “I enjoy jogging”).
+
+
