@@ -37,3 +37,17 @@ pub struct Mpgwords{
 pub mut:
 	mpgwordarr []Mpgline
 }
+
+//holds the counts of all word type lists
+pub struct Mpgcounts{
+pub mut:
+    mpgcount int
+    nouncnt int
+    verbcnt int
+    adjcnt int
+    proncnt int
+    detcnt int
+    intcnt int
+    conjcnt	int
+}
+
