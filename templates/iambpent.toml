@@ -1,3 +1,9 @@
-poem = [
-{nop = 1, bpl = 5,tmpl = "mud", meter = "iambpent",lpp = 15, stnz = 3, "rhyme" = "4"}
-]
+[Poem] 
+   poemtype = 'iambpent'
+   nop = 3
+   bpl = 5
+   tmpl = "mud"
+   meter = "iambpent"
+   lpp = 20
+   stnz = 8
+   rhyme = 4

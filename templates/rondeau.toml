@@ -4,6 +4,6 @@
    bpl = 5
    tmpl = "mud"
    meter = "iambpent"
-   lpp = 15
-   stnz = 3
+   lpp = 18
+   stnz = 4
    rhyme = 4

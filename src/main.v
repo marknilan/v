@@ -12,4 +12,5 @@ fn main() {
 	println('MPG is running on ${vlibrary.find_os()} \n')
 	mpgsrc.runmpg()
     println('MPG finished  at ${time.now()} \n')
+    exit(0)
 }

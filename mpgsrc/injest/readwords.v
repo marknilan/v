@@ -7,7 +7,6 @@ import os
 import encoding.csv
 
 // gets the mpgwords loaded into memory
-
 pub fn get_words(mpgwordspath string) structs.Mpgwords {
 	mut mpgline := structs.Mpgline{}	
 	mut mpgwords := structs.Mpgwords{}
@@ -34,3 +33,22 @@ pub fn get_words(mpgwordspath string) structs.Mpgwords {
 	return mpgwords
 
 }
+
+// gets meter (sentence) templates
+
+pub fn get_meter_templates(mtrtmplpath string) [][]string {
+
+    mut meter_templates := [][]string{}
+    content := os.read_file(mtrtmplpath) or { exit(8) } // guard fname exists but no read access
+	mut reader := csv.new_reader(content)
+	reader.read() or { exit(8) } // skips first line assumes column headings
+	// rejects any invalid column counts - must be seven cols
+	// csv fields must be exact same order as below
+	for {
+		line_data := reader.read() or { break }
+		meter_templates << line_data
+	}
+
+	return meter_templates
+}
+
