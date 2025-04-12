@@ -35,9 +35,7 @@ pub fn get_words(mpgwordspath string) structs.Mpgwords {
 }
 
 // gets meter (sentence) templates
-
 pub fn get_meter_templates(mtrtmplpath string) [][]string {
-
     mut meter_templates := [][]string{}
     content := os.read_file(mtrtmplpath) or { exit(8) } // guard fname exists but no read access
 	mut reader := csv.new_reader(content)
@@ -46,6 +44,7 @@ pub fn get_meter_templates(mtrtmplpath string) [][]string {
 	// csv fields must be exact same order as below
 	for {
 		line_data := reader.read() or { break }
+		println(line_data)
 		meter_templates << line_data
 	}
 
