@@ -12,7 +12,7 @@ pub fn runmpg() bool {
 	cfgfile, runmode := startup.read_parms()
 	// type of poems to be modelled or generated
 	poem := startup.config(cfgfile,runmode)    
-    mut meter_templates := [][]string{}       
+    mut meter_templates := []string{}       
     if runmode.to_lower() in['-g', 'g'] {
         // word data injested into memory
        mpgwords := injest.get_words('/home/mark/projects/v/mpg/words/mpgwords.csv')

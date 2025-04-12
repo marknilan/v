@@ -16,16 +16,23 @@ import structs
 // code for rondeau
 pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string) bool {
   if runmode.to_lower() in['m','-m'] {
-     showmodel(poem)
+     mut templates := []string{}
+     for template in meter_templates {
+        if template[0] =='"rondeau"' {
+           templates << template
+        }
+     }   
+     showmodel(poem,templates)
   } else {
-     
+     println('generate here')
   }  
    
   return true  
 }  
 
 // displays the model for this poem
-fn showmodel(poem structs.Poem) bool {
+fn showmodel(poem structs.Poem, templates []string) bool {
+
     mut lps :=  poem.lpp / poem.stnz
     mut lprinted := 1   
     for i := 0; i < poem.nop; i++ {      
@@ -39,6 +46,7 @@ fn showmodel(poem structs.Poem) bool {
       }
       
    }
+   println(templates)
 
    return true
 }
