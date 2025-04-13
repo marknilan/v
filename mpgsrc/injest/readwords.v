@@ -13,6 +13,7 @@ pub fn get_words(mpgwordspath string) structs.Mpgwords {
 	content := os.read_file(mpgwordspath) or { exit(8) } // guard fname exists but no read access
 	mut reader := csv.new_reader(content)
 	reader.read() or { exit(8) } // skips first line assumes column headings
+	println('mud')
 	// rejects any invalid column counts - must be seven cols
 	// csv fields must be exact same order as below
 	for {
@@ -35,19 +36,22 @@ pub fn get_words(mpgwordspath string) structs.Mpgwords {
 }
 
 // gets meter (sentence) templates
-pub fn get_meter_templates(mtrtmplpath string) [][]string {
-    mut meter_templates := [][]string{}
+pub fn getmtrtempl(mtrtmplpath string) bool {
+    //mut meter_templates := [][]string{}
+    println('inside fn')
+    println(mtrtmplpath)
     content := os.read_file(mtrtmplpath) or { exit(8) } // guard fname exists but no read access
 	mut reader := csv.new_reader(content)
 	reader.read() or { exit(8) } // skips first line assumes column headings
 	// rejects any invalid column counts - must be seven cols
 	// csv fields must be exact same order as below
 	for {
-		line_data := reader.read() or { break }
-		println(line_data)
-		meter_templates << line_data
+		line_data := reader.read() or { break }		
+		println(line_data[0])
+		//println(line_data)
+		//meter_templates << line_data
 	}
 
-	return meter_templates
+	return true
 }
 

@@ -4,7 +4,7 @@ module mpgsrc
 
 import startup
 import injest
-import poemcode
+//import poemcode
 
 //runs the mpg program
 pub fn runmpg() bool {
@@ -12,12 +12,14 @@ pub fn runmpg() bool {
 	cfgfile, runmode := startup.read_parms()
 	// type of poems to be modelled or generated
 	poem := startup.config(cfgfile,runmode)    
-    mut meter_templates := []string{}       
+    println(poem)
+    //mut meter_templates := []string{}       
     if runmode.to_lower() in['-g', 'g'] {
         // word data injested into memory
        mpgwords := injest.get_words('/home/mark/projects/v/mpg/words/mpgwords.csv')
-
-       meter_templates = injest.get_meter_templates('/home/mark/projects/v/mpg/words/meter_templates.csv')
+       p := '/home/mark/projects/v/mpg/words/meter_templates.csv'
+       meter_templates := injest.getmtrtempl(p)
+       println(meter_templates)
        // splitting word data by type
        nouns := injest.make_wrd_list(mpgwords,'NOUN')
        verbs := injest.make_wrd_list(mpgwords,'VERB')
@@ -31,7 +33,7 @@ pub fn runmpg() bool {
                     adjectives, pronouns, determiners, interjections, conjunctions)
        println(mpgcounts) 
     } 
-    poemcode.run_model(poem,runmode,meter_templates)      
-    
+    //poemcode.run_model(poem,runmode,meter_templates)      
+
     return true
 }
