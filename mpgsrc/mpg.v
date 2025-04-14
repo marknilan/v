@@ -18,14 +18,7 @@ pub fn runmpg() bool {
 	meter_templates := injest.getmtrtempl('/home/mark/projects/v/mpg/words/meter_templates.csv')
 	println(meter_templates)
 	// splitting word data by type
-	nouns := injest.make_wrd_list(mpgwords, 'NOUN')
-	verbs := injest.make_wrd_list(mpgwords, 'VERB')
-	adjectives := injest.make_wrd_list(mpgwords, 'ADJECTIVE')
-	pronouns := injest.make_wrd_list(mpgwords, 'PRONOUN')
-	determiners := injest.make_wrd_list(mpgwords, 'DETERMINER')
-	interjections := injest.make_wrd_list(mpgwords, 'INTERJECTION')
-	conjunctions := injest.make_wrd_list(mpgwords, 'CONJUNCTION')
-	// preserving word type counts for later
+	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions := injest.makelists(mpgwords)
 	mpgcounts := injest.make_list_counts(mpgwords, nouns, verbs, adjectives, pronouns,
 		determiners, interjections, conjunctions)
 	println(mpgcounts)

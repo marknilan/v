@@ -51,3 +51,17 @@ pub mut:
     conjcnt	int
 }
 
+//holds all lists as a single passable parameter
+// almost like a DB schema
+
+pub struct MpgListstore{
+pub mut:
+    mpgwords [][]string
+    nouns [][]string
+    verbs [][]string
+    adjectives [][]string
+    pronouns [][]string
+    determiners [][]string
+    interjections [][]string
+    conjunctions [][]string
+}
