@@ -32,7 +32,6 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string) bo
 
 // displays the model for this poem
 fn showmodel(poem structs.Poem, templates []string) bool {
-
     mut lps :=  poem.lpp / poem.stnz
     mut lprinted := 1   
     for i := 0; i < poem.nop; i++ {      
