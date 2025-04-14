@@ -1,6 +1,7 @@
 module mpgsrc
 
-// mpgsrc mpg.v
+// mpg mpgsrc mpg.v
+
 import startup
 import injest
 // import poemcode
@@ -19,6 +20,7 @@ pub fn runmpg() bool {
 	println(meter_templates)
 	// splitting word data by type
 	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions := injest.makelists(mpgwords)
+	// virtual DB (lists) metadata
 	mpgcounts := injest.make_list_counts(mpgwords, nouns, verbs, adjectives, pronouns,
 		determiners, interjections, conjunctions)
 	println(mpgcounts)

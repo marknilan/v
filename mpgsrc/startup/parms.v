@@ -1,5 +1,7 @@
 module startup
 
+// mpg mpgsrc startup parms.v
+
 import os
 
 // import ../../vlibrary

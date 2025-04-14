@@ -1,6 +1,6 @@
 module startup
 
-// mpgsrc startup config.v
+// mpg mpgsrc startup config.v
 
 import toml
 import structs

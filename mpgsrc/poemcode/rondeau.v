@@ -1,6 +1,6 @@
 module poemcode
 
-// mpgsrc poems rondeau.v
+// mpg mpgsrc poemcode rondeau.v
 
 //  poemtype string 
 //  nop int 

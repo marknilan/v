@@ -4,6 +4,7 @@ module injest
 // creates struct of the word lists of MPG
 import structs
 
+//splits the source data of words into word types
 pub fn makelists(mpgwords structs.Mpgwords) 
     ([]structs.Mpgline, []structs.Mpgline, []structs.Mpgline,
 	[]structs.Mpgline, []structs.Mpgline, []structs.Mpgline,
@@ -20,9 +21,11 @@ pub fn makelists(mpgwords structs.Mpgwords)
     return nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions
 }
 
-pub fn listdbs(mpgwords [][]string, nouns [][]string, verbs [][]string, adjectives [][]string,
-	pronouns [][]string, determiners [][]string, interjections [][]string,
-	conjunctions [][]string) structs.MpgListstore {
+// stores all the word lists in one DB schema (vitual DB schema is lists in memory)
+pub fn listdbs(mpgwords [][]string, nouns structs.Mpgwords, verbs structs.Mpgwords, adjectives structs.Mpgwords,
+	pronouns structs.Mpgwords, determiners structs.Mpgwords, interjections structs.Mpgwords,
+	conjunctions structs.Mpgwords) structs.MpgListstore {
+	// this is the virtual DB schema
 	mpgliststore := structs.MpgListstore{
 		mpgwords:      mpgwords
 		nouns:         nouns

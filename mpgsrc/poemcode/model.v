@@ -1,6 +1,6 @@
 module poemcode
 
-// mpgsrc poemcode model.v
+// mpg mpgsrc poemcode model.v
 
 //	poemtype string 
 //	nop int 

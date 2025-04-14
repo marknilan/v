@@ -1,6 +1,6 @@
 module injest
 
-// mpgsrc injest readwords.v
+// mpg mpgsrc injest readwords.v
 import structs
 import os
 import encoding.csv

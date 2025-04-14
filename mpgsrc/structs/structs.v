@@ -1,6 +1,6 @@
 module structs
 
-// mpgsrc structs structs.v
+// mpg mpgsrc structs structs.v
 
 // expected TOML form is example below
 // rondeau = [{nop = 3, bpl = 5, tmpl = "mud", meter = "iambpent", lpp = 15, stnz = 3, rhyme = 4}]
@@ -57,11 +57,12 @@ pub mut:
 pub struct MpgListstore{
 pub mut:
     mpgwords [][]string
-    nouns [][]string
-    verbs [][]string
-    adjectives [][]string
-    pronouns [][]string
-    determiners [][]string
-    interjections [][]string
-    conjunctions [][]string
+    //nouns [][]string
+    nouns Mpgwords
+    verbs Mpgwords
+    adjectives Mpgwords
+    pronouns Mpgwords
+    determiners Mpgwords
+    interjections Mpgwords
+    conjunctions Mpgwords
 }

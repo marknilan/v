@@ -1,6 +1,6 @@
 module injest
 
-// mpgsrc injest splitwords.v
+// mpg mpgsrc injest splitwords.v
 import structs
 
 // splits mpgwords into word types
