@@ -6,9 +6,9 @@ import structs
 
 //splits the source data of words into word types
 pub fn makelists(mpgwords structs.Mpgwords) 
-    ([]structs.Mpgline, []structs.Mpgline, []structs.Mpgline,
-	[]structs.Mpgline, []structs.Mpgline, []structs.Mpgline,
-	[]structs.Mpgline)
+    (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords,
+	structs.Mpgwords, structs.Mpgwords, structs.Mpgwords,
+	structs.Mpgwords)
 {
     // splitting word data by type
 	nouns := injest.make_wrd_list(mpgwords, 'NOUN')
@@ -22,7 +22,7 @@ pub fn makelists(mpgwords structs.Mpgwords)
 }
 
 // stores all the word lists in one DB schema (vitual DB schema is lists in memory)
-pub fn listdbs(mpgwords [][]string, nouns structs.Mpgwords, verbs structs.Mpgwords, adjectives structs.Mpgwords,
+pub fn listdbs(mpgwords structs.Mpgwords, nouns structs.Mpgwords, verbs structs.Mpgwords, adjectives structs.Mpgwords,
 	pronouns structs.Mpgwords, determiners structs.Mpgwords, interjections structs.Mpgwords,
 	conjunctions structs.Mpgwords) structs.MpgListstore {
 	// this is the virtual DB schema

@@ -21,9 +21,11 @@ pub fn runmpg() bool {
 	// splitting word data by type
 	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions := injest.makelists(mpgwords)
 	// virtual DB (lists) metadata
-	mpgcounts := injest.make_list_counts(mpgwords, nouns, verbs, adjectives, pronouns,
-		determiners, interjections, conjunctions)
-	println(mpgcounts)
+	listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners, interjections, 
+		conjunctions)
+	// virtual Db schema metadata
+    mpgcounts := injest.make_list_counts(listdbs)		
+	println('\n MPG word metadata is as follows \n: ${mpgcounts}')
 
 	if runmode.to_lower() in ['-g', 'g'] {
 		println('generate here')
