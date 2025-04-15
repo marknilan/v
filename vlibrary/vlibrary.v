@@ -111,7 +111,6 @@ pub fn mkrndint(ceilnum u32) !int {
     // Seed the generator
     rng.seed(seed.time_seed_array(pcg32.seed_len))
     n := rng.u32n(ceilnum)!
-    println('hello')
     return int(n)
 }
 
