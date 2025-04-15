@@ -4,7 +4,7 @@ module mpgsrc
 
 import startup
 import injest
-//import poemcode
+import poemcode
 
 // runs the mpg program
 pub fn runmpg() bool {
@@ -17,19 +17,17 @@ pub fn runmpg() bool {
 	mpgwords := injest.get_words('/home/mark/projects/v/mpg/words/mpgwords.csv')
 	// poem form meter templates
 	meter_templates := injest.getmtrtempl('/home/mark/projects/v/mpg/words/meter_templates.csv')
-	println(meter_templates)
 	// splitting word data by type
 	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions := injest.makelists(mpgwords)
 	// create virtual DB (lists) schema
 	mut listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners, interjections, 
 		conjunctions)
 	// virtual Db schema metadata
-    mpgcounts := injest.make_list_counts(listdbs)		    
-    listdbs.mpgcounts = mpgcounts
+    listdbs.mpgcounts = injest.make_list_counts(listdbs)		    
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')
-
-    //poemcode.run_model(poem, runmode, meter_templates) 
-
+    
+    poemcode.run_model(poem, runmode, meter_templates)
+    
 	if runmode.to_lower() in ['-g', 'g'] {
 		println('generate here')
 	}

@@ -4,21 +4,17 @@ module injest
 // creates struct of the word lists of MPG
 import structs
 
-//splits the source data of words into word types
-pub fn makelists(mpgwords structs.Mpgwords) 
-    (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords,
-	structs.Mpgwords, structs.Mpgwords, structs.Mpgwords,
-	structs.Mpgwords)
-{
-    // splitting word data by type
-	nouns := injest.make_wrd_list(mpgwords, 'NOUN')
-	verbs := injest.make_wrd_list(mpgwords, 'VERB')
-	adjectives := injest.make_wrd_list(mpgwords, 'ADJECTIVE')
-	pronouns := injest.make_wrd_list(mpgwords, 'PRONOUN')
-	determiners := injest.make_wrd_list(mpgwords, 'DETERMINER')
-	interjections := injest.make_wrd_list(mpgwords, 'INTERJECTION')
-	conjunctions := injest.make_wrd_list(mpgwords, 'CONJUNCTION')
-    return nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions
+// splits the source data of words into word types
+pub fn makelists(mpgwords structs.Mpgwords) (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords) {
+	// splitting word data by type
+	nouns := make_wrd_list(mpgwords, 'NOUN')
+	verbs := make_wrd_list(mpgwords, 'VERB')
+	adjectives := make_wrd_list(mpgwords, 'ADJECTIVE')
+	pronouns := make_wrd_list(mpgwords, 'PRONOUN')
+	determiners := make_wrd_list(mpgwords, 'DETERMINER')
+	interjections := make_wrd_list(mpgwords, 'INTERJECTION')
+	conjunctions := make_wrd_list(mpgwords, 'CONJUNCTION')
+	return nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions
 }
 
 // stores all the word lists in one DB schema (vitual DB schema is lists in memory)
@@ -35,9 +31,8 @@ pub fn listdbs(mpgwords structs.Mpgwords, nouns structs.Mpgwords, verbs structs.
 		determiners:   determiners
 		interjections: interjections
 		conjunctions:  conjunctions
-		mpgcounts: structs.Mpgcounts{}
+		mpgcounts:     structs.Mpgcounts{} // starts empty, updated later
 	}
 
 	return mpgliststore
 }
-

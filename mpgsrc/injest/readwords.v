@@ -38,7 +38,7 @@ pub fn getmtrtempl(mtrtmplpath string) [][]string {
 	mut meter_templates := [][]string{}
 	println(mtrtmplpath)
 	content := os.read_file(mtrtmplpath) or { exit(8) } // guard fname exists but no read access
-	mut reader := csv.new_reader(content)	
+	mut reader := csv.new_reader(content)
 	for {
 		line_data := reader.read() or { break }
 		meter_templates << line_data

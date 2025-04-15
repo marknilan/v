@@ -5,7 +5,6 @@ import structs
 
 // splits mpgwords into word types
 pub fn make_wrd_list(mpgwords structs.Mpgwords, wordtype string) structs.Mpgwords {
-	// mut newlist := []structs.Mpgwords{}
 	mut newlist := structs.Mpgwords{}
 	for mpgwordarr in mpgwords.mpgwordarr {
 		if mpgwordarr.wordtype == wordtype {
@@ -17,7 +16,6 @@ pub fn make_wrd_list(mpgwords structs.Mpgwords, wordtype string) structs.Mpgword
 
 // counts word lists creates maximum index sizes for later loops
 pub fn make_list_counts(listdbs structs.MpgListstore) structs.Mpgcounts {
-	// struct
 	mpgcounts := structs.Mpgcounts{
 		mpgcount: listdbs.mpgwords.mpgwordarr.len
 		nouncnt:  listdbs.nouns.mpgwordarr.len
