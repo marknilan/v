@@ -38,16 +38,10 @@ pub fn getmtrtempl(mtrtmplpath string) [][]string {
 	mut meter_templates := [][]string{}
 	println(mtrtmplpath)
 	content := os.read_file(mtrtmplpath) or { exit(8) } // guard fname exists but no read access
-	mut reader := csv.new_reader(content)
-	reader.read() or { exit(8) } // skips first line assumes column headings
-	// rejects any invalid column counts - must be seven cols
-	// csv fields must be exact same order as below
+	mut reader := csv.new_reader(content)	
 	for {
 		line_data := reader.read() or { break }
 		meter_templates << line_data
-		// println(line_data[0])
-		// println(line_data)
-		// meter_templates << line_data
 	}
 
 	return meter_templates

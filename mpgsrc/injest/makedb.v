@@ -35,6 +35,7 @@ pub fn listdbs(mpgwords structs.Mpgwords, nouns structs.Mpgwords, verbs structs.
 		determiners:   determiners
 		interjections: interjections
 		conjunctions:  conjunctions
+		mpgcounts: structs.Mpgcounts{}
 	}
 
 	return mpgliststore

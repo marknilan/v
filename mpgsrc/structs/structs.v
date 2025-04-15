@@ -56,8 +56,7 @@ pub mut:
 
 pub struct MpgListstore{
 pub mut:
-    mpgwords Mpgwords
-    //nouns [][]string
+    mpgwords Mpgwords    
     nouns Mpgwords
     verbs Mpgwords
     adjectives Mpgwords
@@ -65,4 +64,5 @@ pub mut:
     determiners Mpgwords
     interjections Mpgwords
     conjunctions Mpgwords
+    mpgcounts Mpgcounts
 }

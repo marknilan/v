@@ -38,3 +38,7 @@ fn improper_poem_msg(localmsg string) {
 	println(expected_call.replace('\n\t', '\n'))
 	exit(0)
 }
+
+// selects random rows from a [][] string data structure
+
+//fn select_random_rows(listdbs, meter_templates)
