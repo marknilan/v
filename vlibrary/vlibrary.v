@@ -6,6 +6,9 @@ import os
 import v.pref
 import io
 import time
+import rand
+import rand.seed
+import rand.pcg32
 
 // generic error handler
 // call like this //     vlibrary.app_error('Reason for the error', return code (int), 'what the program will now do')
@@ -99,6 +102,22 @@ pub fn chk_user_hometemp() bool {
    os.ensure_folder_is_writable(hd) or {return false}   
    return true
 }
+
+//generates a random integer number below a ceiling
+
+pub fn mkrndint(ceilnum u32) !int {
+    // Initialise the generator struct (note the `mut`)
+    mut rng := &rand.PRNG(pcg32.PCG32RNG{})
+    // Seed the generator
+    rng.seed(seed.time_seed_array(pcg32.seed_len))
+    n := rng.u32n(ceilnum)!
+    println('hello')
+    return int(n)
+}
+
+
+
+
 
 
 

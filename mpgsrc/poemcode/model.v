@@ -14,12 +14,12 @@ module poemcode
 import structs
 
 // calls model functions to display poem model to screen
-pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string) bool {
+pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
     println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
     //gotta have one of the programs in the poem module for each type
     match poem.poemtype {
 		'rondeau' {
-		rondeau(poem, runmode, meter_templates) 
+		rondeau(poem, runmode, meter_templates, listdbs) 		
 		}				
 		else {
 			improper_poem_msg(' No poem template')
@@ -40,5 +40,15 @@ fn improper_poem_msg(localmsg string) {
 }
 
 // selects random rows from a [][] string data structure
+fn select_random_rows(listname structs.Mpgwords) bool {
+	println('type of passed parameter is ${typeof(listname).name}')
+	println(listname)
+	return true
+}
 
-//fn select_random_rows(listdbs, meter_templates)
+// gets a random meter template line
+
+fn get_template_line(meter_templates [][]string) []string {
+   mut linemeta := []string{}
+   return linemeta
+}

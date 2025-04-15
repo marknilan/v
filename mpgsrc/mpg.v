@@ -26,8 +26,8 @@ pub fn runmpg() bool {
     listdbs.mpgcounts = injest.make_list_counts(listdbs)		    
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')
     
-    poemcode.run_model(poem, runmode, meter_templates)
-    
+    poemcode.run_model(poem, runmode, meter_templates, listdbs)
+
 	if runmode.to_lower() in ['-g', 'g'] {
 		println('generate here')
 	}
