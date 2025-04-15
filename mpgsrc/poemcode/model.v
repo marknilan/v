@@ -2,25 +2,24 @@ module poemcode
 
 // mpg mpgsrc poemcode model.v
 
-//	poemtype string 
-//	nop int 
-//	bpl int 
-//	tmpl string 
-//	meter string 
-//	lpp int 
-//	stnz int 
-//	rhyme int 
-
+//	poemtype string
+//	nop int
+//	bpl int
+//	tmpl string
+//	meter string
+//	lpp int
+//	stnz int
+//	rhyme int
 import structs
 
 // calls model functions to display poem model to screen
 pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
-    println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
-    //gotta have one of the programs in the poem module for each type
-    match poem.poemtype {
+	println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
+	// gotta have one of the programs in the poem module for each type
+	match poem.poemtype {
 		'rondeau' {
-		rondeau(poem, runmode, meter_templates, listdbs) 		
-		}				
+			rondeau(poem, runmode, meter_templates, listdbs)
+		}
 		else {
 			improper_poem_msg(' No poem template')
 		}
@@ -49,6 +48,6 @@ fn select_random_rows(listname structs.Mpgwords) bool {
 // gets a random meter template line
 
 fn get_template_line(meter_templates [][]string) []string {
-   mut linemeta := []string{}
-   return linemeta
+	mut linemeta := []string{}
+	return linemeta
 }
