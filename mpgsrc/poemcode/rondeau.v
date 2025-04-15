@@ -48,8 +48,8 @@ fn showmodel(poem structs.Poem, templates [][]string) !bool {
 				// chooses a random line index from templates array for this model
 				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!
 				if k == 0 && j == 0 {
-					// this is the refrain					
-					linerep = templates[ln][0..3]					
+					// this is the refrain						
+					linerep = templates[ln][0..math.max((templates[ln].len / 2),3)]					
 				}
 				if k == lps - 1 && !(j == 0) {
 					println(linerep)
