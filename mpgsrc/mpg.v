@@ -25,8 +25,14 @@ pub fn runmpg() bool {
 	// virtual Db schema metadata
     listdbs.mpgcounts = injest.make_list_counts(listdbs)		    
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')
-    
-    poemcode.run_model(poem, runmode, meter_templates, listdbs)
+    if runmode.to_lower() in ['-t', 't'] {
+    	templates := injest.readpoemlines('/home/mark/projects/v/mpg/words/notused/rondeautraining1.txt',mpgwords)
+    	println(templates)
+    }
+
+    if runmode.to_lower() in ['-m', 'm'] {
+       poemcode.run_model(poem, runmode, meter_templates, listdbs)
+    }
 
 	if runmode.to_lower() in ['-g', 'g'] {
 		println('generate here')
