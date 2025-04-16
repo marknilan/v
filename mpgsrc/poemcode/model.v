@@ -2,15 +2,9 @@ module poemcode
 
 // mpg mpgsrc poemcode model.v
 
-//	poemtype string
-//	nop int
-//	bpl int
-//	tmpl string
-//	meter string
-//	lpp int
-//	stnz int
-//	rhyme int
 import structs
+import vlibrary
+import math
 
 // calls model functions to display poem model to screen
 pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
@@ -20,6 +14,9 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 		'rondeau' {
 			rondeau(poem, runmode, meter_templates, listdbs)
 		}
+        'iambpent' {
+			iambpent(poem, runmode, meter_templates, listdbs)
+		} 
 		else {
 			improper_poem_msg(' No poem template')
 		}
@@ -38,16 +35,39 @@ fn improper_poem_msg(localmsg string) {
 	exit(0)
 }
 
-// selects random rows from a [][] string data structure
-fn select_random_rows(listname structs.Mpgwords) bool {
-	println('type of passed parameter is ${typeof(listname).name}')
-	println(listname)
+// displays the model metadata to the screen using the poem meter 
+// template selected for the poem type
+fn showmodel(poem structs.Poem, templates [][]string) !bool {
+	mut lps := poem.lpp / poem.stnz
+	mut lprinted := 1
+	// model for poems displayed
+	println('Model = "${poem.poemtype}" \n')
+	mut linerep := []string{}
+	for i := 0; i < poem.nop; i++ {
+		println('model for poem ${i + 1}')
+		// model for stanzas displayed
+		for j := 0; j < poem.stnz; j++ {
+			println(' ')
+			// model for lines per stanza displayed
+			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
+				// chooses a random line index from templates array for this model
+				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!				
+				if (k == 0 && j == 0) && poem.poemtype == 'rondeau' {
+					// this is the rondeau specific refrain						
+					linerep = templates[ln][0..math.max((templates[ln].len / 2),3)]					
+				}
+				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {
+					// on the last line of each stanza after the 1st, print the refrain
+					println('${vlibrary.clean_arr_line(linerep)}')
+				} else {
+					//on the first and every other line just print the normal line
+					println('${vlibrary.clean_arr_line(templates[ln][0..])}')
+				}
+				lprinted++
+			}
+		}
+		println('\n \n')
+	}
+
 	return true
-}
-
-// gets a random meter template line
-
-fn get_template_line(meter_templates [][]string) []string {
-	mut linemeta := []string{}
-	return linemeta
 }

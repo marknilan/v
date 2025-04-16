@@ -1,19 +1,11 @@
 module poemcode
 
-// mpg mpgsrc poemcode rondeau.v
+// mpg mpgsrc poemcode iambpent.v
 
-//  poemtype string
-//  nop int
-//  bpl int
-//  tmpl string
-//  meter string
-//  lpp int
-//  stnz int
-//  rhyme int
 import structs
 
 // code for rondeau
-pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
+pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
 	if runmode.to_lower() in ['m', '-m'] {
 		mut templates := [][]string{}
 		for template in meter_templates {
@@ -28,4 +20,3 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 
 	return true
 }
-
