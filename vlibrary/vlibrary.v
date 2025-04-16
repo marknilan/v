@@ -104,7 +104,6 @@ pub fn chk_user_hometemp() bool {
 }
 
 //generates a random integer number below a ceiling
-
 pub fn mkrndint(ceilnum u32) !int {
     // Initialise the generator struct (note the `mut`)
     mut rng := &rand.PRNG(pcg32.PCG32RNG{})
@@ -114,9 +113,8 @@ pub fn mkrndint(ceilnum u32) !int {
     return int(n)
 }
 
-
-
-
-
-
+//given an array of strings, returns string with [,] and "'" removed
+pub fn clean_arr_line(strarr []string) string {
+    return strarr.str().trim('[], ').replace("'",'')
+}
 

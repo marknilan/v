@@ -39,7 +39,7 @@ fn showmodel(poem structs.Poem, templates [][]string) !bool {
 	println('Model = "Rondeau" \n')
 	mut linerep := []string{}
 	for i := 0; i < poem.nop; i++ {
-		println('gen for poem ${i + 1}')
+		println('model for poem ${i + 1}')
 		// model for stanzas displayed
 		for j := 0; j < poem.stnz; j++ {
 			println(' ')
@@ -52,9 +52,11 @@ fn showmodel(poem structs.Poem, templates [][]string) !bool {
 					linerep = templates[ln][0..math.max((templates[ln].len / 2),3)]					
 				}
 				if k == lps - 1 && !(j == 0) {
-					println(linerep)
+					// on the last line of each stanza after the 1st, print the refrain
+					println('${vlibrary.clean_arr_line(linerep)}')
 				} else {
-					println('${templates[ln][0..]}')
+					//on the first and every other line just print the normal line
+					println('${vlibrary.clean_arr_line(templates[ln][0..])}')
 				}
 				lprinted++
 			}

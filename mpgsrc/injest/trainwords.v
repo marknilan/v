@@ -45,11 +45,12 @@ fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem struct
 fn writetemplates(templates []structs.MpgTraining, opath string) bool {
     mut file := os.create(opath) or {exit(8)}    
     for mpgtraining in templates {
-    	   mut ostr := '${mpgtraining.templatename}' + ',' + '${mpgtraining.beat.str()}' + ','
-        ostr = ostr + '${mpgtraining.templateline.str()}'   
-        ostr = ostr.replace('[','')     
-        ostr = ostr.replace(']','')
-        ostr = ostr.replace("'",'')
+    	mut ostr := '${mpgtraining.templatename}' + ',' + '${mpgtraining.beat.str()}' + ','
+        ostr = ostr.trim_space_left() + vlibrary.clean_arr_line(mpgtraining.templateline)
+        //ostr = ostr + '${mpgtraining.templateline.str()}'   
+        //ostr = ostr.replace('[','')     
+        //ostr = ostr.replace(']','')
+        //ostr = ostr.replace("'",'')
         file.write_string(' ${ostr} \n') or {exit(8)}
     }    
     defer { file.close() }
