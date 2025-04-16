@@ -23,11 +23,11 @@ pub fn runmpg() bool {
 	mut listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners, interjections, 
 		conjunctions)
 	// virtual Db schema metadata
-    listdbs.mpgcounts = injest.make_list_counts(listdbs)		    
+   listdbs.mpgcounts = injest.make_list_counts(listdbs)		    
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')
     if runmode.to_lower() in ['-t', 't'] {
-    	templates := injest.readpoemlines('/home/mark/projects/v/mpg/words/notused/rondeautraining1.txt',mpgwords)
-    	println(templates)
+    	injest.rwpoemtemplate('/home/mark/projects/v/mpg/words/notused/rondeautraining1.txt',mpgwords, poem)
+    	println('New templates written to tmp dir mpgtemplates.txt')
     }
 
     if runmode.to_lower() in ['-m', 'm'] {

@@ -53,7 +53,6 @@ pub mut:
 
 //holds all lists as a single passable parameter
 // almost like a DB schema
-
 pub struct MpgListstore{
 pub mut:
     mpgwords Mpgwords    
@@ -66,3 +65,12 @@ pub mut:
     conjunctions Mpgwords
     mpgcounts Mpgcounts
 }
+
+//training struct used for template creation
+pub struct MpgTraining{
+pub mut:
+    templatename string
+    beat int
+    templateline []string     
+}
+
