@@ -5,7 +5,7 @@ module injest
 import structs
 
 // splits the source data of words into word types
-pub fn makelists(mpgwords structs.Mpgwords) (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords) {
+pub fn makelists(mpgwords structs.Mpgwords) (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords ) {
 	// splitting word data by type
 	nouns := make_wrd_list(mpgwords, 'NOUN')
 	verbs := make_wrd_list(mpgwords, 'VERB')

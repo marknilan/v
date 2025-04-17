@@ -32,7 +32,7 @@ fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem struct
 				}
 			}			
 		}
-          mpgtraining.templateline = wrds
+           mpgtraining.templateline = wrds
           templates << mpgtraining
 	}
 	println(templates)	

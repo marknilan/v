@@ -1,7 +1,6 @@
 module poemcode
 
 // mpg mpgsrc poemcode model.v
-
 import structs
 import vlibrary
 import math
@@ -11,12 +10,12 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 	println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
-		'rondeau' {			
+		'rondeau' {
 			rondeau(poem, runmode, meter_templates, listdbs)
 		}
-        'iambpent' {
+		'iambpent' {
 			iambpent(poem, runmode, meter_templates, listdbs)
-		} 
+		}
 		else {
 			improper_poem_msg(' No poem template')
 		}
@@ -26,6 +25,7 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 }
 
 // used for various improper calls by the user
+// NOTE: used by GEN and MODEL
 fn improper_poem_msg(localmsg string) {
 	println('${localmsg}')
 	expected_call := ('MPG expects to be run with a known poem template: 
@@ -35,7 +35,7 @@ fn improper_poem_msg(localmsg string) {
 	exit(0)
 }
 
-// displays the model metadata to the screen using the poem meter 
+// displays the model metadata to the screen using the poem meter
 // template selected for the poem type
 fn showmodel(poem structs.Poem, templates [][]string) !bool {
 	mut lps := poem.lpp / poem.stnz
@@ -51,16 +51,16 @@ fn showmodel(poem structs.Poem, templates [][]string) !bool {
 			// model for lines per stanza displayed
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this model
-				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!				
+				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!
 				if (k == 0 && j == 0) && poem.poemtype == 'rondeau' {
 					// this is the rondeau specific refrain						
-					linerep = templates[ln][0..math.max((templates[ln].len / 2),3)]					
+					linerep = templates[ln][0..math.max((templates[ln].len / 2), 3)]
 				}
 				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {
 					// on the last line of each stanza after the 1st, print the refrain
 					println('${vlibrary.clean_arr_line(linerep)}')
 				} else {
-					//on the first and every other line just print the normal line
+					// on the first and every other line just print the normal line
 					println('${vlibrary.clean_arr_line(templates[ln][0..])}')
 				}
 				lprinted++

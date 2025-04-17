@@ -1,23 +1,22 @@
 module poemcode
 
 // mpg mpgsrc poemcode generate.v
-
 import structs
 import vlibrary
 import math
 
 // calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
-    outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, '.txt')
+	outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, '.txt')
 	println('\nPoem generation for poem type ${poem.poemtype} to ${outfile} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
 		'rondeau' {
 			rondeau(poem, runmode, meter_templates, listdbs)
 		}
-        'iambpent' {
+		'iambpent' {
 			iambpent(poem, runmode, meter_templates, listdbs)
-		} 
+		}
 		else {
 			improper_poem_msg(' No poem template')
 		}
@@ -26,8 +25,7 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 	return true
 }
 
-
-// displays the model metadata to the screen using the poem meter 
+// displays the model metadata to the screen using the poem meter
 // template selected for the poem type
 pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) !bool {
 	mut lps := poem.lpp / poem.stnz
@@ -43,20 +41,18 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 			// model for lines per stanza displayed
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
-				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!				
+				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!
 				if (k == 0 && j == 0) && poem.poemtype == 'rondeau' {
 					// this is the rondeau specific refrain						
-					linerep = templates[ln][0..math.max((templates[ln].len / 2),3)]					
+					linerep = templates[ln][0..math.max((templates[ln].len / 2), 3)]
 				}
 				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {
 					// on the last line of each stanza after the 1st, generate the refrain
-                    get_random_wrd(linerep,listdbs)
-					
+					get_random_wrds(linerep, listdbs)!
 				} else {
-					//on the first and every other line just generate the normal line
-                    get_random_wrd(linerep,listdbs)
-					
-				}				
+					// on the first and every other line just generate the normal line
+					get_random_wrds(templates[ln], listdbs)!
+				}
 				lprinted++
 			}
 		}
@@ -66,6 +62,55 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 	return true
 }
 
-fn get_random_wrd(template []string, listdbs structs.MpgListstore) {
+fn get_random_wrds(template []string, listdbs structs.MpgListstore)! {
+	mut wrdline := []string{}
 	println('inside call to pick random words')
+	for wordtype in template {			   
+	   match wordtype {          			   	
+		'NOUN' {			
+	        wrdline = lookuplist(template, listdbs.nouns, listdbs.mpgcounts.nouncnt)!
+	        println(wrdline)
+		}
+		'VERB' {			
+			wrdline = lookuplist(template, listdbs.verbs, listdbs.mpgcounts.verbcnt)!
+	        println(wrdline)
+		}
+        'ADJECTIVE' {        	
+			wrdline = lookuplist(template, listdbs.adjectives, listdbs.mpgcounts.adjcnt)!
+	        println(wrdline)
+		}
+        'PRONOUN' {        	
+			wrdline = lookuplist(template, listdbs.pronouns, listdbs.mpgcounts.proncnt)!
+	        println(wrdline)
+		}
+        'DETERMINER' {        	
+			wrdline = lookuplist(template, listdbs.determiners, listdbs.mpgcounts.detcnt)!
+	        println(wrdline)
+		}
+        'INTERJECTION' {        	
+			wrdline = lookuplist(template, listdbs.interjections, listdbs.mpgcounts.intcnt)!
+	        println(wrdline)
+		}
+        'CONJUNCTION' {
+			wrdline = lookuplist(template, listdbs.conjunctions, listdbs.mpgcounts.conjcnt)!
+	        println(wrdline)
+		}
+		else {
+			improper_poem_msg(' Non-valid word TYPE found was ${wordtype}')
+			exit(8)
+		}
+	  }	
+	}
+}
+
+
+fn lookuplist(template []string, thelist structs.Mpgwords, cn int)! []string {    
+	wrds := []string{}
+	ln := vlibrary.mkrndint(u32(math.max(cn,1)))!
+	println('inside lookuplist and ln = ${ln} with cn = ${cn}')
+	//for wrdline in thelist.mpgwordarr {
+	//	println(wrdline)
+	//	wrds << wrdline.theword
+	//}
+	return wrds
 }

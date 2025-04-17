@@ -1,7 +1,6 @@
 module mpgsrc
 
 // mpg mpgsrc mpg.v
-
 import startup
 import injest
 import poemcode
@@ -20,19 +19,20 @@ pub fn runmpg() bool {
 	// splitting word data by type
 	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions := injest.makelists(mpgwords)
 	// create virtual DB (lists) schema
-	mut listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners, interjections, 
-		conjunctions)
+	mut listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners,
+		interjections, conjunctions)
 	// virtual Db schema metadata
-   listdbs.mpgcounts = injest.make_list_counts(listdbs)		    
+	listdbs.mpgcounts = injest.make_list_counts(listdbs)
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')
-    if runmode.to_lower() in ['-t', 't'] {
-    	injest.rwpoemtemplate('/home/mark/projects/v/mpg/words/notused/rondeautraining1.txt',mpgwords, poem)
-    	println('New templates written to tmp dir mpgtemplates.txt')
-    }
+	if runmode.to_lower() in ['-t', 't'] {
+		injest.rwpoemtemplate('/home/mark/projects/v/mpg/words/notused/rondeautraining1.txt',
+			mpgwords, poem)
+		println('New templates written to tmp dir mpgtemplates.txt')
+	}
 
-    if runmode.to_lower() in ['-m', 'm'] {
-       poemcode.run_model(poem, runmode, meter_templates, listdbs)
-    }    
+	if runmode.to_lower() in ['-m', 'm'] {
+		poemcode.run_model(poem, runmode, meter_templates, listdbs)
+	}
 
 	if runmode.to_lower() in ['-g', 'g'] {
 		poemcode.run_generate(poem, runmode, meter_templates, listdbs)
@@ -41,4 +41,3 @@ pub fn runmpg() bool {
 
 	return true
 }
-
