@@ -32,12 +32,12 @@ pub fn runmpg() bool {
 
     if runmode.to_lower() in ['-m', 'm'] {
        poemcode.run_model(poem, runmode, meter_templates, listdbs)
-    }
+    }    
 
 	if runmode.to_lower() in ['-g', 'g'] {
-		println('generate here')
+		poemcode.run_generate(poem, runmode, meter_templates, listdbs)
 	}
-	// poemcode.run_model(poem,runmode,meter_templates)
+	// poemcode.run_model(poem,runmode,meter_templates)	
 
 	return true
 }

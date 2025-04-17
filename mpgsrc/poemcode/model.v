@@ -11,7 +11,7 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 	println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
-		'rondeau' {
+		'rondeau' {			
 			rondeau(poem, runmode, meter_templates, listdbs)
 		}
         'iambpent' {

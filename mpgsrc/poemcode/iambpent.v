@@ -6,8 +6,8 @@ import structs
 
 // code for rondeau
 pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
-	if runmode.to_lower() in ['m', '-m'] {
-		mut templates := [][]string{}
+	mut templates := [][]string{}
+	if runmode.to_lower() in ['m', '-m'] {		
 		for template in meter_templates {
 			if template[0] == 'rondeau' {
 				templates << template[2..]
@@ -15,8 +15,8 @@ pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, l
 		}
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
-		println('generate here')
-	}
+		genpoems(poem, templates, listdbs) or { println('Cant show model') }
+	}	
 
 	return true
 }

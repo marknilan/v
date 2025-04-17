@@ -2,14 +2,6 @@ module poemcode
 
 // mpg mpgsrc poemcode rondeau.v
 
-//  poemtype string
-//  nop int
-//  bpl int
-//  tmpl string
-//  meter string
-//  lpp int
-//  stnz int
-//  rhyme int
 import structs
 
 // code for rondeau
