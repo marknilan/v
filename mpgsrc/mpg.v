@@ -10,17 +10,17 @@ pub fn runmpg() bool {
 	// toml program configuration
 	cfgfile, runmode := startup.read_parms()
 	// type of poems to be modelled or generated
-	poem := startup.config(cfgfile, runmode)
+	poem := startup.config(cfgfile, runmode)	
 	println(poem)
 	// word data injested into memory
 	mpgwords := injest.get_words('/home/mark/projects/v/mpg/words/mpgwords.csv')
 	// poem form meter templates
 	meter_templates := injest.getmtrtempl('/home/mark/projects/v/mpg/words/meter_templates.csv')
-	// splitting word data by type
-	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions := injest.makelists(mpgwords)
+	// splitting word data by type	
+	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions, prepositions, adverbs := injest.makelists(mpgwords)
 	// create virtual DB (lists) schema
 	mut listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners,
-		interjections, conjunctions)
+		interjections, conjunctions, prepositions, adverbs)
 	// virtual Db schema metadata
 	listdbs.mpgcounts = injest.make_list_counts(listdbs)
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')

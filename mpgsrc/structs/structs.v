@@ -49,6 +49,8 @@ pub mut:
     detcnt int
     intcnt int
     conjcnt	int
+    prepcnt int
+    advcnt int
 }
 
 //holds all lists as a single passable parameter
@@ -63,6 +65,8 @@ pub mut:
     determiners Mpgwords
     interjections Mpgwords
     conjunctions Mpgwords
+    prepositions Mpgwords
+    adverbs Mpgwords
     mpgcounts Mpgcounts
 }
 

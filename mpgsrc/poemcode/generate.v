@@ -95,6 +95,20 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore)! {
 			wrdline = lookuplist(template, listdbs.conjunctions, listdbs.mpgcounts.conjcnt)!
 	        println(wrdline)
 		}
+		'PREPOSITION' {
+			wrdline = lookuplist(template, listdbs.prepositions, listdbs.mpgcounts.prepcnt)!
+	        println(wrdline)
+		}
+		'ADVERB' {
+			wrdline = lookuplist(template, listdbs.adverbs, listdbs.mpgcounts.advcnt)!
+	        println(wrdline)
+		}
+		' ' {
+			continue
+		}
+		'' {
+			continue
+		}
 		else {
 			improper_poem_msg(' Non-valid word TYPE found was ${wordtype}')
 			exit(8)
