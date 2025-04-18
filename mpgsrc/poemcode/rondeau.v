@@ -14,7 +14,8 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 	if runmode.to_lower() in ['m', '-m'] {
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
-		println('generate here')
+		allpoems := genpoems(poem, templates, listdbs) or {exit(8)}
+		writepoems(allpoems,'/tmp/',poem)	
 	}
 	return true
 }
