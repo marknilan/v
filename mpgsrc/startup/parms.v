@@ -4,8 +4,6 @@ module startup
 
 import os
 
-// import ../../vlibrary
-
 //reads command line parms, checks them and passes back the TOML 
 //configuration file and the run mode - batch or GUI
 pub fn read_parms() (string, string) {

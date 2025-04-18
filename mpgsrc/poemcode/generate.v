@@ -73,8 +73,8 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 fn writepoems(allpoems [][]string, opath string, poem structs.Poem) bool {
    outfile := opath + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
    mut file := os.create(outfile) or {exit(8)}   
-   for line in allpoems {   	
-   	   ostr := vlibrary.clean_arr_line(line).replace('  ',' ')
+   for line in allpoems {   	   	
+   	   ostr := vlibrary.clean_arr_line(line).replace('  ',' ').to_lower().capitalize()
    	   println(ostr)
        file.write_string(' ${ostr} \n') or {exit(8)}              
    }
