@@ -4,6 +4,7 @@ module poemcode
 import structs
 import vlibrary
 import math
+import os
 
 // calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
@@ -25,19 +26,19 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 	return true
 }
 
-// displays the model metadata to the screen using the poem meter
-// template selected for the poem type
-pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) !bool {
+// generates the poem lines from the model model metadata 
+// according to the poem meter template selected for the poem type
+pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore)! [][]string {
+	mut allpoems := [][]string{}
 	mut lps := poem.lpp / poem.stnz
 	mut lprinted := 1
-	// generate for poems displayed
-	println('Poem generation = "${poem.poemtype}" \n')
 	mut linerep := []string{}
-	for i := 0; i < poem.nop; i++ {
-		println('generation for poem ${i + 1}')
+	allpoems << ['Poem type = "${poem.poemtype}"']
+	for i := 0; i < poem.nop; i++ {				
+		allpoems << ['generation for poem',(i+1).str()]
 		// model for stanzas displayed
 		for j := 0; j < poem.stnz; j++ {
-			println(' ')
+			allpoems << [' ']
 			// model for lines per stanza displayed
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
@@ -46,25 +47,26 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 					// this is the rondeau specific refrain						
 					linerep = templates[ln][0..math.max((templates[ln].len / 2), 3)]
 				}
-				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {
+				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {					
 					// on the last line of each stanza after the 1st, generate the refrain
-					get_random_wrds(linerep, listdbs)!
+					allpoems << get_random_wrds(linerep, listdbs)!
 				} else {
 					// on the first and every other line just generate the normal line
-					get_random_wrds(templates[ln], listdbs)!
-				}
+					allpoems << get_random_wrds(templates[ln], listdbs)!
+				}				
 				lprinted++
-			}
+			}			
+			allpoems << [' ']
 		}
-		println('\n \n')
+		allpoems << [' ']
+		allpoems << [' ']
 	}
 
-	return true
+	return allpoems
 }
 
-fn get_random_wrds(template []string, listdbs structs.MpgListstore)! {
+fn get_random_wrds(template []string, listdbs structs.MpgListstore)! []string {
 	mut wrdline := []string{}
-	println('inside call to pick random words')
 	for wordtype in template {			   
 	   match wordtype {          			   	
 		'NOUN' {			
@@ -116,16 +118,32 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore)! {
 			exit(8)
 		}
 	  }	
-	  println(wrdline)
+
 	}
+
+    return wrdline
 }
 
 
 fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int)! string {    	
 	mut wrd := ''
 	mut ln := 0
-	println('cn is ${cn}')
 	ln = vlibrary.mkrndint(u32(cn))!         
     wrd = thelist.mpgwordarr[ln].theword		
 	return wrd
+}
+
+// writes out to tmp file the generated poems
+fn writepoems(allpoems [][]string, opath string, poem structs.Poem) bool {
+   outfile := opath + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
+   mut file := os.create(outfile) or {exit(8)}   
+   println(outfile)   
+   for line in allpoems {   	
+   	   ostr := vlibrary.clean_arr_line(line)
+   	   println(ostr)
+       file.write_string(' ${ostr} \n') or {exit(8)}              
+   }
+   defer { file.close() }
+
+   return true   
 }

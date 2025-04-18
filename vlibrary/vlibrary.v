@@ -115,6 +115,15 @@ pub fn mkrndint(ceilnum u32) !int {
 
 //given an array of strings, returns string with [,] and "'" removed
 pub fn clean_arr_line(strarr []string) string {
-    return strarr.str().trim('[], ').replace("'",'')
+    mut s := ''
+    for i, element in strarr {
+        if i == 0 {
+            s = element.trim(' ') + ' '
+            continue
+        }
+        s = s + ' ' + element.trim(' ') + ' '
+    }        
+
+    return s
 }
 

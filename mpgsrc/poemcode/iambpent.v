@@ -14,7 +14,8 @@ pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, l
 	if runmode.to_lower() in ['m', '-m'] {		
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
-		genpoems(poem, templates, listdbs) or { println('Cant generate poem') }
+		allpoems := genpoems(poem, templates, listdbs) or {exit(8)}
+		writepoems(allpoems,'/tmp/',poem)	
 	}
 
 	return true

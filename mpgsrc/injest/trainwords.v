@@ -15,7 +15,7 @@ pub fn rwpoemtemplate(txtfile string, mpgwords structs.Mpgwords, poem structs.Po
      return templates
 }
 
-// creates templates and writes the file to tmp for manual import yo meter_templates
+// creates templates and writes the file to tmp for manual import later of meter_templates
 fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem structs.Poem) []structs.MpgTraining {
 		
 	mut templates := []structs.MpgTraining{}
@@ -47,10 +47,6 @@ fn writetemplates(templates []structs.MpgTraining, opath string) bool {
     for mpgtraining in templates {
     	mut ostr := '${mpgtraining.templatename}' + ',' + '${mpgtraining.beat.str()}' + ','
         ostr = ostr.trim_space_left() + vlibrary.clean_arr_line(mpgtraining.templateline)
-        //ostr = ostr + '${mpgtraining.templateline.str()}'   
-        //ostr = ostr.replace('[','')     
-        //ostr = ostr.replace(']','')
-        //ostr = ostr.replace("'",'')
         file.write_string(' ${ostr} \n') or {exit(8)}
     }    
     defer { file.close() }
