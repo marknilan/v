@@ -6,6 +6,7 @@ import vlibrary
 import math
 import os
 
+
 // calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
 	outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, '.txt')
@@ -47,8 +48,8 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 				if (k == 0 && j == 0) && poem.poemtype == 'rondeau' {
                     // first line of a rondeau					
 					allpoems << get_random_wrds(templates[ln], listdbs)!
-					// the rondeau specific refrain (subset), taken from the just stored first line 											
-					linerep = allpoems[allpoems.len-1][0..3]					
+					// the rondeau specific refrain (subset), taken from the just stored first line 																
+					linerep = allpoems[allpoems.len-1][0..math.max((templates[ln].len / 2), 2)]					
                     continue                                    
 				}
 				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {					
