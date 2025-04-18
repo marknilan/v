@@ -26,6 +26,7 @@ pub fn make_list_counts(listdbs structs.MpgListstore) structs.Mpgcounts {
 		intcnt:   listdbs.interjections.mpgwordarr.len
 		conjcnt:  listdbs.conjunctions.mpgwordarr.len
 		advcnt:   listdbs.adverbs.mpgwordarr.len
+		prepcnt:  listdbs.prepositions.mpgwordarr.len
 	}
 
 	return mpgcounts

@@ -68,45 +68,47 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore)! {
 	for wordtype in template {			   
 	   match wordtype {          			   	
 		'NOUN' {			
-	        wrdline = lookuplist(template, listdbs.nouns, listdbs.mpgcounts.nouncnt)!
-	        println(wrdline)
+	        wrd := lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt)!
+	        wrdline << wrd
 		}
 		'VERB' {			
-			wrdline = lookuplist(template, listdbs.verbs, listdbs.mpgcounts.verbcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.verbs, listdbs.mpgcounts.verbcnt)!
+	        wrdline << wrd
 		}
         'ADJECTIVE' {        	
-			wrdline = lookuplist(template, listdbs.adjectives, listdbs.mpgcounts.adjcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt)!
+	        wrdline << wrd
 		}
         'PRONOUN' {        	
-			wrdline = lookuplist(template, listdbs.pronouns, listdbs.mpgcounts.proncnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt)!
+	        wrdline << wrd
 		}
         'DETERMINER' {        	
-			wrdline = lookuplist(template, listdbs.determiners, listdbs.mpgcounts.detcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt)!
+	        wrdline << wrd
 		}
         'INTERJECTION' {        	
-			wrdline = lookuplist(template, listdbs.interjections, listdbs.mpgcounts.intcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt)!
+	        wrdline << wrd
 		}
         'CONJUNCTION' {
-			wrdline = lookuplist(template, listdbs.conjunctions, listdbs.mpgcounts.conjcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt)!
+	        wrdline << wrd
 		}
 		'PREPOSITION' {
-			wrdline = lookuplist(template, listdbs.prepositions, listdbs.mpgcounts.prepcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt)!
+	        wrdline << wrd
 		}
 		'ADVERB' {
-			wrdline = lookuplist(template, listdbs.adverbs, listdbs.mpgcounts.advcnt)!
-	        println(wrdline)
+			wrd := lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt)!
+	        wrdline << wrd
 		}
 		' ' {
+			//dunno why these are in the mpgwords CSV - suspect they are last lines of CSV file or empty rows
 			continue
 		}
 		'' {
+			//dunno why these are in the mpgwords CSV - suspect they are last lines of CSV file or empty rows
 			continue
 		}
 		else {
@@ -114,17 +116,16 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore)! {
 			exit(8)
 		}
 	  }	
+	  println(wrdline)
 	}
 }
 
 
-fn lookuplist(template []string, thelist structs.Mpgwords, cn int)! []string {    
-	wrds := []string{}
-	ln := vlibrary.mkrndint(u32(math.max(cn,1)))!
-	println('inside lookuplist and ln = ${ln} with cn = ${cn}')
-	//for wrdline in thelist.mpgwordarr {
-	//	println(wrdline)
-	//	wrds << wrdline.theword
-	//}
-	return wrds
+fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int)! string {    	
+	mut wrd := ''
+	mut ln := 0
+	println('cn is ${cn}')
+	ln = vlibrary.mkrndint(u32(cn))!         
+    wrd = thelist.mpgwordarr[ln].theword		
+	return wrd
 }

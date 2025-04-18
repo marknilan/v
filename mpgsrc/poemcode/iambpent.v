@@ -10,11 +10,11 @@ pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, l
 			if template[0] == 'iambpent' {
 				templates << template[2..]
 			}
-		}
+	}
 	if runmode.to_lower() in ['m', '-m'] {		
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
-		genpoems(poem, templates, listdbs) or { println('Cant show model') }
+		genpoems(poem, templates, listdbs) or { println('Cant generate poem') }
 	}
 
 	return true
