@@ -46,3 +46,21 @@ pub fn getmtrtempl(mtrtmplpath string) [][]string {
 
 	return meter_templates
 }
+
+// gets rhyming root data
+pub fn getrhymeroots(rrdata string) structs.MpgRroots{
+	mut mpgrrline := structs.MpgRrline{}
+	mut mpgrroots := structs.MpgRroots{}
+    content := os.read_file(rrdata) or { exit(8) } // guard fname exists but no read access
+	mut reader := csv.new_reader(content)
+	for {
+		line_data := reader.read() or { break }
+		if line_data.len != 2 {
+			continue
+		}
+		mpgrrline.rindex = line_data[0].int()
+		mpgrrline.wrdsuffix = line_data[1]
+		mpgrroots.rhymearray << mpgrrline
+	}
+    return mpgrroots
+}

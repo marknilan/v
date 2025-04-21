@@ -53,6 +53,21 @@ pub mut:
     advcnt int
 }
 
+// MpgRrline Rhyming Root line of data (rhyming rule)
+pub struct MpgRrline{
+pub mut:
+    rindex int
+    wrdsuffix string
+}
+
+// MpgRroot is struct which holds Rhyming Root information in three or more 
+// character prexises
+pub struct MpgRroots{
+pub mut:
+   rhymearray []MpgRrline
+}
+
+
 // MpgListstore struct holds all lists as a single passable parameter
 // almost like a DB schema
 pub struct MpgListstore{
@@ -67,6 +82,7 @@ pub mut:
     conjunctions Mpgwords
     prepositions Mpgwords
     adverbs Mpgwords
+    rhyme_roots MpgRroots
     mpgcounts Mpgcounts
 }
 

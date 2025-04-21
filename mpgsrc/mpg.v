@@ -20,7 +20,9 @@ pub fn runmpg() bool {
 	nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions, prepositions, adverbs := injest.makelists(mpgwords)
 	// create virtual DB (lists) schema
 	mut listdbs := injest.listdbs(mpgwords, nouns, verbs, adjectives, pronouns, determiners,
-		interjections, conjunctions, prepositions, adverbs)
+		interjections, conjunctions, prepositions, adverbs)	
+	// store in List DB rhyming rules
+	listdbs.rhyme_roots = injest.getrhymeroots('/home/mark/projects/v/mpg/words/rhyme_roots.csv')
 	// virtual Db schema metadata
 	listdbs.mpgcounts = injest.make_list_counts(listdbs)
 	println('\n MPG word metadata is as follows \n: ${listdbs.mpgcounts}')
