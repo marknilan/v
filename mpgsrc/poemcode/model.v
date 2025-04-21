@@ -5,7 +5,7 @@ import structs
 import vlibrary
 import math
 
-// calls model functions to display poem model to screen
+// run_model calls model functions to display poem model to screen
 pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
 	println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
@@ -24,7 +24,7 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 	return true
 }
 
-// used for various improper calls by the user
+// improper_poem_msg used for various improper calls by the user
 // NOTE: used by GEN and MODEL
 fn improper_poem_msg(localmsg string) {
 	println('${localmsg}')
@@ -35,7 +35,7 @@ fn improper_poem_msg(localmsg string) {
 	exit(0)
 }
 
-// displays the model metadata to the screen using the poem meter
+// showmodel displays the model metadata to the screen using the poem meter
 // template selected for the poem type
 fn showmodel(poem structs.Poem, templates [][]string) !bool {
 	mut lps := poem.lpp / poem.stnz

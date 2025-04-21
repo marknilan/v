@@ -5,7 +5,7 @@ module startup
 import toml
 import structs
 
-// main configuration of the program here using the supplied TOML format file
+// config is the main configuration of the program. It uses the supplied TOML format file
 pub fn config(cfgfile string,runmode string) structs.Poem {	
 	println('MPG was called in mode: ${runmode} with TOML file: ${cfgfile} \n')
 	doc := toml.parse_file(cfgfile) or { panic(err) }	
@@ -19,7 +19,8 @@ pub fn config(cfgfile string,runmode string) structs.Poem {
 	       stnz: doc.value('Poem.stnz').int()
 	       rhyme: doc.value('Poem.rhyme').int()
            }    
-	println('poem metadata is as follows: \n${localpoem}')       
+	println('poem metadata is as follows: \n${localpoem}') 
+	      
 	return localpoem
 }
 

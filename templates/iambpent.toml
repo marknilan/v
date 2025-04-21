@@ -1,9 +1,9 @@
 [Poem] 
    poemtype = 'iambpent'
-   nop = 2
+   nop = 4
    bpl = 5
    tmpl = "mud"
    meter = "iambpent"
-   lpp = 24
-   stnz = 6
+   lpp = 14
+   stnz = 4
    rhyme = 2

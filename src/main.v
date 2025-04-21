@@ -2,11 +2,12 @@ module main
 
 // mpg src main.v
 // mpg compile entry point
+
 import mpgsrc
 import vlibrary
 import time
 
-// entry point
+// main  is the entry point of the V program
 fn main() {
 	println('MPG  started  at ${time.now()} \n')
 	println('MPG is running on ${vlibrary.find_os()} \n')

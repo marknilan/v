@@ -7,7 +7,7 @@ import math
 import os
 
 
-// calls model functions to generate poems to an output file
+// run_generate calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
 	outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, '.txt')
 	println('\nPoem generation for poem type ${poem.poemtype} to ${outfile} is as follows: \n ')
@@ -27,13 +27,14 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 	return true
 }
 
-// generates the poem lines from the model model metadata 
+// genpoems generates the poem lines from the model model metadata 
 // according to the poem meter template selected for the poem type
 pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore)! [][]string {
 	mut allpoems := [][]string{}
 	mut lps := poem.lpp / poem.stnz
 	mut lprinted := 1
-	mut linerep := []string{}		
+	mut linerep := []string{}	
+	mut lastrhyme := ''
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
 	for i := 0; i < poem.nop; i++ {				
 		allpoems << ['generation for poem',(i+1).str()]
@@ -55,12 +56,19 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {					
 					// on the last line of each stanza after the 1st, generate the refrain
 					allpoems << linerep
+
 				} else {
-					// on the first and every other line just generate the normal line
+					// on the first and every other line just generate the normal line					
 					allpoems << get_random_wrds(templates[ln], listdbs)!
-				}				
+				}
+				lastrhyme = allpoems[allpoems.len-1][allpoems[allpoems.len-1].len-1]		
+			   println('lastrhyme was ${lastrhyme}')	
 				lprinted++
-			}			
+			}		
+			// keep the last word from the last line of the stanza
+			// useful for later poems - not now used for rhyming
+			// lastrhyme = allpoems[allpoems.len-1][l1.len-1]
+			
 			allpoems << [' ']
 		}
 		allpoems << [' ']
@@ -70,7 +78,7 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 	return allpoems
 }
 
-// writes out to tmp file the generated poems
+// writepoems writes out to tmp file the generated poems
 fn writepoems(allpoems [][]string, opath string, poem structs.Poem) bool {
    outfile := opath + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
    mut file := os.create(outfile) or {exit(8)}   

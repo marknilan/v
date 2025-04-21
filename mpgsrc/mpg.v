@@ -5,7 +5,7 @@ import startup
 import injest
 import poemcode
 
-// runs the mpg program
+// runmpg runs the mpg program
 pub fn runmpg() bool {
 	// toml program configuration
 	cfgfile, runmode := startup.read_parms()
@@ -29,15 +29,12 @@ pub fn runmpg() bool {
 			mpgwords, poem)
 		println('New templates written to tmp dir mpgtemplates.txt')
 	}
-
 	if runmode.to_lower() in ['-m', 'm'] {
 		poemcode.run_model(poem, runmode, meter_templates, listdbs)
 	}
-
 	if runmode.to_lower() in ['-g', 'g'] {
 		poemcode.run_generate(poem, runmode, meter_templates, listdbs)
 	}
-	// poemcode.run_model(poem,runmode,meter_templates)	
 
 	return true
 }

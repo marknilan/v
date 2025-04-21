@@ -6,7 +6,7 @@ module structs
 // rondeau = [{nop = 3, bpl = 5, tmpl = "mud", meter = "iambpent", lpp = 15, stnz = 3, rhyme = 4}]
 // purpose: configures the poems to be modelled or generated
 
-// sets up poems to be modelled or generated
+// Poem struct sets up poems to be modelled or generated
 pub struct Poem {
 pub mut: 
 	poemtype string @[required]
@@ -19,7 +19,7 @@ pub mut:
 	rhyme int @[required]
 }
 
-// represents a line for mpgwords table 
+// Mpgline struct represents a line for mpgwords table 
 // below (taken from CSV line)
 pub struct Mpgline {
 pub mut:	
@@ -32,13 +32,13 @@ pub mut:
     beatcnt int 
 }
 
-//the main database (CSV in memory) of mpg
+// Mpgwords struct the main database (CSV in memory) of mpg
 pub struct Mpgwords{
 pub mut:
 	mpgwordarr []Mpgline
 }
 
-//holds the counts of all word type lists
+// Mpgcounts struct holds the counts of all word type lists
 pub struct Mpgcounts{
 pub mut:
     mpgcount int
@@ -53,7 +53,7 @@ pub mut:
     advcnt int
 }
 
-//holds all lists as a single passable parameter
+// MpgListstore struct holds all lists as a single passable parameter
 // almost like a DB schema
 pub struct MpgListstore{
 pub mut:
@@ -70,7 +70,7 @@ pub mut:
     mpgcounts Mpgcounts
 }
 
-//training struct used for template creation
+// MpgTraining is a training struct used for template creation
 pub struct MpgTraining{
 pub mut:
     templatename string

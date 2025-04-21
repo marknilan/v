@@ -4,8 +4,8 @@ module startup
 
 import os
 
-//reads command line parms, checks them and passes back the TOML 
-//configuration file and the run mode - batch or GUI
+// read_parms reads command line parms, checks them and passes back the TOML 
+// configuration file and the run mode - batch or GUI
 pub fn read_parms() (string, string) {
 	mut cfgfile := ''
 	mut runmode := ''
@@ -36,7 +36,7 @@ pub fn read_parms() (string, string) {
 	return cfgfile, runmode
 }
 
-// used for various improper calls by the user
+// improper_parm_msg used for error conditions of various improper calls by the user
 fn improper_parm_msg(localmsg string) {
 	println('${localmsg}')
 	expected_call := ('MPG expects to be run with like this: 

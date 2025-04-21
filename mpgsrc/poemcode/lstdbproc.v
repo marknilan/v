@@ -4,7 +4,7 @@ module poemcode
 import structs
 import vlibrary
 
-// delivers a random word from a specific listdb given a word type
+// lookuplist delivers a random word from a specific listdb given a word type
 fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int)! string {    	
 	mut wrd := ''
 	mut ln := 0
@@ -16,7 +16,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int)! string {
 	return wrd
 }
 
-// given a meter template, this delivers back a string array of actual random words
+// get_random_wrds given a meter template, this delivers back a string array of actual random words
 fn get_random_wrds(template []string, listdbs structs.MpgListstore) ![]string {
 	mut wrdline := []string{}
 	mut wrd := ''
@@ -71,8 +71,7 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore) ![]string {
 				exit(8)
 			}
 		}
-	}
-	
+	}		
 
 	return wrdline
 }
