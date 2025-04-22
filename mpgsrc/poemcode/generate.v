@@ -56,13 +56,19 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {					
 					// on the last line of each stanza after the 1st, generate the refrain
 					if k > 0 {																							
-	               linerep =  compare_rhymes(linerep, lastrhyme, listdbs)
+	               linerep =  compare_rhymes(mut linerep, lastrhyme, listdbs)!
 					}					
 					allpoems << linerep					
 
 				} else {
 					// on the first and every other line just generate the normal line					
-					allpoems << get_random_wrds(templates[ln], listdbs)!
+					mut tmpline := get_random_wrds(templates[ln], listdbs)!
+					println('tmpline was ${tmpline}')
+					tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
+					println('tmpline is now ${tmpline}')
+  				   allpoems << tmpline
+  				   lastrhyme = allpoems[allpoems.len-1][allpoems[allpoems.len-1].len-1]		
+
 				}
 				lastrhyme = allpoems[allpoems.len-1][allpoems[allpoems.len-1].len-1]		
 			   //println('lastrhyme was ${lastrhyme}')	

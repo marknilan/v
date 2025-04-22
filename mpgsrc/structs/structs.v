@@ -51,6 +51,7 @@ pub mut:
     conjcnt	int
     prepcnt int
     advcnt int
+    rrcnt int
 }
 
 // MpgRrline Rhyming Root line of data (rhyming rule)
@@ -83,7 +84,7 @@ pub mut:
     prepositions Mpgwords
     adverbs Mpgwords
     rhyme_roots MpgRroots
-    mpgcounts Mpgcounts
+    mpgcounts Mpgcounts    
 }
 
 // MpgTraining is a training struct used for template creation
