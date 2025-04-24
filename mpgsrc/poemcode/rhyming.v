@@ -22,11 +22,12 @@ fn keep_rhymed_word(theline []string) string {
 // process line template before giving being passed back to the caller as a newline.
 fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgListstore) ![]string {
 	
-	mut rhymed := []string{}
-    mut tl := []string{}
-    tl = theline.clone()    
-    wrd := theline[theline.len-1].trim(' ')
-    //println('wrd is ${wrd}')   
+    mut rhymed := []string{}
+    
+    mut tl := theline.clone()    
+    println('tl was ${tl}')
+    wrd := lastrhyme
+    //println('THE LAST WORD of the passed array WAS ${wrd}')   
     mut holdarr := []string{}
     mut holdidx := 0
     maxbk := math.min(wrd.len,3)
@@ -58,10 +59,10 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
             ln := vlibrary.mkrndint(u32(math.max(rhymed.len, 1)))!
             //println('replacement word is ${rhymed[ln]}')
             tl[tl.len-1] = rhymed[ln]
-            println('last rhyme was ${lastrhyme} last word in new line is ${tl[tl.len-1]}')
+            //println('last rhyme was ${lastrhyme} last word in new line is ${tl[tl.len-1]}')
 		}
 	}
-
+    println('tl now ${tl}')
 	//mut newline := []string{}
 	return tl
 }

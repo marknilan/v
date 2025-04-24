@@ -49,16 +49,16 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 				tmpline = get_random_wrds(templates[ln], listdbs)!			
             if k in poem.rhyme {
                if !(k == 0) {
-                  println('line ${k.str()} WAS ${tmpline}')	
+                  //println('line ${k.str()} WAS ${tmpline}')	
                   tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
-                  println('line ${k.str()} NOW ${tmpline}')	
+                  //println('line ${k.str()} NOW ${tmpline}')	
                }            	
-            	println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
+            	//println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
             	lastrhyme = tmpline[tmpline.len-1]
             } else {
-            	println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
+            	//println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
             }	            
-				
+				allpoems << tmpline  
 				lprinted++
 			}
 			lastrhyme = ''		
