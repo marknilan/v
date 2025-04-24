@@ -3,8 +3,7 @@ module structs
 // mpg mpgsrc structs structs.v
 
 // expected TOML form is example below
-// rondeau = [{nop = 3, bpl = 5, tmpl = "mud", meter = "iambpent", lpp = 15, stnz = 3, rhyme = 4}]
-// purpose: configures the poems to be modelled or generated
+// iambpent = [{nop = 3, bpl = 5, tmpl = "mud", meter = "iambpent", lpp = 15, stnz = 3, rhyme = [1,3,5]
 
 // Poem struct sets up poems to be modelled or generated
 pub struct Poem {
@@ -16,7 +15,7 @@ pub mut:
 	meter string @[required]
 	lpp int @[required]
 	stnz int @[required]
-	rhyme int @[required]
+	rhyme []int @[required]
 }
 
 // Mpgline struct represents a line for mpgwords table 

@@ -19,3 +19,4 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 	}
 	return true
 }
+

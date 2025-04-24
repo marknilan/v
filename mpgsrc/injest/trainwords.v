@@ -41,7 +41,7 @@ fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem struct
 	return templates
 }
 
-// writes out to tmp file trining templates for meter_templates
+// writes out to tmp file training templates for meter_templates
 fn writetemplates(templates []structs.MpgTraining, opath string) bool {
     mut file := os.create(opath) or {exit(8)}    
     for mpgtraining in templates {

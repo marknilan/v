@@ -17,11 +17,20 @@ pub fn config(cfgfile string,runmode string) structs.Poem {
 	       meter: doc.value('Poem.meter').string()
 	       lpp: doc.value('Poem.lpp').int()
 	       stnz: doc.value('Poem.stnz').int()
-	       rhyme: doc.value('Poem.rhyme').int()
-           }    
-	println('poem metadata is as follows: \n${localpoem}') 
-	      
+	       rhyme: conv_toml_arr(doc.value('Poem.rhyme').array())	       
+           }    	           
+	//println('poem metadata is as follows: \n${localpoem}') 
+	
 	return localpoem
 }
 
+// I hate V toml for this type of crap - must be a better way
+fn conv_toml_arr(ta []toml.Any) []int {
+	mut na := []int{}
+	for e in ta {
+       na << e.int() 
+	}
+
+	return na
+}
 

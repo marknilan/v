@@ -6,4 +6,4 @@
    meter = "iambpent"
    lpp = 14
    stnz = 4
-   rhyme = 2
+   rhyme = [0,2]

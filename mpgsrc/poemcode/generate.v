@@ -33,7 +33,8 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 	mut allpoems := [][]string{}
 	mut lps := poem.lpp / poem.stnz
 	mut lprinted := 1
-	mut linerep := []string{}	
+	//mut linerep := []string{}	
+	mut tmpline := []string{}	
 	mut lastrhyme := ''
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
 	for i := 0; i < poem.nop; i++ {				
@@ -42,44 +43,27 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 		for j := 0; j < poem.stnz; j++ {
 			allpoems << [' ']
 			// model for lines per stanza displayed
-			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
+			for k := 0; (k < lps || lprinted == poem.lpp); k++ {				
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!
-				// rondeau code :( gotta refactor this genpoems getting too large
-				if (k == 0 && j == 0) && poem.poemtype == 'rondeau' {
-                    // first line of a rondeau					
-					allpoems << get_random_wrds(templates[ln], listdbs)!
-					// the rondeau specific refrain (subset), taken from the just stored first line 																
-					linerep = allpoems[allpoems.len-1][0..math.max((templates[ln].len / 2), 2)]					
-                    continue                                    
-				}
-				if (k == lps - 1 && !(j == 0)) && poem.poemtype == 'rondeau' {					
-					// on the last line of each stanza after the 1st, generate the refrain
-					if k > 0 {																							
-	               linerep =  compare_rhymes(mut linerep, lastrhyme, listdbs)!
-					}					
-					allpoems << linerep					
-
-				} else {
-					// on the first and every other line just generate the normal line					
-					mut tmpline := get_random_wrds(templates[ln], listdbs)!
-					println('tmpline was ${tmpline}')
-					tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
-					println('tmpline is now ${tmpline}')
-  				   allpoems << tmpline
-  				   lastrhyme = allpoems[allpoems.len-1][allpoems[allpoems.len-1].len-1]		
-
-				}
-				lastrhyme = allpoems[allpoems.len-1][allpoems[allpoems.len-1].len-1]		
-			   //println('lastrhyme was ${lastrhyme}')	
+				tmpline = get_random_wrds(templates[ln], listdbs)!			
+            if k in poem.rhyme {
+               if !(k == 0) {
+                  println('line ${k.str()} WAS ${tmpline}')	
+                  tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
+                  println('line ${k.str()} NOW ${tmpline}')	
+               }            	
+            	println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
+            	lastrhyme = tmpline[tmpline.len-1]
+            } else {
+            	println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
+            }	            
+				
 				lprinted++
-			}		
-			// keep the last word from the last line of the stanza
-			// useful for later poems - not now used for rhyming
-			// lastrhyme = allpoems[allpoems.len-1][l1.len-1]
-			
+			}
+			lastrhyme = ''		
 			allpoems << [' ']
-		}
+		}		
 		allpoems << [' ']
 		allpoems << [' ']
 	}
