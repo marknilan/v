@@ -5,14 +5,14 @@ import structs
 import vlibrary
 
 // lookuplist delivers a random word from a specific listdb given a word type
-fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int)! string {    	
+fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int) !string {
 	mut wrd := ''
 	mut ln := 0
 	// makes a random number index for selecting a word from a listdb given its
 	// array length as a ceiling (cn)
-	ln = vlibrary.mkrndint(u32(cn))! 
-	// get the random word        
-    wrd = thelist.mpgwordarr[ln].theword		
+	ln = vlibrary.mkrndint(u32(cn))!
+	// get the random word
+	wrd = thelist.mpgwordarr[ln].theword
 	return wrd
 }
 
@@ -71,7 +71,7 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore) ![]string {
 				exit(8)
 			}
 		}
-	}		
+	}
 
 	return wrdline
 }
