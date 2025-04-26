@@ -16,6 +16,9 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 		'iambpent' {
 			iambpent(poem, runmode, meter_templates, listdbs)
 		}
+		'couplet' {
+			couplet(poem, runmode, meter_templates, listdbs)
+		}
 		else {
 			improper_poem_msg(' No poem template')
 		}

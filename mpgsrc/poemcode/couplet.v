@@ -1,37 +1,31 @@
 module poemcode
 
-// mpg mpgsrc poemcode generate.v
+// mpg mpgsrc poemcode monorhyme.v
 import structs
 import vlibrary
 import math
-import os
 
-// run_generate calls model functions to generate poems to an output file
-pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
-	outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, '.txt')
-	println('\nPoem generation for poem type ${poem.poemtype} to ${outfile} is as follows: \n ')
-	// gotta have one of the programs in the poem module for each type
-	match poem.poemtype {
-		'rondeau' {
-			rondeau(poem, runmode, meter_templates, listdbs)
-		}
-		'iambpent' {
-			iambpent(poem, runmode, meter_templates, listdbs)
-		}
-		'couplet' {
-			couplet(poem, runmode, meter_templates, listdbs)
-		}
-		else {
-			improper_poem_msg(' No poem template')
+// code for monorhyme
+pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
+	mut templates := [][]string{}
+	for template in meter_templates {
+		if template[0] == 'couplet' {
+			templates << template[2..]
 		}
 	}
-
+	if runmode.to_lower() in ['m', '-m'] {
+		showmodel(poem, templates) or { println('Cant show model') }
+	} else {
+		allpoems := genpoems(poem, templates, listdbs) or { exit(8) }
+		writepoems(allpoems, '/tmp/', poem)
+	}
 	return true
 }
 
+
 // genpoems generates the poem lines from the model model metadata
 // according to the poem meter template selected for the poem type
-pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) ![][]string {
+pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) ![][]string {
 	mut allpoems := [][]string{}
 	mut lps := poem.lpp / poem.stnz
 	mut lprinted := 1
@@ -71,18 +65,4 @@ pub fn genpoems(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 	}
 
 	return allpoems
-}
-
-// writepoems writes out to tmp file the generated poems
-fn writepoems(allpoems [][]string, opath string, poem structs.Poem) bool {
-	outfile := opath + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
-	mut file := os.create(outfile) or { exit(8) }
-	for line in allpoems {
-		ostr := vlibrary.clean_arr_line(line).replace('  ', ' ').to_lower().capitalize()
-		println(ostr)
-		file.write_string(' ${ostr} \n') or { exit(8) }
-	}
-	defer { file.close() }
-
-	return true
 }

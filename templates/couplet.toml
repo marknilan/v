@@ -1,9 +1,9 @@
 [Poem] 
-   poemtype = 'rondeau'
+   poemtype = 'couplet'
    nop = 3
    bpl = 5
    tmpl = "mud"
-   meter = "rondeau"
+   meter = "couplet"
    lpp = 18
    stnz = 4
    rhyme = [0,1,2,3]
