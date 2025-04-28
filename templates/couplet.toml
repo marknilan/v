@@ -1,9 +1,9 @@
 [Poem] 
    poemtype = 'couplet'
    nop = 3
-   bpl = 5
+   bpl = 6
    tmpl = "mud"
    meter = "couplet"
-   lpp = 18
-   stnz = 4
-   rhyme = [0,1,2,3]
+   lpp = 14
+   stnz = 1
+   rhyme = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]

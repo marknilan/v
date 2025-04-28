@@ -5,6 +5,7 @@ module poemcode
 import structs
 import math
 import vlibrary
+import strings
 
 // keep_rhymed_word gets the last word from a line ready for processdin
 // if needed on the next line, or subsequent lines
@@ -21,9 +22,8 @@ fn keep_rhymed_word(theline []string) string {
 // process line template before giving being passed back to the caller as a newline.
 fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgListstore) ![]string {
 	mut rhymed := []string{}
-
 	mut tl := theline.clone()
-	println('tl was ${tl}')
+	//println('tl was ${tl}')
 	wrd := lastrhyme
 	// println('THE LAST WORD of the passed array WAS ${wrd}')
 	mut holdarr := []string{}
@@ -64,8 +64,7 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 		}
 	}
 	// loop end
-	// REFACTOR CANDIDATE END
-	println('tl now ${tl}')
+	// REFACTOR CANDIDATE END	
 	// mut newline := []string{}
 	return tl
 }
@@ -84,19 +83,66 @@ fn idxhunt(idx int, wrd string, listdbs structs.MpgListstore) []string {
 	return mtch
 }
 
-// wrdhunt finds the word rhyming word in mpgwords List DB
+// wrdhunt finds the word rhyming with the last rhyme in mpgwords List DB
 fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
-	mut rhymed := []string{}
-	for suffix in holdarr {
-		for mpgwordarr in listdbs.mpgwords.mpgwordarr {
-			maxbk := math.min(mpgwordarr.theword.len, 3)
-			tw := mpgwordarr.theword.trim(' ')
-			if tw[tw.len - maxbk..tw.len] == suffix {
-				rhymed << tw
-				// println('matched ${tw} to ${suffix} ')
-			}
+	mut longest_rhyme := 0
+	// gets the longest word in rhyming roots to act as a length
+	// criteria for matching
+	for rhymearray in listdbs.rhyme_roots.rhymearray {
+		if rhymearray.wrdsuffix.trim(' ').len > longest_rhyme {
+			longest_rhyme = rhymearray.wrdsuffix.trim(' ').len
 		}
 	}
+	// find a rhyming word using rhyme_roots - if none found resort to 
+	// levenshtein matching.
+	mut rhymed := []string{}		
+	mut found := true
+	for i := longest_rhyme-1; i > 1; i -= 2 {	
+       found = false
+ 	   for suffix in holdarr {
+ 	   	   if suffix.len == i {
+		      for mpgwordarr in listdbs.mpgwords.mpgwordarr {
+			      maxbk := math.min(mpgwordarr.theword.len, i)
+			      tw := mpgwordarr.theword.trim(' ')
+			      if tw[tw.len - maxbk..tw.len] == suffix {
+				     rhymed << tw
+				     found = true
+				  // println('matched ${tw} to ${suffix} ')
+			      }
+		      }
+              if !(found) {
+              	//levenshtein fallback
+                 closest := get_distance(suffix,listdbs)
+           	     if !(closest == '') {
+           	  	    rhymed << closest + ' (L)'
+           	     } else {
+           	  	    rhymed << suffix
+           	     }	
+              } 
+		   }		              
+		}
+	}    
 
 	return rhymed
+}
+
+// if rhyming roots fails use levenshtein distance
+fn get_distance(wrd string, listdbs structs.MpgListstore) string {
+   mut closest := ''
+   mut best := 0.0   
+   for mpgwordarr in listdbs.mpgwords.mpgwordarr {
+   	   //if !(wrd.trim(' ') == mpgwordarr.theword.trim(' ')) {
+   	   //	  continue
+   	   //} 
+   	      d := strings.levenshtein_distance_percentage(wrd.trim(' '),
+   	   	       mpgwordarr.theword.trim(' '))
+   	      if d > best {       
+       	     best = d 
+       	     println('d was ${d}, wrd was ${wrd}, theword was ${mpgwordarr.theword}')
+       	     closest = mpgwordarr.theword.trim(' ')
+          }	      
+          
+   }    
+
+   return closest
 }

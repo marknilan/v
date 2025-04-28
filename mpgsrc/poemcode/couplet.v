@@ -16,7 +16,7 @@ pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, li
 	if runmode.to_lower() in ['m', '-m'] {
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
-		allpoems := genpoems(poem, templates, listdbs) or { exit(8) }
+		allpoems := couplet_gen(poem, templates, listdbs) or { exit(8) }
 		writepoems(allpoems, '/tmp/', poem)
 	}
 	return true
@@ -28,6 +28,7 @@ pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, li
 pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) ![][]string {
 	mut allpoems := [][]string{}
 	mut lps := poem.lpp / poem.stnz
+	println(lps)
 	mut lprinted := 1
 	// mut linerep := []string{}	
 	mut tmpline := []string{}
@@ -45,14 +46,14 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 				tmpline = get_random_wrds(templates[ln], listdbs)!
 				if k in poem.rhyme {
 					if !(k == 0) {
-						// println('line ${k.str()} WAS ${tmpline}')	
+						 //println('line ${k.str()} WAS ${tmpline}')	
 						tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
-						// println('line ${k.str()} NOW ${tmpline}')	
+						//println('line ${k.str()} NOW ${tmpline}')	
 					}
-					// println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
+					//println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
 					lastrhyme = tmpline[tmpline.len - 1]
 				} else {
-					// println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
+					//println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
 				}
 				allpoems << tmpline
 				lprinted++
