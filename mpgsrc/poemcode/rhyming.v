@@ -57,7 +57,7 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 			break
 		} else {
 			rhymed = wrdhunt(holdarr, listdbs)
-			ln := vlibrary.mkrndint(u32(math.max(rhymed.len, 1)))!
+			ln := vlibrary.mkrndint(u32(math.max(rhymed.len, 1)))! // ERROR HERE on first iteration
 			// println('replacement word is ${rhymed[ln]}')
 			tl[tl.len - 1] = rhymed[ln]
 			// println('last rhyme was ${lastrhyme} last word in new line is ${tl[tl.len-1]}')
@@ -115,9 +115,10 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
                  closest := get_distance(suffix,listdbs)
            	     if !(closest == '') {
            	  	    rhymed << closest + ' (L)'
-           	     } else {
-           	  	    rhymed << suffix
-           	     }	
+           	     } 
+           	     //else {
+           	  	  //  rhymed << suffix
+           	     //}	
               } 
 		   }		              
 		}

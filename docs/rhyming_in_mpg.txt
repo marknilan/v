@@ -1,0 +1,65 @@
+For the word 'GREAT' here is a match 'lastrhyme' example
+
+Overview
+A countdown index is used to slice the word from the rearward end. 
+The slices match to same size slices taken from the rear of the 
+'suffix' in the rhyming roots list DB.
+
+Countdown meaning
+Given the maximum word length in rhyming roots list DB is 10...
+countdown idx = 10,9,8,7,6,5,4,3,2 stops at two (being last two letters of a rhyming suffix)
+Example:
+	- at 10 length there are 2 suffixes found matching the last 10 letters of the lastrhyme word
+	etc
+	- at 8 length there are 7 suffixes found matching last 8 letters of the lastrhyme word
+	etc
+	- at 5 length there are 15
+	etc
+	- at 3 length there are 1205
+	- at 2 length there are 34,887
+
+Slicing 
++ MPG subsets the word based on the maximum size of suffixes in the rhyming roots list DB. 
++ It decrements the length down to 2 (that's two characters)
++ On each loop it tries to match the sliced group of letters from the rear end of the word 
+  to the rhyme root word (aka 'suffix').  
++ Example:
+	- In the example of the word 'GREAT', MPG matches 'GREAT' at decrementing length index 5. 
+	- In this case the actual word 'GREAT' is an outlier. For such cases like these, rhyming_roots list DB 
+     table holds actual whole words like 'GREAT'. Because they don't phonetically or string 'distance' rhyme.  
+	- MPG matches this way before it matches at any further decrementing length index. 
++ For example - what if it matched at slice length = 3? 
+	- If left to continue decrementing to the lowest common match index which would be 3 the following occurs
+	 	* The slice would contain the suffix 'EAT'
+	 	* That would attract rhyme index 63 word suffix = 'EAT'.
+	 	* That does not sound the same as the word 'GREAT' <==== Wrong approach
++ As described above, the word GREAT brings back rhyming index 285. The 285 index also has suffixes as follows: 
+	- 'ATE' and 'EIGHT' for words that actually sound the same as GREAT
++ From the above processing a list of two actual suffixes ('ATE' and 'EIGHT') is produced
+
+Random pick list
++ The actual suffix list ('ATE' and 'EIGHT') is used to then match all words in mpgwords list DB
++ Matching is done on the rearward end of the THEWORD field of mpgwords list DB at the length of the
+  word in the pick list
++ For example:
+	- ATE   ====matched==== M~ATE, NEG~ATE, INFL~ATE, ~ATE etc...  	  
+	- EIGHT ====matched==== FR~EIGHT, ~EIGHT
+	- total list is [ATE, EIGHT, NEGATE, INFLATE, ...others... FREIGHT]
++ Then a random pick is made.
++ The word chosen to rhyme is 'NEGATE'
+
+Replacement
++ 'NEGATE' is pushed into the last index position on the current line (array))
++ It replaces the word that was there which was 'LAKES' see below example.
++ It rhymes with the previous last rhyme 'GREAT'.
+
+Example:
+Last written to screen line was: POLICE HUNG VELUM WITH GREAT
+lastrhyme = GREAT
+   Current line is: GRINCH PINEAPPLE CAPTAIN ABANDON LAKES
+Line to screen Now: GRINCH PINEAPPLE CAPTAIN ABANDON NEGATE
+
+Loop
++ The whole process repeats for the next line
++ The lastrhyme word now is 'NEGATE' 
+ 	

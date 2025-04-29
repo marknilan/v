@@ -38,7 +38,7 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 		for j := 0; j < poem.stnz; j++ {
 			allpoems << [' ']
 			// model for lines per stanza displayed
-			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
+			for k := 0; (k == lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!
 				tmpline = get_random_wrds(templates[ln], listdbs)!
@@ -60,10 +60,10 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 				} else {
 					// println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
 				}
-				if k == lps-1 {
-					allpoems << tmpline
+				if k == lps {
+					allpoems << linerep
 					} else {				
-				       allpoems << linerep
+				       allpoems << tmpline
 				    }
 				lprinted++
 			}
