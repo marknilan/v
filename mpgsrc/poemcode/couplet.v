@@ -3,7 +3,7 @@ module poemcode
 // mpg mpgsrc poemcode monorhyme.v
 import structs
 import vlibrary
-import math
+//import math
 
 // code for monorhyme
 pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
@@ -34,15 +34,16 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 	mut tmpline := []string{}
 	mut lastrhyme := ''
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
+	// number of poems
 	for i := 0; i < poem.nop; i++ {
 		allpoems << ['generation for poem', (i + 1).str()]
-		// model for stanzas displayed
+		// number of stanzas
 		for j := 0; j < poem.stnz; j++ {
 			allpoems << [' ']
-			// model for lines per stanza displayed
+			// lines per stanza
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
-				ln := vlibrary.mkrndint(u32(math.max(templates.len, 1)))!
+				ln := vlibrary.mkrndint(u32(templates.len))!
 				tmpline = get_random_wrds(templates[ln], listdbs)!
 				if k in poem.rhyme {
 					if !(k == 0) {

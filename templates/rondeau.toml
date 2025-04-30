@@ -4,6 +4,6 @@
    bpl = 5
    tmpl = "mud"
    meter = "rondeau"
-   lpp = 18
-   stnz = 4
+   lpp = 15
+   stnz = 3
    rhyme = [0,1,2,3]
