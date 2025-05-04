@@ -22,6 +22,7 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 	return true
 }
 
+// NEEDS WORK ON THE J == 0 step and look inside K - remove extra line
 
 // ron_gen generates the poem lines from the model model metadata
 // according to the poem meter template selected for the poem type
@@ -40,7 +41,7 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 		allpoems << [' ']
 		// number of stanzas
 		for j := 0; j < poem.stnz; j++ {
-			
+			// fisrt line of first stanza - collect the refrain
 			if j == 0 {
 			   ln := vlibrary.mkrndint(u32(templates.len))!
 			   tmpline = get_random_wrds(templates[ln], listdbs)!			   

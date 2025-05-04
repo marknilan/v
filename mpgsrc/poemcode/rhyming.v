@@ -7,19 +7,8 @@ import math
 import vlibrary
 import strings
 
-// keep_rhymed_word gets the last word from a line ready for processdin
-// if needed on the next line, or subsequent lines
-// according to meter template rules for a poem type
-fn keep_rhymed_word(theline []string) string {
-	return theline[theline.len - 1]
-}
-
-// compare_rhymes breaks down the last word in the current processed line template
-// as a suffix. I reduces the word character by character until minimum sylable length
-// of (3). It does that until a close rhyming match is found. Each match is then loaded into
-// a match array. Then a random choice is made from that match array giving the rhyme index
-// which is then used to fetch the rhymed word. It is placed back on the last word of the
-// process line template before giving being passed back to the caller as a newline.
+// compare_rhymes finds the word rhyming with the last rhyme in mpgwords List DB
+// it calls functs to decrementally find rhyming sylables using phonics and soundex
 fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgListstore) ![]string {
 	mut rhymed := []string{}
 	mut tl := theline.clone()
@@ -28,13 +17,11 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 	// println('THE LAST WORD of the passed array WAS ${wrd}')
 	mut holdarr := []string{}
 	mut holdidx := 0
-	// REFACTOR CANDIDATE BEGIN
-	// for length starting from 3 to say 10 (could use the max of elements array function)
-	// loop start 
-	maxbk := math.min(wrd.len, 3)	
-	
+   //firstly capture a list of phonically similar rhymed words (using 3 suffix chars)	
+	maxbk := math.min(wrd.len, 3)		
 	// println('maxbk = ${maxbk}')
-	// gets an array of rhyme indexes matching the phonic or soundex sylables of the word
+	// gets an array of rhyme indexes matching the phonic sylables of the word
+	// as per rindex, this also picks up soundex words into the list
 	for rhymearray in listdbs.rhyme_roots.rhymearray {
 		if wrd[wrd.len - maxbk..wrd.len] == rhymearray.wrdsuffix.trim(' ')
 			&& !(wrd.trim(' ') == rhymearray.wrdsuffix.trim(' ')) {
@@ -44,7 +31,7 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 		}
 	}
 
-	// if the word is the same word disregard and use the original word
+	// if there are no PHONIC word matches. Disregard that approach and use the original word with ONLY soundex match
 	if !(holdidx == 0) {
 		holdarr = idxhunt(holdidx, wrd, listdbs)
 	}
@@ -70,7 +57,7 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 	return tl
 }
 
-// idxhunt finds the index of a rhyming suffix
+// idxhunt finds the index of a rhyming suffix using a list feched from PHONICS and SOUNDEX
 fn idxhunt(idx int, wrd string, listdbs structs.MpgListstore) []string {
 	mut mtch := []string{}
 	mtch << wrd
@@ -84,7 +71,12 @@ fn idxhunt(idx int, wrd string, listdbs structs.MpgListstore) []string {
 	return mtch
 }
 
-// wrdhunt finds the word rhyming with the last rhyme in mpgwords List DB
+// wrdhunt breaks down the last word in the current processed line template
+// as a suffix. I reduces the word character by character until minimum sylable length
+// of (3). It does that until a close rhyming match is found. Each match is then loaded into
+// a match array. Then a random choice is made from that match array giving the rhyme index
+// which is then used to fetch the rhymed word. It is placed back on the last word of the
+// process line template before given back to the caller as a newline.
 fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 	mut longest_rhyme := 0
 	// gets the longest word in rhyming roots to act as a length
@@ -99,7 +91,7 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 	mut rhymed := []string{}		
 	mut found := true
 	for i := longest_rhyme-1; i > 1; i -= 2 {	
-       found = false
+      found = false
  	   for suffix in holdarr {
  	   	   if suffix.len == i {
 		      for mpgwordarr in listdbs.mpgwords.mpgwordarr {
@@ -111,6 +103,8 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 				  // println('matched ${tw} to ${suffix} ')
 			      }
 		      }
+		      // ok at this point neither (3 char min) suffix phonix nor soundex has matched
+		      // use a distance match instead, last resort
               if !(found) {
               	//levenshtein fallback
                  closest := get_distance(suffix,listdbs)
