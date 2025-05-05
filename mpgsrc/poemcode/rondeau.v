@@ -41,42 +41,35 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 		allpoems << [' ']
 		// number of stanzas
 		for j := 0; j < poem.stnz; j++ {
-			// fisrt line of first stanza - collect the refrain
-			if j == 0 {
-			   ln := vlibrary.mkrndint(u32(templates.len))!
-			   tmpline = get_random_wrds(templates[ln], listdbs)!			   
-               lastrhyme = tmpline[tmpline.len - 1]
-			   linerep = tmpline[0..math.max((templates[ln].len / 3), 2)].clone()
-			   allpoems << tmpline
-			} else {			
 			// lines per stanza
-			   for k := 0; (k < lps || lprinted == poem.lpp); k++ {
-                   if !(j == 0) {
+			   for k := 0; (k < lps || lprinted == poem.lpp); k++ {			      
 				   // chooses a random line index from templates array for this generation
-				      ln := vlibrary.mkrndint(u32(templates.len))!
-				      tmpline = get_random_wrds(templates[ln], listdbs)!
-                   }
-				   if k in poem.rhyme {
-					   
-						   //println('line ${k.str()} WAS ${tmpline}')	
-						   tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
-						   //println('line ${k.str()} NOW ${tmpline}')	
-					   
-					       //println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
-					       lastrhyme = tmpline[tmpline.len - 1]
-				   } 
-                   
+				   ln := vlibrary.mkrndint(u32(templates.len))!
+				   tmpline = get_random_wrds(templates[ln], listdbs)!
+				   if j == 0 && linerep.len == 0 {
+			         // first line of first stanza - collect the refrain
+			         linerep = tmpline[0..math.max((templates[ln].len / 3), 2)].clone()	
+			         println('linerep at line ${k.str()} IS ${linerep}')								      
+			       }  
+				   if k in poem.rhyme {					   
+					   //println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
+					   lastrhyme = tmpline[tmpline.len - 1]
+				   } else {
+			              //println('line ${k.str()} WAS ${tmpline}')						
+				           tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
+				           //println('line ${k.str()} NOW ${tmpline}')
+				          }                    
 				   if k == lps-1 && !(j == 0) {
                       allpoems << linerep
-                   } else {    
-					  allpoems << tmpline
-				}	
-				lprinted++
-			  }
-			  lastrhyme = ''
-			  allpoems << [' ']		    			  
-			}						
+                   } else {                             
+					        allpoems << tmpline
+				          }	
+				   lprinted++
+			   }
+			   lastrhyme = ''
+			   allpoems << [' ']		    			  									
 		}
+		linerep = []string{}		
 		allpoems << [' ']
 		allpoems << [' ']
 	}
