@@ -12,13 +12,13 @@ import strings
 fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgListstore) ![]string {
 	mut rhymed := []string{}
 	mut tl := theline.clone()
-	//println('tl was ${tl}')
+	// println('tl was ${tl}')
 	wrd := lastrhyme
 	// println('THE LAST WORD of the passed array WAS ${wrd}')
 	mut holdarr := []string{}
 	mut holdidx := 0
-   //firstly capture a list of phonically similar rhymed words (using 3 suffix chars)	
-	maxbk := math.min(wrd.len, 3)		
+	// firstly capture a list of phonically similar rhymed words (using 3 suffix chars)	
+	maxbk := math.min(wrd.len, 3)
 	// println('maxbk = ${maxbk}')
 	// gets an array of rhyme indexes matching the phonic sylables of the word
 	// as per rindex, this also picks up soundex words into the list
@@ -86,59 +86,57 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 			longest_rhyme = rhymearray.wrdsuffix.trim(' ').len
 		}
 	}
-	// find a rhyming word using rhyme_roots - if none found resort to 
+	// find a rhyming word using rhyme_roots - if none found resort to
 	// levenshtein matching.
-	mut rhymed := []string{}		
+	mut rhymed := []string{}
 	mut found := true
-	for i := longest_rhyme-1; i > 1; i -= 2 {	
-      found = false
- 	   for suffix in holdarr {
- 	   	   if suffix.len == i {
-		      for mpgwordarr in listdbs.mpgwords.mpgwordarr {
-			      maxbk := math.min(mpgwordarr.theword.len, i)
-			      tw := mpgwordarr.theword.trim(' ')
-			      if tw[tw.len - maxbk..tw.len] == suffix {
-				     rhymed << tw
-				     found = true
-				  // println('matched ${tw} to ${suffix} ')
-			      }
-		      }
-		      // ok at this point neither (3 char min) suffix phonix nor soundex has matched
-		      // use a distance match instead, last resort
-              if !(found) {
-              	//levenshtein fallback
-                 closest := get_distance(suffix,listdbs)
-           	     if !(closest == '') {
-           	  	    rhymed << closest + ' (L)'
-           	     } 
-           	     //else {
-           	  	  //  rhymed << suffix
-           	     //}	
-              } 
-		   }		              
+	for i := longest_rhyme - 1; i > 2; i -= 2 {
+		found = false
+		for suffix in holdarr {
+			if suffix.len == i {
+				for mpgwordarr in listdbs.mpgwords.mpgwordarr {
+					maxbk := math.min(mpgwordarr.theword.len, i)
+					tw := mpgwordarr.theword.trim(' ')
+					if tw[tw.len - maxbk..tw.len] == suffix && !(tw == suffix) {
+						rhymed << tw
+						found = true
+						//println('matched ${tw} to ${suffix} ')
+						break
+					}
+				}
+				// ok at this point neither (3 char min) suffix phonix nor soundex has matched
+				// use a distance match instead, last resort
+				if !found {
+					// levenshtein fallback
+					closest := get_distance(suffix, listdbs)
+					if !(closest == '') {
+						rhymed << closest + ' (l)'
+					} else {
+						rhymed << suffix
+					}
+				}
+			}
 		}
-	}    
+	}
 
 	return rhymed
 }
 
 // if rhyming roots fails use levenshtein distance
 fn get_distance(wrd string, listdbs structs.MpgListstore) string {
-   mut closest := ''
-   mut best := 0.0   
-   for mpgwordarr in listdbs.mpgwords.mpgwordarr {
-   	   //if !(wrd.trim(' ') == mpgwordarr.theword.trim(' ')) {
-   	   //	  continue
-   	   //} 
-   	      d := strings.levenshtein_distance_percentage(wrd.trim(' '),
-   	   	       mpgwordarr.theword.trim(' '))
-   	      if d > best {       
-       	     best = d 
-       	     println('d was ${d}, wrd was ${wrd}, theword was ${mpgwordarr.theword}')
-       	     closest = mpgwordarr.theword.trim(' ')
-          }	      
-          
-   }    
+	mut closest := ''
+	mut best := 0.0
+	for mpgwordarr in listdbs.mpgwords.mpgwordarr {
+		// if !(wrd.trim(' ') == mpgwordarr.theword.trim(' ')) {
+		//	  continue
+		//}
+		d := strings.levenshtein_distance_percentage(wrd.trim(' '), mpgwordarr.theword.trim(' '))
+		if d > best && !(wrd.trim(' ') == mpgwordarr.theword.trim(' ')) {
+			best = d
+			//println('d was ${d}, wrd was ${wrd}, theword was ${mpgwordarr.theword}')
+			closest = mpgwordarr.theword.trim(' ')
+		}
+	}
 
-   return closest
+	return closest
 }
