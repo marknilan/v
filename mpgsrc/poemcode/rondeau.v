@@ -5,7 +5,7 @@ import structs
 import vlibrary
 import math
 
-// code for rondeau
+// rondeau code for rondeau type poem
 pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
 	mut templates := [][]string{}
 	for template in meter_templates {

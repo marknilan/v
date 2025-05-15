@@ -7,7 +7,7 @@ import vlibrary
 import structs
 import os
 
-// gets file expected to be simple sentence format no commas, no quotes, no line gaps
+// rwpoemtemplate gets file expected to be simple sentence format no commas, no quotes, no line gaps
 pub fn rwpoemtemplate(txtfile string, mpgwords structs.Mpgwords, poem structs.Poem) []structs.MpgTraining {
      content := vlibrary.file_buffered_reader(txtfile)
      templates := convert_to_templates(content,mpgwords,poem)
@@ -15,9 +15,8 @@ pub fn rwpoemtemplate(txtfile string, mpgwords structs.Mpgwords, poem structs.Po
      return templates
 }
 
-// creates templates and writes the file to tmp for manual import later of meter_templates
-fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem structs.Poem) []structs.MpgTraining {
-		
+// convert_to_templates creates templates and writes the file to tmp for manual import later of meter_templates
+fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem structs.Poem) []structs.MpgTraining {		
 	mut templates := []structs.MpgTraining{}
 	for line in content {
 		mut mpgtraining := structs.MpgTraining{}
@@ -41,7 +40,7 @@ fn convert_to_templates(content []string, mpgwords structs.Mpgwords, poem struct
 	return templates
 }
 
-// writes out to tmp file training templates for meter_templates
+// writetemplates writes out to tmp file training templates for meter_templates
 fn writetemplates(templates []structs.MpgTraining, opath string) bool {
     mut file := os.create(opath) or {exit(8)}    
     for mpgtraining in templates {
@@ -50,6 +49,7 @@ fn writetemplates(templates []structs.MpgTraining, opath string) bool {
         file.write_string(' ${ostr} \n') or {exit(8)}
     }    
     defer { file.close() }
+    
     return true    
 }
 

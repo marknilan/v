@@ -4,7 +4,7 @@ module injest
 // creates struct of the word lists of MPG
 import structs
 
-// splits the source data of words into word types
+// makelists splits the source data of words into word types
 pub fn makelists(mpgwords structs.Mpgwords) (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords ) {
 	// splitting word data by type
 	nouns := make_wrd_list(mpgwords, 'NOUN')
@@ -16,10 +16,11 @@ pub fn makelists(mpgwords structs.Mpgwords) (structs.Mpgwords, structs.Mpgwords,
 	conjunctions := make_wrd_list(mpgwords, 'CONJUNCTION')
 	prepositions := make_wrd_list(mpgwords, 'PREPOSITION')
 	adverbs := make_wrd_list(mpgwords, 'ADVERB')
+	
 	return nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions, prepositions, adverbs
 }
 
-// stores all the word lists in one DB schema (vitual DB schema is lists in memory)
+// listdbs stores all the word lists in one DB schema (vitual DB schema is lists in memory)
 pub fn listdbs(mpgwords structs.Mpgwords, nouns structs.Mpgwords, verbs structs.Mpgwords, adjectives structs.Mpgwords,
 	pronouns structs.Mpgwords, determiners structs.Mpgwords, interjections structs.Mpgwords,
 	conjunctions structs.Mpgwords, prepositions structs.Mpgwords, adverbs structs.Mpgwords ) structs.MpgListstore {

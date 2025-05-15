@@ -5,7 +5,7 @@ import structs
 import vlibrary
 //import math
 
-// code for monorhyme
+// couplet code for monorhyme
 pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
 	mut templates := [][]string{}
 	for template in meter_templates {
@@ -23,7 +23,7 @@ pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, li
 }
 
 
-// genpoems generates the poem lines from the model model metadata
+// couplet_gen genpoems generates the poem lines from the model model metadata
 // according to the poem meter template selected for the poem type
 pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) ![][]string {
 	mut allpoems := [][]string{}

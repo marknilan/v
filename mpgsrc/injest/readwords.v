@@ -5,7 +5,7 @@ import structs
 import os
 import encoding.csv
 
-// gets the mpgwords loaded into memory
+// get_words gets the mpgwords loaded into memory
 pub fn get_words(mpgwordspath string) structs.Mpgwords {
 	mut mpgline := structs.Mpgline{}
 	mut mpgwords := structs.Mpgwords{}
@@ -32,7 +32,7 @@ pub fn get_words(mpgwordspath string) structs.Mpgwords {
 	return mpgwords
 }
 
-// gets meter (sentence) templates
+// getmtrtempl gets meter (sentence) templates
 pub fn getmtrtempl(mtrtmplpath string) [][]string {
 	// mut meter_templates := [][]string{}
 	mut meter_templates := [][]string{}
@@ -47,7 +47,7 @@ pub fn getmtrtempl(mtrtmplpath string) [][]string {
 	return meter_templates
 }
 
-// gets rhyming root data
+// getrhymeroots gets rhyming root data
 pub fn getrhymeroots(rrdata string) structs.MpgRroots{
 	mut mpgrrline := structs.MpgRrline{}
 	mut mpgrroots := structs.MpgRroots{}
@@ -62,5 +62,6 @@ pub fn getrhymeroots(rrdata string) structs.MpgRroots{
 		mpgrrline.wrdsuffix = line_data[1]
 		mpgrroots.rhymearray << mpgrrline
 	}
+	
     return mpgrroots
 }

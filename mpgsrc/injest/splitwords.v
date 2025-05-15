@@ -3,7 +3,7 @@ module injest
 // mpg mpgsrc injest splitwords.v
 import structs
 
-// splits mpgwords into word types
+// make_wrd_list splits mpgwords into word types
 pub fn make_wrd_list(mpgwords structs.Mpgwords, wordtype string) structs.Mpgwords {
 	mut newlist := structs.Mpgwords{}
 	for mpgwordarr in mpgwords.mpgwordarr {
@@ -14,7 +14,7 @@ pub fn make_wrd_list(mpgwords structs.Mpgwords, wordtype string) structs.Mpgword
 	return newlist
 }
 
-// counts word lists creates maximum index sizes for later loops
+// make_list_counts counts word lists creates maximum index sizes for later loops
 pub fn make_list_counts(listdbs structs.MpgListstore) structs.Mpgcounts {
 	mpgcounts := structs.Mpgcounts{
 		mpgcount: listdbs.mpgwords.mpgwordarr.len
