@@ -22,8 +22,6 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 	return true
 }
 
-// NEEDS WORK ON THE J == 0 step and look inside K - remove extra line
-
 // ron_gen generates the poem lines from the poem type model metadata
 // each line according to the poem meter templates collected for the poem type
 pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) ![][]string {
@@ -57,12 +55,12 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 				} 
 				// always line 3 rhymes with line 1 (index start = 0 remember)
 				if k == 2 {                
-				   println('line ${k.str()} lastrhyme IS ${lastrhyme[0]} LINE IS ${tmpline} before change')	
+				   //println('line ${k.str()} lastrhyme IS ${lastrhyme[0]} LINE IS ${tmpline} before change')	
                    tmpline = compare_rhymes(mut tmpline, lastrhyme[0], listdbs)! 
 				}
 				//always line 4 rhymes with line 2 (index start = 0 remember)
 				if k == 3 {                
-				   println('line ${k.str()} lastrhyme IS ${lastrhyme[1]} LINE IS ${tmpline} before change')	
+				   //println('line ${k.str()} lastrhyme IS ${lastrhyme[1]} LINE IS ${tmpline} before change')	
                    tmpline = compare_rhymes(mut tmpline, lastrhyme[1], listdbs)! 
 				} 
 				// the refrain on each stanza last line except the first
