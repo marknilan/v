@@ -1,0 +1,42 @@
+From raw postgres install after linux mint setup
+================================================
+
+1. Make the postgres admin user safe as follows:
+
+    sudo -u postgres psql postgres
+
+    # \password postgres
+
+    Enter new password:
+
+2. Create the MPG database as follows:
+
+    sudo -u postgres psql
+    psql (16.9 (Ubuntu 16.9-0ubuntu0.24.04.1))
+    Type "help" for help.
+        postgres=# createuser mpguser
+        postgres-# createdb mpgdb
+        postgres-# alter user mpguser with encypted password 'Pigdog_02'
+        postgres-# grant all privileges on database mpgdb to mpguser
+
+3. list DB's
+    \l
+                                                       List of databases
+   Name    |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
+-----------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
+ postgres  | postgres | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           | 
+
+4. DDL
+
+-- DROP TABLE mpg.mpgline;
+
+CREATE TABLE mpg.mpgline (
+	wordidx int4 NULL,
+	theword varchar(50) NULL,
+	sylcnt int4 NULL,
+	foot varchar(20) NULL,
+	wordtype varchar(20) NULL,
+	feet varchar(20) NULL,
+	beatcnt int4 NULL
+);
+
