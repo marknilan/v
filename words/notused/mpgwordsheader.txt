@@ -1,0 +1,1 @@
+wordidx,theword,sylcnt,foot,wordtype,feet,beatcnt 
