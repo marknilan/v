@@ -7,6 +7,9 @@ import poemcode
 
 // runmpg runs the mpg program
 pub fn runmpg() bool {
+	//paths for input and output
+	mpgpaths := startup.getpaths()
+	println('MPG paths are as follows: \n${mpgpaths}')	
 	// toml program configuration
 	cfgfile, runmode := startup.read_parms()
 	// type of poems to be modelled or generated

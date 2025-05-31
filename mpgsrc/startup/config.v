@@ -5,6 +5,8 @@ module startup
 import toml
 import structs
 
+import vlibrary
+
 // config is the main configuration of the program. It uses the supplied TOML format file
 pub fn config(cfgfile string,runmode string) structs.Poem {	
 	println('MPG was called in mode: ${runmode} with TOML file: ${cfgfile} \n')
@@ -32,5 +34,25 @@ fn conv_toml_arr(ta []toml.Any) []int {
 	}
 
 	return na
+}
+
+pub fn getpaths() structs.MpgPaths {
+
+    mut inp := ''
+	mut oup := ''
+    os := vlibrary.find_os()
+	if os == 'windows' {
+		inp = 'c:\\users\\mandoable\\projects\\v\\mpg\\' 
+		oup = 'c:\\temp\\' 
+	} else {
+		   inp = '/home/mark/projects/v/mpg/'
+		   oup = '/tmp/'
+	       }
+	mpgpaths := structs.MpgPaths{
+	    inpath: inp
+	    outpath: oup
+		}
+	
+	return mpgpaths
 }
 
