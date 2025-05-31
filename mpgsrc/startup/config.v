@@ -41,11 +41,12 @@ pub fn getpaths() structs.MpgPaths {
     mut inp := ''
 	mut oup := ''
     os := vlibrary.find_os()
-	if os == 'windows' {
-		inp = 'c:\\users\\mandoable\\projects\\v\\mpg\\' 
+	println('os is ${os}')
+	if os == 'Windows' {
+		inp = 'c:\\users\\mando\\projects\\v\\words\\' 
 		oup = 'c:\\temp\\' 
 	} else {
-		   inp = '/home/mark/projects/v/mpg/'
+		   inp = '/home/mark/projects/v/mpg/words/'
 		   oup = '/tmp/'
 	       }
 	mpgpaths := structs.MpgPaths{

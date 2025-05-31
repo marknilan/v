@@ -7,8 +7,8 @@ import vlibrary
 import os
 
 // run_generate calls model functions to generate poems to an output file
-pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
-	outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, '.txt')
+pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore,mpgpaths structs.MpgPaths) bool {
+	outfile := mpgpaths.outpath + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
 	println('\nPoem generation for poem type ${poem.poemtype} to ${outfile} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
