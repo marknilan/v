@@ -6,18 +6,18 @@ import vlibrary
 import math
 
 // run_model calls model functions to display poem model to screen
-pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore) bool {
+pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore,tmpdir string) bool {
 	println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
 		'rondeau' {
-			rondeau(poem, runmode, meter_templates, listdbs)
+			rondeau(poem, runmode, meter_templates, listdbs,tmpdir)
 		}
 		'iambpent' {
-			iambpent(poem, runmode, meter_templates, listdbs)
+			iambpent(poem, runmode, meter_templates, listdbs,tmpdir)
 		}
 		'couplet' {
-			couplet(poem, runmode, meter_templates, listdbs)
+			couplet(poem, runmode, meter_templates, listdbs,tmpdir)
 		}
 		else {
 			improper_poem_msg(' No poem template')
