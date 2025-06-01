@@ -2,7 +2,6 @@ module main
 
 // mpg src main.v
 // mpg compile entry point
-
 import mpgsrc
 import vlibrary
 import time
