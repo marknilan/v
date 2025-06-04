@@ -3,7 +3,6 @@ module poemcode
 // mpg mpgsrc poemcode generate.v
 import structs
 import vlibrary
-//import math
 import os
 
 // run_generate calls model functions to generate poems to an output file
@@ -28,7 +27,6 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 
 	return true
 }
-
 
 // writepoems writes out to tmp file the generated poems
 fn writepoems(allpoems [][]string, opath string, poem structs.Poem) bool {

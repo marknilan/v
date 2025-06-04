@@ -93,10 +93,4 @@ pub mut:
     beat int
     templateline []string     
 }
-
-//ProgPaths is a struct holding the incoming and outgoing data paths
-pub struct MpgPaths {
-pub mut:
-    inpath string
-    outpath string
-}  
+ 

@@ -72,7 +72,7 @@ fn idxhunt(idx int, wrd string, listdbs structs.MpgListstore) []string {
 }
 
 // wrdhunt breaks down the last word in the current processed line template
-// as a suffix. I reduces the word character by character until minimum sylable length
+// as a suffix. It reduces the word character by character until minimum sylable length
 // of (3). It does that until a close rhyming match is found. Each match is then loaded into
 // a match array. Then a random choice is made from that match array giving the rhyme index
 // which is then used to fetch the rhymed word. It is placed back on the last word of the
@@ -97,17 +97,19 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 				for mpgwordarr in listdbs.mpgwords.mpgwordarr {
 					maxbk := math.min(mpgwordarr.theword.len, i)
 					tw := mpgwordarr.theword.trim(' ')
+					//if the substring matches the rhyming suffix BUT not the 
+					//exact whole word match then keep the word
 					if tw[tw.len - maxbk..tw.len] == suffix && !(tw == suffix) {
 						rhymed << tw
 						found = true
-						//println('matched ${tw} to ${suffix} ')
+						//got a rhyming word
 						break
 					}
 				}
 				// ok at this point neither (3 char min) suffix phonix nor soundex has matched
-				// use a distance match instead, last resort
+				// use a distance match instead, this is a last resort labelled with (l)
 				if !found {
-					// levenshtein fallback
+					//levenshtein word distance fallback not ideal
 					closest := get_distance(suffix, listdbs)
 					if !(closest == '') {
 						rhymed << closest + ' (l)'

@@ -45,16 +45,15 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
 				tmpline = get_random_wrds(templates[ln], listdbs)!
+				//if the currently processing line is marked as a rhyming line
 				if k in poem.rhyme {
+					//not the first line obviously. now make a rhyme
 					if !(k == 0) {
-						 //println('line ${k.str()} WAS ${tmpline}')	
 						tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
-						//println('line ${k.str()} NOW ${tmpline}')	
 					}
-					//println('line ${k.str()} lastrhyme IS ${lastrhyme} LINE IS ${tmpline}')
+					// keep the last rhyming word
 					lastrhyme = tmpline[tmpline.len - 1]
 				} else {
-					//println('line ${k.str()} NON RHYMED LINE IS ${tmpline} but has lastrhyme = ${lastrhyme}')
 				}
 				allpoems << tmpline
 				lprinted++

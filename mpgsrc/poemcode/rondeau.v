@@ -47,20 +47,17 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 				if j == 0 && linerep.len == 0 {
 					// first line of first stanza - collect the refrain
 					linerep = tmpline[0..math.max((templates[ln].len / 3), 2)].clone()
-					// println('linerep at line ${k.str()} IS ${linerep}')								
 				}
+				// is this a rhyming line? then keep the last word as a rhyme future match
 				if k in poem.rhyme {				    
 					lastrhyme << tmpline[tmpline.len - 1]					
-					//println('poem.rhym in clause point line ${k.str()} lastrhyme IS ${lastrhyme[k]} LINE IS ${tmpline}')	
 				} 
 				// always line 3 rhymes with line 1 (index start = 0 remember)
 				if k == 2 {                
-				   //println('line ${k.str()} lastrhyme IS ${lastrhyme[0]} LINE IS ${tmpline} before change')	
                    tmpline = compare_rhymes(mut tmpline, lastrhyme[0], listdbs)! 
 				}
 				//always line 4 rhymes with line 2 (index start = 0 remember)
 				if k == 3 {                
-				   //println('line ${k.str()} lastrhyme IS ${lastrhyme[1]} LINE IS ${tmpline} before change')	
                    tmpline = compare_rhymes(mut tmpline, lastrhyme[1], listdbs)! 
 				} 
 				// the refrain on each stanza last line except the first
