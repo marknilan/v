@@ -108,6 +108,8 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 				}
 				// ok at this point neither (3 char min) suffix phonix nor soundex has matched
 				// use a distance match instead, this is a last resort labelled with (l)
+				// because the word chosen by closest distance is not necessarily same type of 
+				// word demanded by the original template.
 				if !found {
 					//levenshtein word distance fallback not ideal
 					closest := get_distance(suffix, listdbs)

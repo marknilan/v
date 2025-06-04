@@ -32,6 +32,7 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 	mut linerep := []string{}
 	mut tmpline := []string{}
 	mut lastrhyme := []string{}	
+	beatmax := poem.bpl
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
 	// number of poems
 	for i := 0; i < poem.nop; i++ {
@@ -43,7 +44,7 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline = get_random_wrds(templates[ln], listdbs)!
+				tmpline = get_random_wrds(templates[ln], listdbs, beatmax)!
 				if j == 0 && linerep.len == 0 {
 					// first line of first stanza - collect the refrain
 					linerep = tmpline[0..math.max((templates[ln].len / 3), 2)].clone()
