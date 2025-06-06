@@ -1,7 +1,7 @@
 [Poem] 
    poemtype = 'iambpent'
    nop = 4
-   bpl = 5
+   bpl = 7
    tmpl = "mud"
    meter = "iambpent"
    lpp = 14

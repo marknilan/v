@@ -3,6 +3,7 @@ module poemcode
 // mpg mpgsrc poemcode lstdbproc.v
 import structs
 import vlibrary
+import math
 
 // lookuplist delivers a random word from a specific listdb given a word type
 fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !string {
@@ -19,45 +20,46 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !s
 }
 
 // get_random_wrds given a meter template, this delivers back a string array of actual random words
-fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int) ![]string {
+fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int) !([]string, int) {
 	mut wrdline := []string{}
 	mut wrd := ''
+	mut bm := beatmax
 	for wordtype in template {
 		match wordtype.trim(' ') {
 			'NOUN' {
-				wrd = lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt, beatmax)!
 				wrdline << wrd
 			}
 			'VERB' {
-				wrd = lookuplist(wordtype, listdbs.verbs, listdbs.mpgcounts.verbcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.verbs, listdbs.mpgcounts.verbcnt, beatmax)!
 				wrdline << wrd
 			}
 			'ADJECTIVE' {
-				wrd = lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt, beatmax)!
 				wrdline << wrd
 			}
 			'PRONOUN' {
-				wrd = lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt, beatmax)!
 				wrdline << wrd
 			}
 			'DETERMINER' {
-				wrd = lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt, beatmax)!
 				wrdline << wrd
 			}
 			'INTERJECTION' {
-				wrd = lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt, beatmax)!
 				wrdline << wrd
 			}
 			'CONJUNCTION' {
-				wrd = lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt, beatmax)!
 				wrdline << wrd
 			}
 			'PREPOSITION' {
-				wrd = lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt, beatmax)!
 				wrdline << wrd
 			}
 			'ADVERB' {
-				wrd = lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt,beatmax)!
+				wrd = lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt, beatmax)!
 				wrdline << wrd
 			}
 			' ' {
@@ -74,6 +76,14 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int)
 			}
 		}
 	}
+	bm = findbeatmax(wrdline, listdbs.mpgwords, beatmax) 
+	println('beatmax is now ${bm}')
 
-	return wrdline
+	return wrdline, bm
+}
+
+// findbeatmax reduces beatcount (to a max of zero) for the last word in a poem line
+pub fn findbeatmax(tmpline []string, thelist structs.Mpgwords,beatmax int) int {
+
+	return beatmax - math.max(get_beatcnt(tmpline[tmpline.len - 1], thelist),0)
 }

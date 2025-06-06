@@ -11,15 +11,15 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 	println('\nPoem generation for poem type ${poem.poemtype} to ${outfile} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
-		'rondeau' {
-			rondeau(poem, runmode, meter_templates, listdbs, tmpdir)
-		}
+		//'rondeau' {
+		//	rondeau(poem, runmode, meter_templates, listdbs, tmpdir)
+		//}
 		'iambpent' {
 			iambpent(poem, runmode, meter_templates, listdbs, tmpdir)
 		}
-		'couplet' {
-			couplet(poem, runmode, meter_templates, listdbs, tmpdir)
-		}
+		//'couplet' {
+		//	couplet(poem, runmode, meter_templates, listdbs, tmpdir)
+		//}
 		else {
 			improper_poem_msg(' No poem template')
 		}
