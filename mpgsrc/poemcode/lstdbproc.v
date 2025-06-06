@@ -15,52 +15,106 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !s
 	// get the random word
 	wrd = thelist.mpgwordarr[ln].theword
 	beats := get_beatcnt(wrd, thelist)
-	println('beats for this word are ${beats}') 
+	println('beats for this word are ${beats} beatmax is ${beatmax}')
 	return wrd
 }
 
 // get_random_wrds given a meter template, this delivers back a string array of actual random words
-fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int) !([]string, int) {
+fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int, poem structs.Poem) !([]string, int) {
 	mut wrdline := []string{}
 	mut wrd := ''
 	mut bm := beatmax
+
 	for wordtype in template {
+		if bm < 0 {break}
 		match wordtype.trim(' ') {
 			'NOUN' {
 				wrd = lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt, beatmax)!
-				wrdline << wrd
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.nouns, bm)
+				} else {
+					break
+				}
 			}
 			'VERB' {
 				wrd = lookuplist(wordtype, listdbs.verbs, listdbs.mpgcounts.verbcnt, beatmax)!
-				wrdline << wrd
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.verbs, bm)
+				} else {
+					break
+				}
 			}
 			'ADJECTIVE' {
-				wrd = lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.adjectives, bm)
+				} else {
+					break
+				}
 			}
 			'PRONOUN' {
-				wrd = lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.pronouns, bm)
+				} else {
+					break
+				}
 			}
 			'DETERMINER' {
-				wrd = lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.determiners, bm)
+				} else {
+					break
+				}
 			}
 			'INTERJECTION' {
-				wrd = lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.interjections, bm)
+				} else {
+					break
+				}
 			}
 			'CONJUNCTION' {
-				wrd = lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.conjunctions, bm)
+				} else {
+					break
+				}
 			}
 			'PREPOSITION' {
-				wrd = lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.prepositions, bm)
+				} else {
+					break
+				}
 			}
 			'ADVERB' {
-				wrd = lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt, beatmax)!
-				wrdline << wrd
+				wrd = lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt,
+					beatmax)!
+				if bm >= 0 {
+					wrdline << wrd
+					bm = findbeatmax(wrdline, listdbs.adverbs, bm)
+				} else {
+					break
+				}
 			}
 			' ' {
 				// dunno why these are in the mpgwords CSV - suspect they are last lines of CSV file or empty rows		
@@ -76,14 +130,11 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int)
 			}
 		}
 	}
-	bm = findbeatmax(wrdline, listdbs.mpgwords, beatmax) 
-	//println('beatmax is now ${bm}')
 
 	return wrdline, bm
 }
 
 // findbeatmax reduces beatcount (to a max of zero) for the last word in a poem line
-pub fn findbeatmax(tmpline []string, thelist structs.Mpgwords,beatmax int) int {
-
-	return beatmax - math.max(get_beatcnt(tmpline[tmpline.len - 1], thelist),0)
+fn findbeatmax(tmpline []string, thelist structs.Mpgwords, bm int) int {
+	return bm - math.max(get_beatcnt(tmpline[tmpline.len - 1], thelist), 0)
 }

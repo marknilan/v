@@ -43,7 +43,7 @@ pub fn imb_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline, beatmax = get_random_wrds(templates[ln], listdbs, beatmax)!
+				tmpline, beatmax = get_random_wrds(templates[ln], listdbs, beatmax, poem)!
 				//is this rhyming line then get the rhyming word
 				if k in poem.rhyme {
 					if !(k == 0) {
@@ -52,10 +52,7 @@ pub fn imb_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 					//keep the last word of the line as a rhyming word 
 					lastrhyme = tmpline[tmpline.len - 1]
 				}
-				allpoems << tmpline
-				if beatmax <= 0 {
-					break
-				}  
+				allpoems << tmpline				
 				lprinted++
 				println('beatmax is now ${beatmax}')
 			}

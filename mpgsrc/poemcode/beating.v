@@ -15,7 +15,6 @@ pub fn increment_beat(beat int, beatmax int) int {
 }	
 
 pub fn get_beatcnt(wrd string, thelist structs.Mpgwords) int {
-    
 	mut beats := 0	
 	for mpgline in thelist.mpgwordarr {			  
         if mpgline.theword == wrd {
@@ -23,8 +22,7 @@ pub fn get_beatcnt(wrd string, thelist structs.Mpgwords) int {
 			println('get_beatcnt found ${wrd} with ${beats} beats')
 			break
 	  }	
-	}   
-	
+	}   	
 	
 	return beats
 }
