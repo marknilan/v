@@ -77,7 +77,7 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int)
 		}
 	}
 	bm = findbeatmax(wrdline, listdbs.mpgwords, beatmax) 
-	println('beatmax is now ${bm}')
+	//println('beatmax is now ${bm}')
 
 	return wrdline, bm
 }

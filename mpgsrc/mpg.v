@@ -13,7 +13,7 @@ pub fn runmpg() bool {
 	mut tmpdir := ''
 	// program paths
 	if vlibrary.find_os() == 'Windows' {
-		wrdpath = os.home_dir() + '\\projects\\v\\words\\'
+		wrdpath = os.home_dir() + '\\projects\\v\\mpg\\words\\'
 		tmpdir = 'c:\\temp\\'
 	} else {
 		wrdpath = os.home_dir() + '/projects/v/mpg/words/'

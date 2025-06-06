@@ -53,10 +53,15 @@ pub fn imb_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 					lastrhyme = tmpline[tmpline.len - 1]
 				}
 				allpoems << tmpline
+				if beatmax <= 0 {
+					break
+				}  
 				lprinted++
+				println('beatmax is now ${beatmax}')
 			}
 			lastrhyme = ''
 			allpoems << [' ']
+			beatmax = poem.bpl
 		}
 		allpoems << [' ']
 		allpoems << [' ']
