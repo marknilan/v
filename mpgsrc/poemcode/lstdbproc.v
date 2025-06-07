@@ -11,11 +11,11 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 	
 	//shorten the list by just looking at beat counts randomly selected
      tl := poemcode.subset_by_beat(thelist, beatmax)!
-	
+	println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
 	// makes a random number index for selecting a word from a listdb given its
 	// array length as a ceiling 
 	 
-    ln = vlibrary.mkrndint(u32(tl.mpgwordarr.len))!
+    ln = vlibrary.mkrndint(u32(tl.mpgwordarr.len))! 
 
 	//ln = vlibrary.mkrndint(u32(cn))!
 	// get the random word

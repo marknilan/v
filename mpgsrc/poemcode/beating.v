@@ -5,6 +5,7 @@ module poemcode
 
 import structs
 import vlibrary
+import math
 
 pub fn increment_beat(beat int, beatmax int) int {
 	println('increment_beat called with beat ${beat} and beatmax ${beatmax}')
@@ -28,14 +29,14 @@ pub fn get_beatcnt(wrd string, thelist structs.Mpgwords) int {
 	return beats
 }
 
-// sbhortens a word list by beat count filter
+// shortens a word list by beat count filter
 pub fn subset_by_beat(thelist structs.Mpgwords, beatmax int) !structs.Mpgwords {
 	mut bn := 0
 	mut newlist := structs.Mpgwords{
 		mpgwordarr: []structs.Mpgline{}
 	}
 	for {
-       bn = vlibrary.mkrndint(u32(beatmax))!
+       bn = math.max(vlibrary.mkrndint(u32(beatmax))!,1)
 	   println('bn is calc as ${bn} for beatmax ${beatmax}')
 	   for mpgline in thelist.mpgwordarr {
 		   if mpgline.beatcnt == bn {
@@ -47,6 +48,6 @@ pub fn subset_by_beat(thelist structs.Mpgwords, beatmax int) !structs.Mpgwords {
 	   }   
 	}
 		
-	println('subset_by_beat returning ${newlist.mpgwordarr.len} words with beatcnt = ${bn}')
+	//println('subset_by_beat returning ${newlist.mpgwordarr.len} words with beatcnt = ${bn}')
 	return newlist
 }
