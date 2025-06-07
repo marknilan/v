@@ -1,7 +1,7 @@
 [Poem] 
    poemtype = 'rondeau'
    nop = 3
-   bpl = 5
+   bpl = 6
    tmpl = "mud"
    meter = "rondeau"
    lpp = 15

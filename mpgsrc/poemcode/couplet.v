@@ -33,7 +33,7 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 	// mut linerep := []string{}	
 	mut tmpline := []string{}
 	mut lastrhyme := ''
-	beatmax := poem.bpl
+	mut beatmax := poem.bpl
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
 	// number of poems
 	for i := 0; i < poem.nop; i++ {
@@ -45,7 +45,7 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline = get_random_wrds(templates[ln], listdbs, beatmax)!
+				tmpline, beatmax = get_random_wrds(templates[ln], listdbs, beatmax, poem)!
 				//if the currently processing line is marked as a rhyming line
 				if k in poem.rhyme {
 					//not the first line obviously. now make a rhyme
@@ -58,6 +58,10 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 				}
 				allpoems << tmpline
 				lprinted++
+				if beatmax < 0 {
+//                   println('beatmax is now ${beatmax}')
+				   beatmax = poem.bpl
+				}
 			}
 			lastrhyme = ''
 			allpoems << [' ']

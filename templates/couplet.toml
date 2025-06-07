@@ -1,7 +1,7 @@
 [Poem] 
    poemtype = 'couplet'
    nop = 3
-   bpl = 6
+   bpl = 4
    tmpl = "mud"
    meter = "couplet"
    lpp = 14
