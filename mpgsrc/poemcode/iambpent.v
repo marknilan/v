@@ -52,9 +52,10 @@ pub fn imb_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 					//keep the last word of the line as a rhyming word 
 					lastrhyme = tmpline[tmpline.len - 1]
 				}
+				println('tmpline: ${tmpline}')
 				allpoems << tmpline				
 				lprinted++
-				if beatmax < 0 {
+				if beatmax == 0 {
 //                   println('beatmax is now ${beatmax}')
 				   beatmax = poem.bpl
 				}

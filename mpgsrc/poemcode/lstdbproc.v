@@ -76,8 +76,8 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int,
 		}
 		wrdline << wrd
 		// ok we've exhaused the beats for this line - then exit.
-		if bm < 0 {
-			//println('I am breaking')
+		if bm == 0 {
+			println('I am breaking')
 			break
 		}
 	}
