@@ -22,7 +22,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 	wrd = tl.mpgwordarr[ln].theword
 	beats := tl.mpgwordarr[ln].beatcnt
 	bm := beatmax - beats
-	//println('beats for this word ${wrd} are ${beats} beatmax is now ${bm}')
+	println('beats for this word ${wrd} are ${beats} beatmax is now ${bm}')
 
 	return wrd, bm
 }

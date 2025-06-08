@@ -6,7 +6,7 @@ import vlibrary
 import math
 
 // rondeau code for rondeau type poem
-pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, tmpdir string) bool {
+pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, outfile string) bool {
 	mut templates := [][]string{}
 	for template in meter_templates {
 		if template[0] == 'rondeau' {
@@ -17,7 +17,7 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
 		allpoems := ron_gen(poem, templates, listdbs) or { exit(8) }
-		writepoems(allpoems, 'tmpdir', poem)
+		writepoems(allpoems, outfile, poem)
 	}
 	return true
 }

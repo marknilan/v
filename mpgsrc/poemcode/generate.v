@@ -7,18 +7,18 @@ import os
 
 // run_generate calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, tmpdir string) bool {
-	outfile := '/tmp/' + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
+	outfile := tmpdir + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
 	println('\nPoem generation for poem type ${poem.poemtype} to ${outfile} is as follows: \n ')
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
 		'rondeau' {
-	  	    rondeau(poem, runmode, meter_templates, listdbs, tmpdir)
+	  	    rondeau(poem, runmode, meter_templates, listdbs, outfile)
 		}
 		'iambpent' {
-			iambpent(poem, runmode, meter_templates, listdbs, tmpdir)
+			iambpent(poem, runmode, meter_templates, listdbs, outfile)
 		}
 		'couplet' {
-			couplet(poem, runmode, meter_templates, listdbs, tmpdir)
+			couplet(poem, runmode, meter_templates, listdbs, outfile)
 		}
 		else {
 			improper_poem_msg(' No poem template')
@@ -29,9 +29,11 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 }
 
 // writepoems writes out to tmp file the generated poems
-fn writepoems(allpoems [][]string, opath string, poem structs.Poem) bool {
-	outfile := opath + vlibrary.make_random_filename('mpg', poem.poemtype, 'txt')
-	mut file := os.create(outfile) or { exit(8) }
+fn writepoems(allpoems [][]string, outfile string, poem structs.Poem) bool {
+	mut file := os.create(outfile) or { 
+		println('invalid file name ${outfile}')  
+		exit(8) 
+		}
 	for line in allpoems {
 		ostr := vlibrary.clean_arr_line(line).replace('  ', ' ').to_lower().capitalize()
 		println(ostr)

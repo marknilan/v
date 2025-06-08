@@ -6,7 +6,7 @@ import vlibrary
 //import math
 
 // iambpent is the poem generation code for Iambic Pentameter poems
-pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, tmpdir string) bool {
+pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, outfile string) bool {
 	mut templates := [][]string{}
 	for template in meter_templates {
 		if template[0] == 'iambpent' {
@@ -17,7 +17,7 @@ pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, l
 		showmodel(poem, templates) or { println('Cant show model') }
 	} else {
 		allpoems := imb_gen(poem, templates, listdbs) or { exit(8) }
-		writepoems(allpoems, tmpdir, poem)
+		writepoems(allpoems, outfile, poem)
 	}
 
 	return true
