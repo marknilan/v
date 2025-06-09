@@ -10,7 +10,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 	mut ln := 0
 	
 	//shorten the list by just looking at beat counts randomly selected
-     tl := poemcode.subset_by_beat(thelist, beatmax)!
+    tl := poemcode.subset_by_beat(thelist, beatmax)!
 	println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
 	// makes a random number index for selecting a word from a listdb given its
 	// array length as a ceiling 
@@ -34,7 +34,7 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int,
 	mut bm := beatmax
 	for wordtype in template {
 		match wordtype.trim(' ') {
-			'NOUN' {
+			'NOUN' {				
 				wrd, bm = lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt,bm)!
 			}
 			'VERB' {

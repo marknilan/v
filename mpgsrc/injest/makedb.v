@@ -7,15 +7,15 @@ import structs
 // makelists splits the source data of words into word types
 pub fn makelists(mpgwords structs.Mpgwords) (structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords, structs.Mpgwords ) {
 	// splitting word data by type
-	nouns := make_wrd_list(mpgwords, 'NOUN')
-	verbs := make_wrd_list(mpgwords, 'VERB')
-	adjectives := make_wrd_list(mpgwords, 'ADJECTIVE')
-	pronouns := make_wrd_list(mpgwords, 'PRONOUN')
-	determiners := make_wrd_list(mpgwords, 'DETERMINER')
-	interjections := make_wrd_list(mpgwords, 'INTERJECTION')
-	conjunctions := make_wrd_list(mpgwords, 'CONJUNCTION')
-	prepositions := make_wrd_list(mpgwords, 'PREPOSITION')
-	adverbs := make_wrd_list(mpgwords, 'ADVERB')
+	nouns := make_wrd_list(mpgwords, 'NOUN','WORDTYPE')
+	verbs := make_wrd_list(mpgwords, 'VERB','WORDTYPE')
+	adjectives := make_wrd_list(mpgwords, 'ADJECTIVE','WORDTYPE')
+	pronouns := make_wrd_list(mpgwords, 'PRONOUN','WORDTYPE')
+	determiners := make_wrd_list(mpgwords, 'DETERMINER','WORDTYPE')
+	interjections := make_wrd_list(mpgwords, 'INTERJECTION','WORDTYPE')
+	conjunctions := make_wrd_list(mpgwords, 'CONJUNCTION','WORDTYPE')
+	prepositions := make_wrd_list(mpgwords, 'PREPOSITION','WORDTYPE')
+	adverbs := make_wrd_list(mpgwords, 'ADVERB','WORDTYPE')
 	
 	return nouns, verbs, adjectives, pronouns, determiners, interjections, conjunctions, prepositions, adverbs
 }

@@ -68,7 +68,7 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 					allpoems << tmpline
 				}
 				lprinted++
-				if beatmax < 0 {
+				if beatmax == 0 {
 //                   println('beatmax is now ${beatmax}')
 				   beatmax = poem.bpl
 				}

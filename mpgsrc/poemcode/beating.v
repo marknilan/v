@@ -6,28 +6,7 @@ module poemcode
 import structs
 import vlibrary
 import math
-
-pub fn increment_beat(beat int, beatmax int) int {
-	println('increment_beat called with beat ${beat} and beatmax ${beatmax}')
-	if beat < beatmax {
-		return beat + 1
-	} else {
-		return beatmax
-	}
-}	
-
-pub fn get_beatcnt(wrd string, thelist structs.Mpgwords) int {
-	mut beats := 0	
-	for mpgline in thelist.mpgwordarr {			  
-        if mpgline.theword == wrd {
-			beats = mpgline.beatcnt
-			println('get_beatcnt found ${wrd} with ${beats} beats')
-			break
-	  }	
-	}   	
-	
-	return beats
-}
+//import structs 
 
 // shortens a word list by beat count filter
 pub fn subset_by_beat(thelist structs.Mpgwords, beatmax int) !structs.Mpgwords {
@@ -51,3 +30,49 @@ pub fn subset_by_beat(thelist structs.Mpgwords, beatmax int) !structs.Mpgwords {
 	//println('subset_by_beat returning ${newlist.mpgwordarr.len} words with beatcnt = ${bn}')
 	return newlist
 }
+
+/*
+pub fn subset_by_foot(wrd string, wordtype string, listdbs structs.MpgListstore, poem structs.Poem) structs.Mpgwords {
+	// find the word type
+	mut wordtype := ''
+	mut newlist := structs.Mpgwords{
+		mpgwordarr: []structs.Mpgline{}
+	}
+
+    // subset using just this type of word 
+	match wordtype.trim(' ') {
+			'NOUN' {				
+				newlist = listdbs.nouns
+				newlist = 
+			}
+			'VERB' {
+				newlist = listdbs.verbs
+			}
+			'ADJECTIVE' {
+				newlist = listdbs.adjectives
+			}
+			else {
+				newlist = listdbs.Mpgwords 
+			}
+	}		
+
+
+    mut nl := structs.Mpgwords{
+		mpgwordarr: []structs.Mpgline{}
+	}
+
+
+    
+	//checking is poem requires last word of line to be of particular foot
+	if poem.poemtype = 'iambic' {
+	    for mpgwordarr in newlist.mpgwordarr {
+		    if mpgwordarr.foot == 'iambic' {
+	           nl.mpgwordarr << mpgwordarr
+		    }
+	
+	    }		
+	}	
+ 		
+	
+}
+*/

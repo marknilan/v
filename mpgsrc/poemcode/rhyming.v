@@ -111,7 +111,8 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 				// because the word chosen by closest distance is not necessarily same type of 
 				// word demanded by the original template.
 				if !found {
-					//levenshtein word distance fallback not ideal
+					//levenshtein word distance fallback not ideal as the wordtype and / or foot
+					//it chooses might not be the same as the original random unrhymed word
 					closest := get_distance(suffix, listdbs)
 					if !(closest == '') {
 						rhymed << closest + ' (l)'
