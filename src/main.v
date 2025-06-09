@@ -11,7 +11,7 @@ fn main() {
 	println('MPG  started  at ${time.now()} \n')
 	println('MPG is running on ${vlibrary.find_os()} \n')
 	// runs the MPG application
-	mpgsrc.runmpg()
+	mpgsrc.runmpg()!
 	println('MPG finished  at ${time.now()} \n')
 	exit(0)
 }

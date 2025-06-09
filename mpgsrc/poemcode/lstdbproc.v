@@ -11,7 +11,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 	
 	//shorten the list by just looking at beat counts randomly selected
     tl := poemcode.subset_by_beat(thelist, beatmax)!
-	println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
+	//println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
 	// makes a random number index for selecting a word from a listdb given its
 	// array length as a ceiling 
 	 
@@ -22,7 +22,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 	wrd = tl.mpgwordarr[ln].theword
 	beats := tl.mpgwordarr[ln].beatcnt
 	bm := beatmax - beats
-	println('beats for this word ${wrd} are ${beats} beatmax is now ${bm}')
+	//println('beats for this word ${wrd} are ${beats} beatmax is now ${bm}')
 
 	return wrd, bm
 }
@@ -77,7 +77,7 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int,
 		wrdline << wrd
 		// ok we've exhaused the beats for this line - then exit.
 		if bm == 0 {
-			println('I am breaking')
+			//println('I am breaking')
 			break
 		}
 	}

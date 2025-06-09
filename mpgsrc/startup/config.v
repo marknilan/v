@@ -4,6 +4,8 @@ module startup
 
 import toml
 import structs
+import vlibrary
+import os
 
 
 // config is the main configuration of the program. It uses the supplied TOML format file
@@ -34,4 +36,24 @@ fn conv_toml_arr(ta []toml.Any) []int {
 	return na
 }
 
+pub fn setup_paths() !structs.MpgPaths {
+    
+	mut wrdpath := 'WARNING: missing path'
+    mut tmpdir := 'WARNING missing path'
+	mut templatepath := 'WARNING: missing path'
+   	if vlibrary.find_os() == 'Windows' {
+		wrdpath = os.home_dir() + '\\projects\\v\\mpg\\words\\'
+		tmpdir = 'c:\\temp\\'
+		templatepath = os.home_dir() + '\\projects\\v\\mpg\\templates\\'
+	} else {
+		wrdpath = os.home_dir() + '/projects/v/mpg/words/'
+		tmpdir = '/tmp/'
+		templatepath = os.home_dir() + '/projects/v/mpg/templates/'
+	}
+	return structs.MpgPaths{
+		wrdpath: wrdpath
+		tmpdir: tmpdir
+		templatepath: templatepath
+	}
 
+}

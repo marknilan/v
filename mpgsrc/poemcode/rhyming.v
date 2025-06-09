@@ -6,6 +6,7 @@ import structs
 import math
 import vlibrary
 import strings
+import arrays
 
 // compare_rhymes finds the word rhyming with the last rhyme in mpgwords List DB
 // it calls functs to decrementally find rhyming sylables using phonics and soundex
@@ -44,7 +45,7 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 		if smpidx > holdarr.len {
 			break
 		} else {
-			rhymed = wrdhunt(holdarr, listdbs)
+			rhymed = wrdhunt(mut holdarr, listdbs)!
 			ln := vlibrary.mkrndint(u32(rhymed.len))! // ERROR HERE on first iteration
 			// println('replacement word is ${rhymed[ln]}')
 			tl[tl.len - 1] = rhymed[ln]
@@ -57,7 +58,7 @@ fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgLis
 	return tl
 }
 
-// idxhunt finds the index of a rhyming suffix using a list feched from PHONICS and SOUNDEX
+// idxhunt finds the index of a rhyming suffix using a list fetched from PHONICS and SOUNDEX
 fn idxhunt(idx int, wrd string, listdbs structs.MpgListstore) []string {
 	mut mtch := []string{}
 	mtch << wrd
@@ -77,7 +78,7 @@ fn idxhunt(idx int, wrd string, listdbs structs.MpgListstore) []string {
 // a match array. Then a random choice is made from that match array giving the rhyme index
 // which is then used to fetch the rhymed word. It is placed back on the last word of the
 // process line template before given back to the caller as a newline.
-fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
+fn wrdhunt(mut holdarr []string, listdbs structs.MpgListstore) ![]string {
 	mut longest_rhyme := 0
 	// gets the longest word in rhyming roots to act as a length
 	// criteria for matching
@@ -90,8 +91,11 @@ fn wrdhunt(holdarr []string, listdbs structs.MpgListstore) []string {
 	// levenshtein matching.
 	mut rhymed := []string{}
 	mut found := true
+
 	for i := longest_rhyme - 1; i > 2; i -= 2 {
 		found = false
+		ln := math.min(vlibrary.mkrndint(u32(holdarr.len))!,i)
+		arrays.rotate_right(mut holdarr, ln)
 		for suffix in holdarr {
 			if suffix.len == i {
 				for mpgwordarr in listdbs.mpgwords.mpgwordarr {

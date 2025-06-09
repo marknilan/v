@@ -94,3 +94,10 @@ pub mut:
     templateline []string     
 }
  
+// MpgPaths struct holds the paths to the various files used by mpg
+pub struct MpgPaths {
+pub mut:    
+    wrdpath string
+    tmpdir string
+    templatepath string
+}
