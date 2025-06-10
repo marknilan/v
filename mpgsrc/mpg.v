@@ -1,3 +1,4 @@
+//mpgsrc is the MPG application specific V language mainline
 module mpgsrc
 
 // mpg mpgsrc mpg.v
@@ -5,7 +6,7 @@ import startup // all things parm and config
 import injest // all things incoming data
 import poemcode // all things poem generation
 
-// runmpg runs the mpg program
+//runmpg runs the mpg program
 pub fn runmpg() !bool {
 	// paths for program
 	mpgpaths := startup.setup_paths()! 
