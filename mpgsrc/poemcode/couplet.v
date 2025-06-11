@@ -3,6 +3,8 @@ module poemcode
 // mpg mpgsrc poemcode monorhyme.v
 import structs
 import vlibrary
+import rhymebeat
+import proveout 
 //import math
 
 // couplet code for monorhyme
@@ -14,10 +16,10 @@ pub fn couplet(poem structs.Poem, runmode string, meter_templates [][]string, li
 		}
 	}
 	if runmode.to_lower() in ['m', '-m'] {
-		showmodel(poem, templates) or { println('Cant show model') }
+		proveout.showmodel(poem, templates) or { println('Cant show model') }
 	} else {
 		allpoems := couplet_gen(poem, templates, listdbs) or { exit(8) }
-		writepoems(allpoems, outfile, poem)
+		proveout.writepoems(allpoems, outfile, poem)
 	}
 	return true
 }
@@ -45,12 +47,12 @@ pub fn couplet_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgL
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline, beatmax = get_random_wrds(templates[ln], listdbs, beatmax, poem)!
+				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax, poem)!
 				//if the currently processing line is marked as a rhyming line
 				if k in poem.rhyme {
 					//not the first line obviously. now make a rhyme
 					if !(k == 0) {
-						tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
+						tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme, listdbs)!
 					}
 					// keep the last rhyming word
 					lastrhyme = tmpline[tmpline.len - 1]

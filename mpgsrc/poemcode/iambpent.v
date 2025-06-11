@@ -3,6 +3,8 @@ module poemcode
 // mpg mpgsrc poemcode iambpent.v
 import structs
 import vlibrary
+import rhymebeat
+import proveout
 //import math
 
 // iambpent is the poem generation code for Iambic Pentameter poems
@@ -14,10 +16,10 @@ pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, l
 		}
 	}
 	if runmode.to_lower() in ['m', '-m'] {
-		showmodel(poem, templates) or { println('Cant show model') }
+		proveout.showmodel(poem, templates) or { println('Cant show model') }
 	} else {
 		allpoems := imb_gen(poem, templates, listdbs) or { exit(8) }
-		writepoems(allpoems, outfile, poem)
+		proveout.writepoems(allpoems, outfile, poem)
 	}
 
 	return true
@@ -43,11 +45,11 @@ pub fn imb_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline, beatmax = get_random_wrds(templates[ln], listdbs, beatmax, poem)!
+				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax, poem)!
 				//is this rhyming line then get the rhyming word
 				if k in poem.rhyme {
 					if !(k == 0) {
-						tmpline = compare_rhymes(mut tmpline, lastrhyme, listdbs)!
+						tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme, listdbs)!
 					}
 					//keep the last word of the line as a rhyming word 
 					lastrhyme = tmpline[tmpline.len - 1]

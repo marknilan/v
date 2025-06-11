@@ -2,9 +2,9 @@
 module mpgsrc
 
 // mpg mpgsrc mpg.v
-import startup // all things parm and config
-import injest // all things incoming data
-import poemcode // all things poem generation
+import startup // all mpg parm and config
+import injest // all mpg incoming data
+import modelgen // all poem modelling and generation
 
 //runmpg runs the mpg program
 pub fn runmpg() !bool {
@@ -37,11 +37,11 @@ pub fn runmpg() !bool {
 	}
 	// displays models
 	if runmode.to_lower() in ['-m', 'm'] {
-		poemcode.run_model(poem, runmode, meter_templates, listdbs, mpgpaths.tmpdir)
+		modelgen.run_model(poem, runmode, meter_templates, listdbs, mpgpaths.tmpdir)
 	}
 	// generates poems from models
 	if runmode.to_lower() in ['-g', 'g'] {
-		poemcode.run_generate(poem, runmode, meter_templates, listdbs, mpgpaths.tmpdir)
+		modelgen.run_generate(poem, runmode, meter_templates, listdbs, mpgpaths.tmpdir)
 	}
 
 	return true

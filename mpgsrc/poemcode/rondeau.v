@@ -5,6 +5,8 @@ module poemcode
 import structs
 import vlibrary
 import math
+import rhymebeat 
+import proveout
 
 // rondeau code for rondeau type poem
 pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, outfile string) bool {
@@ -15,10 +17,10 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 		}
 	}
 	if runmode.to_lower() in ['m', '-m'] {
-		showmodel(poem, templates) or { println('Cant show model') }
+		proveout.showmodel(poem, templates) or { println('Cant show model') }
 	} else {
 		allpoems := ron_gen(poem, templates, listdbs) or { exit(8) }
-		writepoems(allpoems, outfile, poem)
+		proveout.writepoems(allpoems, outfile, poem)
 	}
 	return true
 }
@@ -45,7 +47,7 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline, beatmax = get_random_wrds(templates[ln], listdbs, beatmax, poem)!
+				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax, poem)!
 				if j == 0 && linerep.len == 0 {
 					// first line of first stanza - collect the refrain
 					linerep = tmpline[0..math.max((templates[ln].len / 3), 2)].clone()
@@ -56,11 +58,11 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 				} 
 				// always line 3 rhymes with line 1 (index start = 0 remember)
 				if k == 2 {                
-                   tmpline = compare_rhymes(mut tmpline, lastrhyme[0], listdbs)! 
+                   tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme[0], listdbs)! 
 				}
 				//always line 4 rhymes with line 2 (index start = 0 remember)
 				if k == 3 {                
-                   tmpline = compare_rhymes(mut tmpline, lastrhyme[1], listdbs)! 
+                   tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme[1], listdbs)! 
 				} 
 				// the refrain on each stanza last line except the first
 				if k == lps - 1 && !(j == 0) {

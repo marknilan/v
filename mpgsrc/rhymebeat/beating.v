@@ -1,6 +1,6 @@
-module poemcode
+module rhymebeat
 
-// mpg mpgsrc poemcode beating.v
+// mpg mpgsrc rhymebeat beating.v
 // contains code for beats processing
 
 import structs

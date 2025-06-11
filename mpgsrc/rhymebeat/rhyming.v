@@ -1,4 +1,4 @@
-module poemcode
+module rhymebeat
 
 // mpg mpgsrc poemcode rhyming.v
 // contains code for ryhming processing
@@ -10,7 +10,7 @@ import arrays
 
 // compare_rhymes finds the word rhyming with the last rhyme in mpgwords List DB
 // it calls functs to decrementally find rhyming sylables using phonics and soundex
-fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgListstore) ![]string {
+pub fn compare_rhymes(mut theline []string, lastrhyme string, listdbs structs.MpgListstore) ![]string {
 	mut rhymed := []string{}
 	mut tl := theline.clone()
 	// println('tl was ${tl}')

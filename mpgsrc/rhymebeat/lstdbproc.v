@@ -1,6 +1,6 @@
-module poemcode
+module rhymebeat
 
-// mpg mpgsrc poemcode lstdbproc.v
+// mpg mpgsrc rhymebeat lstdbproc.v
 import structs
 import vlibrary
 import errors
@@ -11,7 +11,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 	mut ln := 0
 	
 	//shorten the list by just looking at beat counts randomly selected
-    tl := poemcode.subset_by_beat(thelist, beatmax)!
+    tl := rhymebeat.subset_by_beat(thelist, beatmax)!
 	//println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
 	// makes a random number index for selecting a word from a listdb given its
 	// array length as a ceiling 
@@ -29,7 +29,7 @@ fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(
 }
 
 // get_random_wrds given a meter template, this delivers back a string array of actual random words
-fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int, poem structs.Poem) !([]string, int) {
+pub fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int, poem structs.Poem) !([]string, int) {
 	mut wrdline := []string{}
 	mut wrd := ''
 	mut bm := beatmax

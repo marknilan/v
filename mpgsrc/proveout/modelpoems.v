@@ -1,36 +1,12 @@
-module poemcode
+module proveout
 
-// mpg mpgsrc poemcode model.v
 import structs
 import vlibrary
 import math
-import errors
-
-// run_model calls model functions to display poem model to screen
-pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore,tmpdir string) bool {
-	println('\nPoem model for poem type ${poem.poemtype} is as follows: \n ')
-	// gotta have one of the programs in the poem module for each type
-	match poem.poemtype {
-		'rondeau' {
-			rondeau(poem, runmode, meter_templates, listdbs,tmpdir)
-		}
-		'iambpent' {
-			iambpent(poem, runmode, meter_templates, listdbs,tmpdir)
-		}
-		'couplet' {
-			couplet(poem, runmode, meter_templates, listdbs,tmpdir)
-		}
-		else {
-			errors.improper_poem_msg(' No poem template')
-		}
-	}
-
-	return true
-}
 
 // showmodel displays the model metadata to the screen using the poem meter
 // template selected for the poem type
-fn showmodel(poem structs.Poem, templates [][]string) !bool {
+pub fn showmodel(poem structs.Poem, templates [][]string) !bool {
 	mut lps := poem.lpp / poem.stnz
 	mut lprinted := 1
 	// model for poems displayed
