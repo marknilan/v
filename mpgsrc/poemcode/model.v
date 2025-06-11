@@ -4,6 +4,7 @@ module poemcode
 import structs
 import vlibrary
 import math
+import errors
 
 // run_model calls model functions to display poem model to screen
 pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore,tmpdir string) bool {
@@ -20,22 +21,11 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 			couplet(poem, runmode, meter_templates, listdbs,tmpdir)
 		}
 		else {
-			improper_poem_msg(' No poem template')
+			errors.improper_poem_msg(' No poem template')
 		}
 	}
 
 	return true
-}
-
-// improper_poem_msg used for various improper calls by the user
-// NOTE: used by GEN and MODEL
-fn improper_poem_msg(localmsg string) {
-	println('${localmsg}')
-	expected_call := ('MPG expects to be run with a known poem template: 
-	           examples: "rondeau" or "freeform" etc
-	           you can set that template in the TOML file used in the call to MPG')
-	println(expected_call.replace('\n\t', '\n'))
-	exit(0)
 }
 
 // showmodel displays the model metadata to the screen using the poem meter

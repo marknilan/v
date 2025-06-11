@@ -1,3 +1,4 @@
+//poemcode is a V module containing all V code relating to poem generation and modelling
 module poemcode
 
 // mpg mpgsrc poemcode rondeau.v

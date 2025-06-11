@@ -3,6 +3,7 @@ module poemcode
 // mpg mpgsrc poemcode lstdbproc.v
 import structs
 import vlibrary
+import errors
 
 // lookuplist delivers a random word from a specific listdb given a word type
 fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(string, int) {
@@ -70,7 +71,7 @@ fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax int,
 				continue
 			}
 			else {
-				improper_poem_msg(' Non-valid word TYPE found was ${wordtype}')
+				errors.improper_poem_msg(' Non-valid word TYPE found was ${wordtype}')
 				exit(8)
 			}
 		}

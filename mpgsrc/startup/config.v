@@ -6,12 +6,16 @@ import toml
 import structs
 import vlibrary
 import os
+import errors
 
 
 // config is the main configuration of the program. It uses the supplied TOML format file
 pub fn config(cfgfile string,runmode string) structs.Poem {	
 	println('MPG was called in mode: ${runmode} with TOML file: ${cfgfile} \n')
-	doc := toml.parse_file(cfgfile) or { panic(err) }	
+	doc := toml.parse_file(cfgfile) or { 		
+        errors.file_access_error('READ', 'TOML file structure error', cfgfile)   
+		exit(8)		
+	}
 	localpoem := structs.Poem{
 		   poemtype: doc.value('Poem.poemtype').string()
 	       nop: doc.value('Poem.nop').int()

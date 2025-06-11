@@ -4,6 +4,7 @@ module poemcode
 import structs
 import vlibrary
 import os
+import errors
 
 // run_generate calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, tmpdir string) bool {
@@ -21,7 +22,7 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 			couplet(poem, runmode, meter_templates, listdbs, outfile)
 		}
 		else {
-			improper_poem_msg(' No poem template')
+			errors.improper_poem_msg(' No poem template')
 		}
 	}
 
@@ -31,8 +32,8 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 // writepoems writes out to tmp file the generated poems
 fn writepoems(allpoems [][]string, outfile string, poem structs.Poem) bool {
 	mut file := os.create(outfile) or { 
-		println('invalid file name ${outfile}')  
-		exit(8) 
+		errors.file_access_error('WRITE', 'MPG file access Error', outfile)
+		exit(8)
 		}
 	for line in allpoems {
 		ostr := vlibrary.clean_arr_line(line).replace('  ', ' ').to_lower().capitalize()
