@@ -3,5 +3,11 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"v-analyzer.customVrootPath": "/home/mark/v",
+		"v-analyzer.serverPath": "/home/mark/.config/v-analyzer/bin/v-analyzer",
+		"v.executablePath": "/home/mark/v",
+		"v-analyzer.tcpMode.port": 5007
+	}
 }

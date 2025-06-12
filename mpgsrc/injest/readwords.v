@@ -48,10 +48,10 @@ pub fn getmtrtempl(mtrtmplpath string) [][]string {
 }
 
 // getrhymeroots gets rhyming root data
-pub fn getrhymeroots(rrdata string) structs.MpgRroots{
+pub fn getrhymeroots(rrdata string) structs.MpgRroots {
 	mut mpgrrline := structs.MpgRrline{}
 	mut mpgrroots := structs.MpgRroots{}
-    content := os.read_file(rrdata) or { exit(8) } // guard fname exists but no read access
+	content := os.read_file(rrdata) or { exit(8) } // guard fname exists but no read access
 	mut reader := csv.new_reader(content)
 	for {
 		line_data := reader.read() or { break }
@@ -62,6 +62,6 @@ pub fn getrhymeroots(rrdata string) structs.MpgRroots{
 		mpgrrline.wrdsuffix = line_data[1]
 		mpgrroots.rhymearray << mpgrrline
 	}
-	
-    return mpgrroots
+
+	return mpgrroots
 }

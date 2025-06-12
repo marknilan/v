@@ -91,32 +91,32 @@ fn wrdhunt(mut holdarr []string, listdbs structs.MpgListstore) ![]string {
 	// levenshtein matching.
 	mut rhymed := []string{}
 	mut found := true
-
-	for i := longest_rhyme - 1; i > 2; i -= 2 {
+	// countdown suffix trying the longest rhyme first eg. 7-6-5-4 etc
+	for i := longest_rhyme - 1; i > 1; i -= 2 {
 		found = false
-		ln := math.min(vlibrary.mkrndint(u32(holdarr.len))!,i)
+		ln := math.min(vlibrary.mkrndint(u32(holdarr.len))!, i)
 		arrays.rotate_right(mut holdarr, ln)
 		for suffix in holdarr {
 			if suffix.len == i {
 				for mpgwordarr in listdbs.mpgwords.mpgwordarr {
 					maxbk := math.min(mpgwordarr.theword.len, i)
 					tw := mpgwordarr.theword.trim(' ')
-					//if the substring matches the rhyming suffix BUT not the 
-					//exact whole word match then keep the word
+					// if the substring matches the rhyming suffix BUT not the
+					// exact whole word match then keep the word
 					if tw[tw.len - maxbk..tw.len] == suffix && !(tw == suffix) {
 						rhymed << tw
 						found = true
-						//got a rhyming word
+						// got a rhyming word
 						break
 					}
 				}
 				// ok at this point neither (3 char min) suffix phonix nor soundex has matched
 				// use a distance match instead, this is a last resort labelled with (l)
-				// because the word chosen by closest distance is not necessarily same type of 
+				// because the word chosen by closest distance is not necessarily same type of
 				// word demanded by the original template.
 				if !found {
-					//levenshtein word distance fallback not ideal as the wordtype and / or foot
-					//it chooses might not be the same as the original random unrhymed word
+					// levenshtein word distance fallback not ideal as the wordtype and / or foot
+					// it chooses might not be the same as the original random unrhymed word
 					closest := get_distance(suffix, listdbs)
 					if !(closest == '') {
 						rhymed << closest + ' (l)'
@@ -142,7 +142,7 @@ fn get_distance(wrd string, listdbs structs.MpgListstore) string {
 		d := strings.levenshtein_distance_percentage(wrd.trim(' '), mpgwordarr.theword.trim(' '))
 		if d > best && !(wrd.trim(' ') == mpgwordarr.theword.trim(' ')) {
 			best = d
-			//println('d was ${d}, wrd was ${wrd}, theword was ${mpgwordarr.theword}')
+			// println('d was ${d}, wrd was ${wrd}, theword was ${mpgwordarr.theword}')
 			closest = mpgwordarr.theword.trim(' ')
 		}
 	}
