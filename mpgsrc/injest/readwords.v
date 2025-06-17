@@ -1,6 +1,7 @@
 module injest
 
 // mpg mpgsrc injest readwords.v
+// contains code for the reading and setup of word lists
 import structs
 import os
 import encoding.csv

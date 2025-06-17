@@ -1,6 +1,7 @@
 module errors
 
 // mpg errors errormsg.v
+// contains code that handles errors
 
 // improper_parm_msg used for error conditions of various improper calls by the user
 pub fn improper_parm_msg(localmsg string) {
@@ -13,17 +14,17 @@ pub fn improper_parm_msg(localmsg string) {
 	println(expected_call.replace('\n\t', '\n'))
 	exit(0)
 }
+
 // file_access_error used for various file access errors by the user
 pub fn file_access_error(acctyp string, localmsg string, filename string) {
-    println('${localmsg}')
+	println('${localmsg}')
 	mut cnj := 'from'
 	if acctyp == 'WRITE' {
-		cnj = 'to'   
+		cnj = 'to'
 	}
 	file_access := ('MPG cannot ${acctyp} ${cnj} ${filename}
-	           Check the path, the name and the structure of the file')	           
-	println(file_access.replace('\n\t', '\n'))	
-
+	           Check the path, the name and the structure of the file')
+	println(file_access.replace('\n\t', '\n'))
 }
 
 // improper_poem_msg used for various improper calls by the user
@@ -36,3 +37,12 @@ pub fn improper_poem_msg(localmsg string) {
 	println(expected_call.replace('\n\t', '\n'))
 	exit(0)
 }
+
+// file_access_error used for various file access errors by the user
+pub fn rand_gen_error(localmsg string) {
+	println('${localmsg}')
+	rand_err := ('MPG experienced a random generation error
+	           Check the ln number gteneration in vlibrary')
+	println(rand_err.replace('\n\t', '\n'))
+}
+

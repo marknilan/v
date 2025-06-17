@@ -1,25 +1,26 @@
 module injest
 
 // mpg mpgsrc injest splitwords.v
+// contains code for the splitting of word lists into subsets
 import structs
 
 // make_wrd_list splits mpgwords into subsets depending on filter criteria
 pub fn make_wrd_list(thelist structs.Mpgwords, filtervalue string, filtertype string) structs.Mpgwords {
 	mut newlist := structs.Mpgwords{}
 	if filtertype == 'WORDTYPE' {
-	   for mpgwordarr in thelist.mpgwordarr {
-	   	if mpgwordarr.wordtype == filtervalue {
-			   newlist.mpgwordarr << mpgwordarr
-		   }
-	   }
+		for mpgwordarr in thelist.mpgwordarr {
+			if mpgwordarr.wordtype == filtervalue {
+				newlist.mpgwordarr << mpgwordarr
+			}
+		}
 	} else if filtertype == 'FOOT' {
-	          for mpgwordarr in thelist.mpgwordarr {
-	   	        if mpgwordarr.foot == filtervalue {
-			           newlist.mpgwordarr << mpgwordarr
-		           }
-	           }
-	       }
-	
+		for mpgwordarr in thelist.mpgwordarr {
+			if mpgwordarr.foot == filtervalue {
+				newlist.mpgwordarr << mpgwordarr
+			}
+		}
+	}
+
 	return newlist
 }
 
@@ -38,8 +39,7 @@ pub fn make_list_counts(listdbs structs.MpgListstore) structs.Mpgcounts {
 		advcnt:   listdbs.adverbs.mpgwordarr.len
 		prepcnt:  listdbs.prepositions.mpgwordarr.len
 		rrcnt:    listdbs.rhyme_roots.rhymearray.len
-	}	
+	}
 
 	return mpgcounts
 }
-

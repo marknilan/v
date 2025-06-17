@@ -1,103 +1,103 @@
 module structs
 
 // mpg mpgsrc structs structs.v
+// contains code for creation of data structures
 
 // expected TOML form is example below
 // iambpent = [{nop = 3, bpl = 5, tmpl = "mud", meter = "iambpent", lpp = 15, stnz = 3, rhyme = [1,3,5]
 
 // Poem struct sets up poems to be modelled or generated
 pub struct Poem {
-pub mut: 
+pub mut:
 	poemtype string @[required]
-	nop int @[required]
-	bpl int @[required]
-	tmpl string @[required]
-	meter string @[required]
-	lpp int @[required]
-	stnz int @[required]
-	rhyme []int @[required]
+	nop      int    @[required]
+	bpl      int    @[required]
+	tmpl     string @[required]
+	meter    string @[required]
+	lpp      int    @[required]
+	stnz     int    @[required]
+	rhyme    []int  @[required]
 }
 
-// Mpgline struct represents a line for mpgwords table 
+// Mpgline struct represents a line for mpgwords table
 // below (taken from CSV line)
 pub struct Mpgline {
-pub mut:	
-	wordidx int 
-	theword string 
-	sylcnt int 
-    foot string 
-    wordtype string 
-    feet string 
-    beatcnt int 
+pub mut:
+	wordidx  int
+	theword  string
+	sylcnt   int
+	foot     string
+	wordtype string
+	feet     string
+	beatcnt  int
 }
 
 // Mpgwords struct the main database (CSV in memory) of mpg
-pub struct Mpgwords{
+pub struct Mpgwords {
 pub mut:
 	mpgwordarr []Mpgline
 }
 
 // Mpgcounts struct holds the counts of all word type lists
-pub struct Mpgcounts{
+pub struct Mpgcounts {
 pub mut:
-    mpgcount int
-    nouncnt int
-    verbcnt int
-    adjcnt int
-    proncnt int
-    detcnt int
-    intcnt int
-    conjcnt	int
-    prepcnt int
-    advcnt int
-    rrcnt int
+	mpgcount int
+	nouncnt  int
+	verbcnt  int
+	adjcnt   int
+	proncnt  int
+	detcnt   int
+	intcnt   int
+	conjcnt  int
+	prepcnt  int
+	advcnt   int
+	rrcnt    int
 }
 
-// MpgRrline Rhyming Root line of data (rhyming rule)
-pub struct MpgRrline{
+// MpgRrline struct Rhyming Root line of data (rhyming rule)
+pub struct MpgRrline {
 pub mut:
-    rindex int
-    wrdsuffix string
+	rindex    int
+	wrdsuffix string
 }
 
-// MpgRroot is struct which holds Rhyming Root information in three or more 
+// MpgRroot is struct which holds Rhyming Root information in three or more
 // character prexises
-pub struct MpgRroots{
+pub struct MpgRroots {
 pub mut:
-   rhymearray []MpgRrline
+	rhymearray []MpgRrline
 }
-
 
 // MpgListstore struct holds all lists as a single passable parameter
 // almost like a DB schema
-pub struct MpgListstore{
+pub struct MpgListstore {
 pub mut:
-    mpgwords Mpgwords    
-    nouns Mpgwords
-    verbs Mpgwords
-    adjectives Mpgwords
-    pronouns Mpgwords
-    determiners Mpgwords
-    interjections Mpgwords
-    conjunctions Mpgwords
-    prepositions Mpgwords
-    adverbs Mpgwords
-    rhyme_roots MpgRroots
-    mpgcounts Mpgcounts    
+	mpgwords      Mpgwords
+	nouns         Mpgwords
+	verbs         Mpgwords
+	adjectives    Mpgwords
+	pronouns      Mpgwords
+	determiners   Mpgwords
+	interjections Mpgwords
+	conjunctions  Mpgwords
+	prepositions  Mpgwords
+	adverbs       Mpgwords
+	rhyme_roots   MpgRroots
+	mpgcounts     Mpgcounts
 }
 
 // MpgTraining is a training struct used for template creation
-pub struct MpgTraining{
+pub struct MpgTraining {
 pub mut:
-    templatename string
-    beat int
-    templateline []string     
+	templatename string
+	beat         int
+	templateline []string
 }
- 
+
 // MpgPaths struct holds the paths to the various files used by mpg
 pub struct MpgPaths {
-pub mut:    
-    wrdpath string
-    tmpdir string
-    templatepath string
+pub mut:
+	wrdpath      string
+	tmpdir       string
+	templatepath string
 }

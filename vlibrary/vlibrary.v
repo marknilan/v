@@ -86,6 +86,14 @@ pub fn make_random_filename(sysid string, outfile string,ext string) string {
    return '${sysid}_${fname}_${time.now().str().replace_each([' ','',':',''])}.${ext}'
 }
 
+//rnd_anynum  generates a random integer number based on the current time
+pub fn rnd_anynum() !int {
+    mut rng := &rand.PRNG(pcg32.PCG32RNG{})
+    rng.seed(seed.time_seed_array(pcg32.seed_len))
+    return rng.u32n(u32(time.now().str().replace_each([' ','',':','']).int()))!.str().int()
+}
+
+
 //is_odd checks if any integer number is odd
 pub fn is_odd(n int) bool {
     mut result := true

@@ -1,6 +1,7 @@
 module rhymebeat
 
 // mpg mpgsrc rhymebeat lstdbproc.v
+// contains code for list DB processing
 import structs
 import vlibrary
 import errors
@@ -9,21 +10,21 @@ import errors
 fn lookuplist(wordtype string, thelist structs.Mpgwords, cn int, beatmax int) !(string, int) {
 	mut wrd := ''
 	mut ln := 0
-	
-	//shorten the list by just looking at beat counts randomly selected
-    tl := rhymebeat.subset_by_beat(thelist, beatmax)!
-	//println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
-	// makes a random number index for selecting a word from a listdb given its
-	// array length as a ceiling 
-	 
-    ln = vlibrary.mkrndint(u32(tl.mpgwordarr.len))! 
 
-	//ln = vlibrary.mkrndint(u32(cn))!
+	// shorten the list by just looking at beat counts randomly selected
+	tl := subset_by_beat(thelist, beatmax)!
+	// println('the length of the listdb for ${wordtype} is ${tl.mpgwordarr.len} words')
+	// makes a random number index for selecting a word from a listdb given its
+	// array length as a ceiling
+
+	ln = vlibrary.mkrndint(u32(tl.mpgwordarr.len))!
+
+	// ln = vlibrary.mkrndint(u32(cn))!
 	// get the random word
 	wrd = tl.mpgwordarr[ln].theword
 	beats := tl.mpgwordarr[ln].beatcnt
 	bm := beatmax - beats
-	//println('beats for this word ${wrd} are ${beats} beatmax is now ${bm}')
+	// println('beats for this word ${wrd} are ${beats} beatmax is now ${bm}')
 
 	return wrd, bm
 }
@@ -35,32 +36,41 @@ pub fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax 
 	mut bm := beatmax
 	for wordtype in template {
 		match wordtype.trim(' ') {
-			'NOUN' {				
-				wrd, bm = lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt,bm)!
+			'NOUN' {
+				wrd, bm = lookuplist(wordtype, listdbs.nouns, listdbs.mpgcounts.nouncnt,
+					bm)!
 			}
 			'VERB' {
-				wrd, bm = lookuplist(wordtype, listdbs.verbs, listdbs.mpgcounts.verbcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.verbs, listdbs.mpgcounts.verbcnt,
+					bm)!
 			}
 			'ADJECTIVE' {
-				wrd, bm = lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.adjectives, listdbs.mpgcounts.adjcnt,
+					bm)!
 			}
 			'PRONOUN' {
-				wrd, bm = lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.pronouns, listdbs.mpgcounts.proncnt,
+					bm)!
 			}
 			'DETERMINER' {
-				wrd, bm = lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.determiners, listdbs.mpgcounts.detcnt,
+					bm)!
 			}
 			'INTERJECTION' {
-				wrd, bm = lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.interjections, listdbs.mpgcounts.intcnt,
+					bm)!
 			}
 			'CONJUNCTION' {
-				wrd, bm = lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.conjunctions, listdbs.mpgcounts.conjcnt,
+					bm)!
 			}
 			'PREPOSITION' {
-				wrd, bm = lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.prepositions, listdbs.mpgcounts.prepcnt,
+					bm)!
 			}
 			'ADVERB' {
-				wrd, bm = lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt,bm)!
+				wrd, bm = lookuplist(wordtype, listdbs.adverbs, listdbs.mpgcounts.advcnt,
+					bm)!
 			}
 			' ' {
 				// dunno why these are in the mpgwords CSV - suspect they are last lines of CSV file or empty rows		
@@ -78,11 +88,10 @@ pub fn get_random_wrds(template []string, listdbs structs.MpgListstore, beatmax 
 		wrdline << wrd
 		// ok we've exhaused the beats for this line - then exit.
 		if bm == 0 {
-			//println('I am breaking')
+			// println('I am breaking')
 			break
 		}
 	}
 
 	return wrdline, bm
 }
-
