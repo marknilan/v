@@ -19,6 +19,9 @@ pub fn run_model(poem structs.Poem, runmode string, meter_templates [][]string, 
 		'couplet' {
 			poemcode.couplet(poem, runmode, meter_templates, listdbs,tmpdir)
 		}
+		'quatrain' {
+			poemcode.quatrain(poem, runmode, meter_templates, listdbs,tmpdir)
+		}
 		else {
 			errors.improper_poem_msg(' No poem template')
 		}

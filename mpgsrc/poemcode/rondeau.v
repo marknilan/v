@@ -1,11 +1,11 @@
-//poemcode is a V module containing all V code relating to poem generation and modelling
+// poemcode is a V module containing all V code relating to poem generation and modelling
 module poemcode
 
 // mpg mpgsrc poemcode rondeau.v
 import structs
 import vlibrary
 import math
-import rhymebeat 
+import rhymebeat
 import proveout
 
 // rondeau code for rondeau type poem
@@ -30,11 +30,11 @@ pub fn rondeau(poem structs.Poem, runmode string, meter_templates [][]string, li
 pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgListstore) ![][]string {
 	mut allpoems := [][]string{}
 	mut lps := poem.lpp / poem.stnz
-	println(lps)
+	// println(lps)
 	mut lprinted := 1
 	mut linerep := []string{}
 	mut tmpline := []string{}
-	mut lastrhyme := []string{}	
+	mut lastrhyme := []string{}
 	mut beatmax := poem.bpl
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
 	// number of poems
@@ -47,23 +47,24 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax, poem)!
+				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax,
+					poem)!
 				if j == 0 && linerep.len == 0 {
 					// first line of first stanza - collect the refrain
 					linerep = tmpline[0..math.max((templates[ln].len / 3), 2)].clone()
 				}
 				// is this a rhyming line? then keep the last word as a rhyme future match
-				if k in poem.rhyme {				    
-					lastrhyme << tmpline[tmpline.len - 1]					
-				} 
-				// always line 3 rhymes with line 1 (index start = 0 remember)
-				if k == 2 {                
-                   tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme[0], listdbs)! 
+				if k in poem.rhyme {
+					lastrhyme << tmpline[tmpline.len - 1]
 				}
-				//always line 4 rhymes with line 2 (index start = 0 remember)
-				if k == 3 {                
-                   tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme[1], listdbs)! 
-				} 
+				// always line 3 rhymes with line 1 (index start = 0 remember)
+				if k == 2 {
+					tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme[0], listdbs)!
+				}
+				// always line 4 rhymes with line 2 (index start = 0 remember)
+				if k == 3 {
+					tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme[1], listdbs)!
+				}
 				// the refrain on each stanza last line except the first
 				if k == lps - 1 && !(j == 0) {
 					allpoems << linerep
@@ -72,11 +73,11 @@ pub fn ron_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 				}
 				lprinted++
 				if beatmax == 0 {
-//                   println('beatmax is now ${beatmax}')
-				   beatmax = poem.bpl
+					//                   println('beatmax is now ${beatmax}')
+					beatmax = poem.bpl
 				}
 			}
-			lastrhyme = []string{}			
+			lastrhyme = []string{}
 			allpoems << [' ']
 		}
 		linerep = []string{}

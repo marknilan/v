@@ -114,7 +114,7 @@ fn wrdhunt(mut holdarr []string, listdbs structs.MpgListstore) ![]string {
 				// use a distance match instead, this is a last resort labelled with (l)
 				// because the word chosen by closest distance is not necessarily same type of
 				// word demanded by the original template.
-				if !found {
+				if (!found) || (rhymed.len < 2) {
 					// levenshtein word distance fallback not ideal as the wordtype and / or foot
 					// it chooses might not be the same as the original random unrhymed word
 					closest := get_distance(suffix, listdbs)

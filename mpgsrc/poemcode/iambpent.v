@@ -5,7 +5,7 @@ import structs
 import vlibrary
 import rhymebeat
 import proveout
-//import math
+// import math
 
 // iambpent is the poem generation code for Iambic Pentameter poems
 pub fn iambpent(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, outfile string) bool {
@@ -45,23 +45,23 @@ pub fn imb_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgLists
 			for k := 0; (k < lps || lprinted == poem.lpp); k++ {
 				// chooses a random line index from templates array for this generation
 				ln := vlibrary.mkrndint(u32(templates.len))!
-				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax, poem)!
-				//is this rhyming line then get the rhyming word
+				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax,
+					poem)!
+				// is this rhyming line then get the rhyming word
 				if k in poem.rhyme {
 					if !(k == 0) {
 						tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme, listdbs)!
 					}
-					//keep the last word of the line as a rhyming word 
+					// keep the last word of the line as a rhyming word
 					lastrhyme = tmpline[tmpline.len - 1]
 				}
-				println('tmpline: ${tmpline}')
-				allpoems << tmpline				
+				// println('tmpline: ${tmpline}')
+				allpoems << tmpline
 				lprinted++
 				if beatmax == 0 {
-//                   println('beatmax is now ${beatmax}')
-				   beatmax = poem.bpl
+					//                   println('beatmax is now ${beatmax}')
+					beatmax = poem.bpl
 				}
-				
 			}
 			lastrhyme = ''
 			allpoems << [' ']

@@ -39,6 +39,7 @@ fn conv_toml_arr(ta []toml.Any) []int {
 	return na
 }
 
+// setup_paths sets up the paths for the MPG program
 pub fn setup_paths() !structs.MpgPaths {
 	mut wrdpath := 'WARNING: missing path'
 	mut tmpdir := 'WARNING missing path'
