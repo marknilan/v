@@ -4,7 +4,7 @@ module modelgen
 import structs
 import vlibrary
 import errors
-import poemcode 
+import poemcode
 
 // run_generate calls model functions to generate poems to an output file
 pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, tmpdir string) bool {
@@ -13,7 +13,7 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 	// gotta have one of the programs in the poem module for each type
 	match poem.poemtype {
 		'rondeau' {
-	  	    poemcode.rondeau(poem, runmode, meter_templates, listdbs, outfile)
+			poemcode.rondeau(poem, runmode, meter_templates, listdbs, outfile)
 		}
 		'iambpent' {
 			poemcode.iambpent(poem, runmode, meter_templates, listdbs, outfile)
@@ -24,6 +24,9 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 		'quatrain' {
 			poemcode.quatrain(poem, runmode, meter_templates, listdbs, outfile)
 		}
+		'terzarima' {
+			poemcode.terzarima(poem, runmode, meter_templates, listdbs, outfile)
+		}
 		else {
 			errors.improper_poem_msg(' No poem template')
 		}
@@ -31,5 +34,3 @@ pub fn run_generate(poem structs.Poem, runmode string, meter_templates [][]strin
 
 	return true
 }
-
-

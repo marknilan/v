@@ -1,7 +1,7 @@
 [Poem] 
    poemtype = 'quatrain'
    nop = 4
-   bpl = 5
+   bpl = 7
    tmpl = "mud"
    meter = "quatrain"
    lpp = 12

@@ -7,7 +7,7 @@ import rhymebeat
 import proveout
 // import math
 
-// iambpent is the poem generation code for Iambic Pentameter poems
+// quatrain is the poem generation code for Quatrain poems
 pub fn quatrain(poem structs.Poem, runmode string, meter_templates [][]string, listdbs structs.MpgListstore, outfile string) bool {
 	mut templates := [][]string{}
 	for template in meter_templates {
@@ -32,8 +32,9 @@ pub fn quat_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 	mut lps := poem.lpp / poem.stnz
 	mut lprinted := 1
 	mut tmpline := []string{}
-	mut lastrhyme := ''
+	// mut lastrhyme := ''
 	mut beatmax := poem.bpl
+	mut la := []string{}
 	allpoems << ['Poem type = "${poem.poemtype}" \n']
 	// number of poems
 	for i := 0; i < poem.nop; i++ {
@@ -48,16 +49,18 @@ pub fn quat_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 				tmpline, beatmax = rhymebeat.get_random_wrds(templates[ln], listdbs, beatmax,
 					poem)!
 				// is this rhyming line then get the rhyming word
-				if k in poem.rhyme {
-					lastrhyme = tmpline[tmpline.len - 1]
+				if k == 0 {
+					la << tmpline[tmpline.len - 1]
 				}
-				if k in [1,3] {
-					//if !(k == 0) {
-						tmpline = rhymebeat.compare_rhymes(mut tmpline, lastrhyme, listdbs)!
-					//}
-					// keep the last word of the line as a rhyming word					
+				if k == 1 {
+					la << tmpline[tmpline.len - 1]
 				}
-				// println('tmpline: ${tmpline}')
+				if k == 2 {
+					tmpline = rhymebeat.compare_rhymes(mut tmpline, la[0], listdbs)!
+				}
+				if k == 3 {
+					tmpline = rhymebeat.compare_rhymes(mut tmpline, la[1], listdbs)!
+				}
 				allpoems << tmpline
 				lprinted++
 				if beatmax == 0 {
@@ -65,7 +68,7 @@ pub fn quat_gen(poem structs.Poem, templates [][]string, listdbs structs.MpgList
 					beatmax = poem.bpl
 				}
 			}
-			lastrhyme = ''
+			la = []
 			allpoems << [' ']
 			beatmax = poem.bpl
 		}

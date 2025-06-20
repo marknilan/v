@@ -1,0 +1,9 @@
+[Poem] 
+   poemtype = 'terzarima'
+   nop = 2
+   bpl = 7
+   tmpl = "mud"
+   meter = "terzarima"
+   lpp = 15
+   stnz = 5
+   rhyme = [0]
